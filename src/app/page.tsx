@@ -3,10 +3,12 @@ import { About } from '@/components/About';
 import { Experience } from '@/components/Experience';
 import { Education } from '@/components/Education';
 import { Skills } from '@/components/Skills';
+import { Testimonials } from '@/components/Testimonials';
 import { Newsletter } from '@/components/Newsletter';
 import { Navigation } from '@/components/Navigation';
 import { AnimatedSocialLinks } from '@/components/AnimatedSocialLinks';
 import { GitHubActivity } from '@/components/GitHubActivity';
+import { testimonials } from '@/data/testimonials';
 
 function Index() {
   return (
@@ -18,6 +20,9 @@ function Index() {
         </div>
         <div id="about" className="scroll-mt-24">
           <About />
+        </div>
+        <div id="testimonials" className="scroll-mt-24">
+          <Testimonials testimonials={testimonials} />
         </div>
         <div id="experience" className="scroll-mt-24">
           <Experience />

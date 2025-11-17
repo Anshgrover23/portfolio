@@ -73,3 +73,11 @@ NEXT_PUBLIC_GITHUB_USERNAME=your_github_username # optional, defaults to Anshgro
 
 - `GRAPHQL_TOKEN` must be a GitHub personal access token with the `read:user` scope (classic tokens work as well). It is used on the server to query the GraphQL API.
 - `NEXT_PUBLIC_GITHUB_USERNAME` lets you override the username shown in the activity header while keeping the token private.
+
+## Adding Testimonials
+
+Add testimonials from Twitter, Discord, or GitHub in `src/data/testimonials.ts`:
+
+**Twitter:** Copy tweet URL → Use `https://unavatar.io/twitter/username` for image  
+**Discord:** Right-click message → Copy message link  
+**GitHub:** Click comment timestamp → Copy permalink → Use `https://github.com/username.png` for image
