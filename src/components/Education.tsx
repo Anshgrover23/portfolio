@@ -19,7 +19,6 @@ export const Education = () => {
             <p className="text-purple-400 mb-1">
               Bachelor of Technology — Artificial Intelligence
             </p>
-            <p className="text-gray-300 text-sm">Current CGPA: 8.67 / 10</p>
           </div>
         </div>
       </div>

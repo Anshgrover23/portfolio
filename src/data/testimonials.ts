@@ -41,4 +41,15 @@ export const testimonials: TestimonialItem[] = [
     sourceUrl:
       'https://github.com/tscircuit/eval/pull/163#pullrequestreview-2708124781',
   },
+
+  {
+    quote: 'brilliant work!',
+    name: 'louis030195',
+    username: 'louis030195',
+    title: 'Project Maintainer',
+    image: 'https://github.com/louis030195.png',
+    source: 'github',
+    sourceUrl:
+      'https://github.com/mediar-ai/terminator/pull/41#issuecomment-2916909541',
+  },
 ];
