@@ -14,7 +14,7 @@ export const testimonials: TestimonialItem[] = [
     quote: 'great work!',
     name: 'seveibar',
     username: 'seveibar',
-    title: 'Project Maintainer',
+    title: 'Founder of TSCircuit',
     image: 'https://github.com/seveibar.png',
     source: 'github',
     sourceUrl:
@@ -24,7 +24,7 @@ export const testimonials: TestimonialItem[] = [
     quote: 'Nice, thanks!',
     name: 'binary-koan',
     username: 'binary-koan',
-    title: 'Project Maintainer',
+    title: 'Senior Software Engineer at Antiwork',
     image: 'https://github.com/binary-koan.png',
     source: 'github',
     sourceUrl:
@@ -35,7 +35,7 @@ export const testimonials: TestimonialItem[] = [
     quote: 'ayyyy nice work',
     name: 'seveibar',
     username: 'seveibar',
-    title: 'Project Maintainer',
+    title: 'Founder of TSCircuit',
     image: 'https://github.com/seveibar.png',
     source: 'github',
     sourceUrl:
@@ -46,7 +46,7 @@ export const testimonials: TestimonialItem[] = [
     quote: 'brilliant work!',
     name: 'louis030195',
     username: 'louis030195',
-    title: 'Project Maintainer',
+    title: 'Founder of Mediar-AI',
     image: 'https://github.com/louis030195.png',
     source: 'github',
     sourceUrl:
