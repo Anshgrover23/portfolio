@@ -52,4 +52,14 @@ export const testimonials: TestimonialItem[] = [
     sourceUrl:
       'https://github.com/mediar-ai/terminator/pull/41#issuecomment-2916909541',
   },
+  {
+    quote: 'Thank you!',
+    name: 'Felix Malfait',
+    username: 'FelixMalfait',
+    title: 'Building @twentyhq; previously @airbnb',
+    image: 'https://github.com/FelixMalfait.png',
+    source: 'github',
+    sourceUrl:
+      'https://github.com/twentyhq/twenty/pull/16176#pullrequestreview-3518895002',
+  },
 ];
