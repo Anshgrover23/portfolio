@@ -289,6 +289,48 @@ export const Experience = () => {
       ],
     },
     {
+      company: 'Sugar Labs',
+      role: 'Open Source Contributor',
+      period: '2025 - Present',
+      description:
+        'Fixed UI bugs and improved user experience on the Sugar Labs website.',
+      logo: 'sugarlabs.svg',
+      link: 'https://github.com/sugarlabs',
+      totalPRs: '1+',
+      contributions: [
+        {
+          title: 'Fixed UI bugs on stats cards',
+          description:
+            'Added hover functionality to stats cards to display full text descriptions when hovering over truncated text, improving readability and UX.',
+          link: 'https://github.com/sugarlabs/www-v2/pull/583',
+        },
+      ],
+    },
+    {
+      company: 'TwentyHQ',
+      role: 'Open Source Contributor',
+      period: '2025 - Present',
+      description:
+        'Improved CSV import UX by making the download sample feature more discoverable.',
+      logo: 'twentyhq.svg',
+      link: 'https://github.com/twentyhq',
+      totalPRs: '2+',
+      contributions: [
+        {
+          title: 'Fixed markdown link formatting',
+          description:
+            'Fixed markdown link formatting in CONTRIBUTING.md by correcting the syntax from (text)[url] to the proper [text](url) format.',
+          link: 'https://github.com/twentyhq/twenty/pull/16176',
+        },
+        {
+          title: 'Added prominent Download sample button',
+          description:
+            'Improved discoverability of the "Download sample" feature in the CSV import flow by replacing the text link with a prominent button, addressing customer feedback.',
+          link: 'https://github.com/twentyhq/twenty/pull/16193',
+        },
+      ],
+    },
+    {
       company: 'Algora.io',
       role: 'Bounty Hunter',
       period: '2024 - Present',
@@ -325,10 +367,20 @@ export const Experience = () => {
       logo: '🤖',
       contributions: experiences[2].contributions,
     },
+    'Sugar Labs': {
+      name: 'Sugar Labs',
+      logo: '🍬',
+      contributions: experiences[3].contributions,
+    },
+    TwentyHQ: {
+      name: 'TwentyHQ',
+      logo: '📊',
+      contributions: experiences[4].contributions,
+    },
     'Algora.io': {
       name: 'Algora.io',
       logo: '💰',
-      contributions: experiences[3].contributions,
+      contributions: experiences[5].contributions,
     },
   };
 
@@ -386,14 +438,16 @@ export const Experience = () => {
                     {exp.totalPRs}
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-yellow-400 font-semibold text-sm sm:text-sm">
-                    Bounties Earned:
-                  </span>
-                  <span className="text-white text-sm sm:text-sm font-medium">
-                    {exp.totalBounties}
-                  </span>
-                </div>
+                {exp.totalBounties && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-yellow-400 font-semibold text-sm sm:text-sm">
+                      Bounties Earned:
+                    </span>
+                    <span className="text-white text-sm sm:text-sm font-medium">
+                      {exp.totalBounties}
+                    </span>
+                  </div>
+                )}
               </div>
               <p className="text-blue-400 text-sm mt-2">
                 Click to view featured contributions →
@@ -463,6 +517,51 @@ export const Experience = () => {
                       height={15}
                     />
                     Rust
+                  </span>
+                </div>
+              )}
+              {exp.company === 'Sugar Labs' && (
+                <div className="flex flex-wrap gap-2 mt-4 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-blue-400/30 shadow-lg text-blue-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-blue-700/30">
+                    <Image
+                      src="/svg-icons/typescript.svg"
+                      alt="typescript-svg"
+                      width={15}
+                      height={15}
+                    />
+                    TypeScript
+                  </span>
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-cyan-400/30 shadow-lg text-cyan-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-cyan-700/30">
+                    <Image
+                      src="/svg-icons/reactjs.svg"
+                      alt="reactjs-svg"
+                      width={15}
+                      height={15}
+                    />
+                    React.js
+                  </span>
+                </div>
+              )}
+              {exp.company === 'TwentyHQ' && (
+                <div className="flex flex-wrap gap-2 mt-4 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-blue-400/30 shadow-lg text-blue-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-blue-700/30">
+                    <Image
+                      src="/svg-icons/typescript.svg"
+                      alt="typescript-svg"
+                      width={15}
+                      height={15}
+                    />
+                    TypeScript
+                  </span>
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-zinc-400/30 shadow-lg text-zinc-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-zinc-700/30">
+                    <Image
+                      src="/svg-icons/nextjs.svg"
+                      alt="nextjs-svg"
+                      width={15}
+                      height={15}
+                      className="invert"
+                    />
+                    Next.js
                   </span>
                 </div>
               )}
