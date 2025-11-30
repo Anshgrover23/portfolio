@@ -62,4 +62,24 @@ export const testimonials: TestimonialItem[] = [
     sourceUrl:
       'https://github.com/twentyhq/twenty/pull/16176#pullrequestreview-3518895002',
   },
+  {
+    quote: 'Looks good. Thanks for contributing :)',
+    name: 'sa-fw-an',
+    username: 'sa-fw-an',
+    title: 'Maintainer of Sugar Labs',
+    image: 'https://github.com/sa-fw-an.png',
+    source: 'github',
+    sourceUrl:
+      'https://github.com/sugarlabs/www-v2/pull/583#issuecomment-3592122200',
+  },
+  {
+    quote: 'LGTM',
+    name: 'Weiko',
+    username: 'Weiko',
+    title: 'Maintainer of TwentyHQ',
+    image: 'https://github.com/Weiko.png',
+    source: 'github',
+    sourceUrl:
+      'https://github.com/twentyhq/twenty/pull/16193#pullrequestreview-3520818844',
+  },
 ];
