@@ -1,15 +1,7 @@
 import { TestimonialItem } from '@/components/Testimonials';
 
 export const testimonials: TestimonialItem[] = [
-  {
-    quote: "You're the best Ansh :)",
-    name: 'louis030195',
-    username: 'louis030195',
-    image: 'https://unavatar.io/twitter/louis030195',
-    source: 'twitter',
-    sourceUrl: 'https://x.com/louis030195/status/1989746246748393684',
-  },
-
+  // TSCircuit testimonials
   {
     quote: 'great work!',
     name: 'seveibar',
@@ -21,17 +13,6 @@ export const testimonials: TestimonialItem[] = [
       'https://github.com/tscircuit/core/pull/459#pullrequestreview-2524271526',
   },
   {
-    quote: 'Nice, thanks!',
-    name: 'binary-koan',
-    username: 'binary-koan',
-    title: 'Senior Software Engineer at Antiwork',
-    image: 'https://github.com/binary-koan.png',
-    source: 'github',
-    sourceUrl:
-      'https://github.com/antiwork/helper/pull/902#pullrequestreview-3103747910',
-  },
-
-  {
     quote: 'ayyyy nice work',
     name: 'seveibar',
     username: 'seveibar',
@@ -41,7 +22,18 @@ export const testimonials: TestimonialItem[] = [
     sourceUrl:
       'https://github.com/tscircuit/eval/pull/163#pullrequestreview-2708124781',
   },
-
+  // Antiwork testimonials
+  {
+    quote: 'Nice, thanks!',
+    name: 'binary-koan',
+    username: 'binary-koan',
+    title: 'Senior Software Engineer at Antiwork',
+    image: 'https://github.com/binary-koan.png',
+    source: 'github',
+    sourceUrl:
+      'https://github.com/antiwork/helper/pull/902#pullrequestreview-3103747910',
+  },
+  // Mediar-AI testimonials
   {
     quote: 'brilliant work!',
     name: 'louis030195',
@@ -52,6 +44,7 @@ export const testimonials: TestimonialItem[] = [
     sourceUrl:
       'https://github.com/mediar-ai/terminator/pull/41#issuecomment-2916909541',
   },
+  // TwentyHQ testimonials
   {
     quote: 'Thank you!',
     name: 'Felix Malfait',
@@ -63,6 +56,27 @@ export const testimonials: TestimonialItem[] = [
       'https://github.com/twentyhq/twenty/pull/16176#pullrequestreview-3518895002',
   },
   {
+    quote: 'LGTM',
+    name: 'Weiko',
+    username: 'Weiko',
+    title: 'Maintainer of TwentyHQ',
+    image: 'https://github.com/Weiko.png',
+    source: 'github',
+    sourceUrl:
+      'https://github.com/twentyhq/twenty/pull/16193#pullrequestreview-3520818844',
+  },
+  {
+    quote: 'LGTM indeed, ty!',
+    name: 'charlesBochet',
+    username: 'charlesBochet',
+    title: 'CTO of TwentyHQ',
+    image: 'https://github.com/charlesBochet.png',
+    source: 'github',
+    sourceUrl:
+      'https://github.com/twentyhq/twenty/pull/16221#pullrequestreview-3526059906',
+  },
+  // Sugar Labs testimonials
+  {
     quote: 'Looks good. Thanks for contributing :)',
     name: 'sa-fw-an',
     username: 'sa-fw-an',
@@ -72,14 +86,13 @@ export const testimonials: TestimonialItem[] = [
     sourceUrl:
       'https://github.com/sugarlabs/www-v2/pull/583#issuecomment-3592122200',
   },
+  // Other testimonials
   {
-    quote: 'LGTM',
-    name: 'Weiko',
-    username: 'Weiko',
-    title: 'Maintainer of TwentyHQ',
-    image: 'https://github.com/Weiko.png',
-    source: 'github',
-    sourceUrl:
-      'https://github.com/twentyhq/twenty/pull/16193#pullrequestreview-3520818844',
+    quote: "You're the best Ansh :)",
+    name: 'louis030195',
+    username: 'louis030195',
+    image: 'https://unavatar.io/twitter/louis030195',
+    source: 'twitter',
+    sourceUrl: 'https://x.com/louis030195/status/1989746246748393684',
   },
 ];
