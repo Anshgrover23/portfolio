@@ -4,7 +4,7 @@ import { getBlogPost } from '@/data/blogPosts';
 import { Calendar, Clock, ArrowLeft, User } from 'lucide-react';
 import { Navigation } from '@/components/Navigation';
 import { AnimatedSocialLinks } from '@/components/AnimatedSocialLinks';
-import { MarkdownRenderer } from '@/components/MarkdownRenderer';
+import { MemoizedMarkdown } from '@/components/MemoizedMarkdown';
 import { Newsletter } from '@/components/Newsletter';
 
 export default async function BlogPostPage({
@@ -71,7 +71,7 @@ export default async function BlogPostPage({
           </header>
 
           <div className="prose prose-invert max-w-none">
-            <MarkdownRenderer content={post.content} />
+            <MemoizedMarkdown content={post.content} id={`blog-${slug}`} />
           </div>
         </article>
 

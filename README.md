@@ -74,6 +74,29 @@ NEXT_PUBLIC_GITHUB_USERNAME=your_github_username # optional, defaults to Anshgro
 - `GRAPHQL_TOKEN` must be a GitHub personal access token with the `read:user` scope (classic tokens work as well). It is used on the server to query the GraphQL API.
 - `NEXT_PUBLIC_GITHUB_USERNAME` lets you override the username shown in the activity header while keeping the token private.
 
+## Chatbot Setup
+
+```env
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+Uses Gemini 2.5 Flash with portfolio context. Get your key from [Google AI Studio](https://makersuite.google.com/app/apikey).
+
+## Production Deployment
+
+Add these environment variables in your hosting platform (Vercel, Netlify, etc.):
+
+**Required:**
+
+- `GEMINI_API_KEY` - For chatbot functionality
+- `BREVO_API_KEY` - For email subscription
+- `GRAPHQL_TOKEN` - For GitHub activity graph
+
+**Optional:**
+
+- `BREVO_LIST_ID` - Brevo list ID for email subscriptions
+- `NEXT_PUBLIC_GITHUB_USERNAME` - Override GitHub username (defaults to Anshgrover23)
+
 ## Adding Testimonials
 
 Add testimonials from Twitter, Discord, or GitHub in `src/data/testimonials.ts`:

@@ -8,6 +8,7 @@ import { Newsletter } from '@/components/Newsletter';
 import { Navigation } from '@/components/Navigation';
 import { AnimatedSocialLinks } from '@/components/AnimatedSocialLinks';
 import { GitHubActivity } from '@/components/GitHubActivity';
+import { Chatbot } from '@/components/Chatbot';
 import { testimonials } from '@/data/testimonials';
 
 function Index() {
@@ -39,6 +40,7 @@ function Index() {
         </div>
       </div>
       <AnimatedSocialLinks />
+      <Chatbot />
     </div>
   );
 }

@@ -39,7 +39,7 @@ export const AnimatedSocialLinks = () => {
     },
     {
       icon: Mail as IconComponent,
-      href: 'mailto:ag5989670@gmail.com',
+      href: 'mailto:anshgrover938@gmail.com',
       label: 'Email',
       color: 'hover:bg-green-600',
     },
