@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Providers from '@/provider/providers';
+import { PreloadAvatar } from '@/components/PreloadAvatar';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -48,6 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
+        <PreloadAvatar />
         <Providers> {children}</Providers>
       </body>
     </html>

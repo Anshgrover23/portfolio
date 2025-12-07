@@ -71,12 +71,8 @@ export const Chatbot = () => {
       const timer = setTimeout(() => {
         setShowNotification(true);
         setHasShownNotification(true);
-        playNotificationSound(); // Play sound when notification appears
-        // Auto-hide after 5 seconds
-        setTimeout(() => {
-          setShowNotification(false);
-        }, 5000);
-      }, 2000); // Show after 2 seconds of page load
+        playNotificationSound();
+      }, 2000);
 
       return () => clearTimeout(timer);
     }
@@ -84,7 +80,7 @@ export const Chatbot = () => {
 
   useEffect(() => {
     if (isOpen) {
-      setShowNotification(false); // Hide notification when chat opens
+      setShowNotification(false);
       scrollToBottom();
       // Focus input when chat opens
       setTimeout(() => {
@@ -123,7 +119,7 @@ export const Chatbot = () => {
     <>
       {/* Notification Popup */}
       {showNotification && !isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 animate-in slide-in-from-bottom-2 fade-in duration-300">
+        <div className="fixed bottom-36 right-6 md:bottom-24 z-50 animate-in slide-in-from-bottom-2 fade-in duration-300">
           <div className="bg-white rounded-lg shadow-2xl border border-gray-200 p-4 max-w-[280px] relative">
             <button
               onClick={() => setShowNotification(false)}
@@ -165,7 +161,7 @@ export const Chatbot = () => {
       {!isOpen && (
         <button
           onClick={handleOpenChat}
-          className="fixed bottom-6 right-6 z-50 group hover:scale-105 transition-transform"
+          className="fixed bottom-24 right-6 md:bottom-6 z-50 group hover:scale-105 transition-transform"
           aria-label="Open chat"
         >
           <div className="relative">
@@ -186,7 +182,7 @@ export const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col max-h-[600px]">
+        <div className="fixed bottom-24 right-6 md:bottom-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col max-h-[600px]">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gray-50 rounded-t-lg">
             <div className="flex items-center gap-3">
