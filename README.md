@@ -9,6 +9,7 @@ My very own portfolio website.
 - 🧩 Modular React components
 - 🛠️ TypeScript for type safety
 - ✨ Modern UI with shadcn-ui
+- 📅 Cal.com booking (Book a Free Call)
 
 ## Getting Started
 
@@ -39,28 +40,15 @@ npm run build
 - Vite
 - Tailwind CSS
 - shadcn-ui
+- lucide-react
 
 ---
 
 Feel free to fork, star, or contribute! Don't forget to follow me as well.
 
-## Email Subscription (Brevo) Setup
+## Book a Call (Cal.com)
 
-1. Copy the environment template and fill in your keys:
-
-```sh
-cp .env.example .env.local
-```
-
-2. Set the following variables in `.env.local`:
-
-```env
-BREVO_API_KEY=your_brevo_api_key
-```
-
-Note:
-
-- `BREVO_API_KEY` is required for the `/api/subscribe` endpoint to work.
+The site uses a Cal.com embed for booking calls (see `src/components/BookCall.tsx`). No extra env vars are required—just ensure the link in the button points to your Cal.com username. The current link is `anshgrover/meeting`.
 
 ## GitHub Activity Setup
 
@@ -89,12 +77,10 @@ Add these environment variables in your hosting platform (Vercel, Netlify, etc.)
 **Required:**
 
 - `GEMINI_API_KEY` - For chatbot functionality
-- `BREVO_API_KEY` - For email subscription
 - `GRAPHQL_TOKEN` - For GitHub activity graph
 
 **Optional:**
 
-- `BREVO_LIST_ID` - Brevo list ID for email subscriptions
 - `NEXT_PUBLIC_GITHUB_USERNAME` - Override GitHub username (defaults to Anshgrover23)
 
 ## Adding Testimonials
