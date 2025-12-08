@@ -4,7 +4,7 @@ import { Experience } from '@/components/Experience';
 import { Education } from '@/components/Education';
 import { Skills } from '@/components/Skills';
 import { Testimonials } from '@/components/Testimonials';
-import { Newsletter } from '@/components/Newsletter';
+import { BookCall } from '@/components/BookCall';
 import { Navigation } from '@/components/Navigation';
 import { AnimatedSocialLinks } from '@/components/AnimatedSocialLinks';
 import { GitHubActivity } from '@/components/GitHubActivity';
@@ -36,7 +36,7 @@ function Index() {
           <Skills />
         </div>
         <div id="contact" className="scroll-mt-24">
-          <Newsletter />
+          <BookCall />
         </div>
       </div>
       <AnimatedSocialLinks />
