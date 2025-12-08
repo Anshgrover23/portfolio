@@ -7,6 +7,8 @@ import { PreloadAvatar } from '@/components/PreloadAvatar';
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -48,7 +50,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased`}>
         <PreloadAvatar />
         <Providers> {children}</Providers>
       </body>

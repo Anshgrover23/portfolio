@@ -1,6 +1,8 @@
 'use client';
 
 import { Trophy, UserRoundSearch } from 'lucide-react';
+import Image from 'next/image';
+import { Badge } from '@/components/ui/badge';
 
 export const About = () => {
   return (
@@ -13,12 +15,53 @@ export const About = () => {
         <div className="text-gray-300 leading-relaxed">
           <p>
             I'm <strong className="text-white">Ansh Grover</strong> —{' '}
-            <strong className="text-white">
-              full-stack developer focusing on TypeScript
-            </strong>
+            <strong className="text-white">full-stack developer</strong>{' '}
+            focusing on{' '}
+            <Badge className="bg-gray-800 text-gray-200 hover:bg-gray-700 border-0 rounded-lg px-2 py-0.5 inline-flex items-center gap-1.5 h-[1.5em] align-middle font-semibold text-sm leading-none">
+              <Image
+                src="/svg-icons/typescript.svg"
+                alt="TypeScript"
+                width={14}
+                height={14}
+                className="w-3.5 h-3.5 flex-shrink-0"
+              />
+              <span className="font-semibold">TypeScript</span>
+            </Badge>
             , testing infrastructure, and developer experience — currently
             shipping across{' '}
-            <strong className="text-white">Next.js, Rust, and Ruby</strong>.
+            <Badge className="bg-gray-800 text-gray-200 hover:bg-gray-700 border-0 rounded-lg px-2 py-0.5 inline-flex items-center gap-1.5 h-[1.5em] align-middle font-semibold text-sm leading-none">
+              <Image
+                src="/svg-icons/nextjs.svg"
+                alt="Next.js"
+                width={14}
+                height={14}
+                className="w-3.5 h-3.5 flex-shrink-0"
+              />
+              <span className="font-semibold">Next.js</span>
+            </Badge>
+            ,{' '}
+            <Badge className="bg-gray-800 text-gray-200 hover:bg-gray-700 border-0 rounded-lg px-2 py-0.5 inline-flex items-center gap-1.5 h-[1.5em] align-middle font-semibold text-sm leading-none">
+              <Image
+                src="/svg-icons/rust.svg"
+                alt="Rust"
+                width={14}
+                height={14}
+                className="w-3.5 h-3.5 flex-shrink-0"
+              />
+              <span className="font-semibold">Rust</span>
+            </Badge>
+            , and{' '}
+            <Badge className="bg-gray-800 text-gray-200 hover:bg-gray-700 border-0 rounded-lg px-2 py-0.5 inline-flex items-center gap-1.5 h-[1.5em] align-middle font-semibold text-sm leading-none">
+              <Image
+                src="/svg-icons/ruby.svg"
+                alt="Ruby"
+                width={14}
+                height={14}
+                className="w-3.5 h-3.5 flex-shrink-0"
+              />
+              <span className="font-semibold">Ruby</span>
+            </Badge>
+            .
           </p>
         </div>
 
@@ -42,7 +85,7 @@ export const About = () => {
                 Flexile
               </a>{' '}
               for major contributions to{' '}
-              <strong className="text-white">antiwork</strong>
+              <strong className="text-white">Antiwork</strong>
             </li>
             <li>
               • Earned <strong className="text-white">$1200+ bounty</strong> via{' '}

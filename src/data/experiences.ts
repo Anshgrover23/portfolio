@@ -1,6 +1,6 @@
 export const experiences = [
   {
-    company: 'antiwork',
+    company: 'Antiwork',
     role: 'Open Source Contributor',
     period: '2025 - Present',
     headline: 'Build multiple major features and shipped them perfectly.',

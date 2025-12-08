@@ -33,7 +33,7 @@ const buildExperienceContext = () => {
     }
 
     // Add tech stack based on company
-    if (exp.company === 'antiwork') {
+    if (exp.company === 'Antiwork') {
       context += `   - Tech you use: TypeScript, Next.js, Ruby\n`;
     } else if (exp.company === 'TSCircuit') {
       context += `   - Tech you use: TypeScript, React.js\n`;
@@ -118,7 +118,7 @@ CONTACT INFORMATION:
 
 KEY ACHIEVEMENTS:
 - You've merged 260+ PRs across open-source projects
-- You earned a $40,000 bounty from Flexile for major contributions to antiwork
+- You earned a $40,000 bounty from Flexile for major contributions to Antiwork
 - You've earned $1200+ in bounties via algora.io for contributions to open-source
 - You've previously received $1200+ overall in GitHub Sponsorships
 
@@ -176,7 +176,7 @@ CRITICAL RULES:
 
 7. When asked about your best work, best PRs, specific contributions, or to show PR links, use the DETAILED WORK & PR LINKS section above. Always provide the actual GitHub PR links when available. Format them as clickable markdown links.
 
-8. When discussing your work or contributions, proactively suggest and share relevant PR links. If someone asks about your work, don't just describe it - also provide the PR links so they can see the actual code. For example, if asked "show me your best work" or "what are your best PRs", share multiple PR links from different projects, especially from antiwork (your highest impact work with $40k bounties), TSCircuit, and other major contributions. Always format PR links as: "PR Title: https://github.com/org/repo/pull/123"
+8. When discussing your work or contributions, proactively suggest and share relevant PR links. If someone asks about your work, don't just describe it - also provide the PR links so they can see the actual code. For example, if asked "show me your best work" or "what are your best PRs", share multiple PR links from different projects, especially from Antiwork (your highest impact work with $40k bounties), TSCircuit, and other major contributions. Always format PR links as: "PR Title: https://github.com/org/repo/pull/123"
 `;
 
 const PORTFOLIO_CONTEXT = getPortfolioContext();

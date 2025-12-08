@@ -8,8 +8,8 @@ export const Experience = () => {
   const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
 
   const companyData = {
-    antiwork: {
-      name: 'antiwork',
+    Antiwork: {
+      name: 'Antiwork',
       logo: '🛠️',
       contributions: experiences[0].contributions,
     },
@@ -49,7 +49,7 @@ export const Experience = () => {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className={`flex items-start gap-4 p-6 rounded-lg bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 cursor-pointer relative ${exp.company === 'antiwork' ? 'border-2 border-purple-500 shadow-[0_0_16px_4px_rgba(168,85,247,0.5)]' : ''}`}
+            className={`flex items-start gap-4 p-6 rounded-lg bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 cursor-pointer relative ${exp.company === 'Antiwork' ? 'border-2 border-purple-500 shadow-[0_0_16px_4px_rgba(168,85,247,0.5)]' : ''}`}
             onClick={() => setSelectedCompany(exp.company)}
           >
             <div className="text-3xl">
@@ -109,7 +109,7 @@ export const Experience = () => {
                 Click to view featured contributions →
               </p>
               {/* Language badges bottom right (responsive) */}
-              {exp.company === 'antiwork' && (
+              {exp.company === 'Antiwork' && (
                 <div className="flex flex-wrap gap-2 mt-4 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
                   <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-blue-400/30 shadow-lg text-blue-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-blue-700/30">
                     <Image
