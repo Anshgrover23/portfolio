@@ -129,12 +129,16 @@ export const Chatbot = () => {
               <X className="h-4 w-4" />
             </button>
             <div className="flex items-start gap-3 pr-6">
-              <Avatar className="w-10 h-10 border-2 border-gray-300 flex-shrink-0">
-                <AvatarImage src="/avatar.png" alt="Ansh Grover" />
-                <AvatarFallback className="bg-gray-800 text-white text-sm font-bold">
-                  AG
-                </AvatarFallback>
-              </Avatar>
+              <div className="relative flex-shrink-0">
+                <Avatar className="w-10 h-10 border-2 border-gray-300">
+                  <AvatarImage src="/avatar.png" alt="Ansh Grover" />
+                  <AvatarFallback className="bg-gray-800 text-white text-sm font-bold">
+                    AG
+                  </AvatarFallback>
+                </Avatar>
+                {/* Online Status Indicator */}
+                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full shadow-md z-10" />
+              </div>
               <div className="flex-1">
                 <p className="text-sm font-semibold text-gray-900 mb-1">
                   Ansh is here!
@@ -186,12 +190,16 @@ export const Chatbot = () => {
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gray-50 rounded-t-lg">
             <div className="flex items-center gap-3">
-              <Avatar className="w-10 h-10 border-2 border-gray-300">
-                <AvatarImage src="/avatar.png" alt="Ansh Grover" />
-                <AvatarFallback className="bg-gray-800 text-white text-sm font-bold">
-                  AG
-                </AvatarFallback>
-              </Avatar>
+              <div className="relative">
+                <Avatar className="w-10 h-10 border-2 border-gray-300">
+                  <AvatarImage src="/avatar.png" alt="Ansh Grover" />
+                  <AvatarFallback className="bg-gray-800 text-white text-sm font-bold">
+                    AG
+                  </AvatarFallback>
+                </Avatar>
+                {/* Online Status Indicator */}
+                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full shadow-md z-10" />
+              </div>
               <div>
                 <p className="text-sm font-semibold text-gray-900">
                   Ansh Grover
