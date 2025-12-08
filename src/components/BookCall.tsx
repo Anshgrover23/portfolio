@@ -28,7 +28,7 @@ export const BookCall = () => {
         <div className="flex justify-center">
           <Button
             data-cal-namespace="meeting"
-            data-cal-link="ansh-grover/meeting"
+            data-cal-link="anshgrover/meeting"
             data-cal-config='{"layout":"month_view"}'
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
