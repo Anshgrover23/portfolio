@@ -8,6 +8,7 @@ export const experiences = [
     link: 'https://github.com/antiwork/helper',
     totalPRs: '55+',
     totalBounties: '$40,000 (Flexile)',
+    techStack: ['TypeScript', 'Next.js', 'Ruby'],
     contributions: [
       {
         title:
@@ -72,6 +73,7 @@ export const experiences = [
         description:
           'Enabled automated CI runs for contributor pull requests and expanded Playwright coverage across Helper, eliminating fragile page objects and strengthening accessibility selectors for more reliable contributions.',
         badge: '7.5k$ total bounties earned',
+        techStack: ['TypeScript', 'Next.js', 'Ruby'],
         pullRequests: [
           {
             title:
@@ -117,6 +119,7 @@ export const experiences = [
         description:
           'Simplified Helper setup and data handling by replacing encrypted-field workflow with plaintext columns, a safe conversion job, and follow-up cleanup across schema and app logic.',
         badge: '5k$ bountied issue',
+        techStack: ['TypeScript', 'Next.js', 'Ruby'],
         pullRequests: [
           {
             title:
@@ -145,6 +148,7 @@ export const experiences = [
         description:
           'Refactored Helper from a multi-tenant to single-tenant architecture and simplified mailbox logic to improve maintainability and deployment simplicity.',
         badge: '2.5k$ bountied issue',
+        techStack: ['TypeScript', 'Next.js', 'Ruby'],
         pullRequests: [
           {
             title:
@@ -190,6 +194,7 @@ export const experiences = [
         description:
           'Migrated frontend company updates database calls onto the Rails API to standardize data access patterns and unlock backend performance improvements.',
         badge: '$500 total bounty',
+        techStack: ['TypeScript', 'Next.js', 'Ruby'],
         pullRequests: [
           {
             title:
@@ -210,6 +215,7 @@ export const experiences = [
     link: 'https://tscircuit.com/',
     totalPRs: '100+',
     totalBounties: '$809+',
+    techStack: ['TypeScript', 'Next.js', 'Ruby'],
     contributions: [
       {
         title: 'Issue Roulette Game',
@@ -249,6 +255,7 @@ export const experiences = [
     link: 'https://www.mediar.ai/',
     totalPRs: '20+',
     totalBounties: '$250+',
+    techStack: ['TypeScript', 'Next.js', 'Ruby'],
     contributions: [
       {
         title: 'Highlight Element Debugging Tool',
@@ -288,6 +295,7 @@ export const experiences = [
     logo: 'sugarlabs.svg',
     link: 'https://github.com/sugarlabs',
     totalPRs: '1+',
+    techStack: ['TypeScript', 'Next.js', 'Ruby'],
     contributions: [
       {
         title: 'Fixed UI bugs on stats cards',
@@ -306,6 +314,7 @@ export const experiences = [
     logo: 'twentyhq.svg',
     link: 'https://github.com/twentyhq',
     totalPRs: '2+',
+    techStack: ['TypeScript', 'Next.js', 'Ruby'],
     contributions: [
       {
         title: 'Fixed markdown link formatting',
@@ -330,6 +339,7 @@ export const experiences = [
     link: 'https://algora.io/Anshgrover23',
     totalPRs: '33+',
     totalBounties: '$1099+',
+    techStack: ['TypeScript', 'Next.js', 'Ruby'],
     contributions: [
       {
         title: 'Multiple Bounty Completions',

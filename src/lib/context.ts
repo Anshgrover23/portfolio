@@ -30,14 +30,8 @@ const buildExperienceContext = () => {
     }
 
     // Add tech stack based on company
-    if (exp.company === 'Antiwork') {
-      context += `   - Tech you use: TypeScript, Next.js, Ruby\n`;
-    } else if (exp.company === 'TSCircuit') {
-      context += `   - Tech you use: TypeScript, React.js\n`;
-    } else if (exp.company === 'Mediar-AI') {
-      context += `   - Tech you use: Rust\n`;
-    } else if (exp.company === 'Sugar Labs' || exp.company === 'TwentyHQ') {
-      context += `   - Tech you use: TypeScript, React.js\n`;
+    if (exp.techStack && exp.techStack.length > 0) {
+      context += `   - Tech you use: ${exp.techStack.join(', ')}\n`;
     }
 
     context += '\n';
