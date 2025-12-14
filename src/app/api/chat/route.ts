@@ -129,11 +129,6 @@ export async function POST(request: Request) {
           );
         }
 
-        // If this is the last provider, throw the error
-        if (i === providers.length - 1) {
-          throw error;
-        }
-
         // Continue to next provider
         continue;
       }
@@ -152,7 +147,7 @@ export async function POST(request: Request) {
     return Response.json(
       {
         error:
-          'The chat service is temporarily unavailable. Please try again a while.',
+          'The chat service is temporarily unavailable. Please try again later.',
       },
       { status: 500 }
     );
