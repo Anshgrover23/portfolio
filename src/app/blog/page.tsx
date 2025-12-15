@@ -229,8 +229,6 @@ export default function BlogPage() {
             </p>
           </div>
         )}
-
-        {/* Newsletter Section */}
       </div>
 
       <AnimatedSocialLinks />
