@@ -31,8 +31,6 @@ export const Chatbot = () => {
 
   // Debug: Log messages and status
   useEffect(() => {
-    console.log('Chat status:', status);
-    console.log('Messages:', messages);
     if (error) {
       console.error('Chat error:', error);
     }

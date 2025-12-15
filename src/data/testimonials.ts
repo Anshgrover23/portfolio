@@ -7,7 +7,7 @@ export const testimonials: TestimonialItem[] = [
     name: 'seveibar',
     username: 'seveibar',
     title: 'Founder of TSCircuit',
-    image: 'https://github.com/seveibar.png',
+    image: 'https://unavatar.io/github/seveibar',
     source: 'github',
     sourceUrl:
       'https://github.com/tscircuit/core/pull/459#pullrequestreview-2524271526',
@@ -17,7 +17,7 @@ export const testimonials: TestimonialItem[] = [
     name: 'seveibar',
     username: 'seveibar',
     title: 'Founder of TSCircuit',
-    image: 'https://github.com/seveibar.png',
+    image: 'https://unavatar.io/github/seveibar',
     source: 'github',
     sourceUrl:
       'https://github.com/tscircuit/eval/pull/163#pullrequestreview-2708124781',
@@ -28,7 +28,7 @@ export const testimonials: TestimonialItem[] = [
     name: 'binary-koan',
     username: 'binary-koan',
     title: 'Senior Software Engineer at Antiwork',
-    image: 'https://github.com/binary-koan.png',
+    image: 'https://unavatar.io/github/binary-koan',
     source: 'github',
     sourceUrl:
       'https://github.com/antiwork/helper/pull/902#pullrequestreview-3103747910',
@@ -39,7 +39,7 @@ export const testimonials: TestimonialItem[] = [
     name: 'louis030195',
     username: 'louis030195',
     title: 'Founder of Mediar-AI',
-    image: 'https://github.com/louis030195.png',
+    image: 'https://unavatar.io/github/louis030195',
     source: 'github',
     sourceUrl:
       'https://github.com/mediar-ai/terminator/pull/41#issuecomment-2916909541',
@@ -50,7 +50,7 @@ export const testimonials: TestimonialItem[] = [
     name: 'Felix Malfait',
     username: 'FelixMalfait',
     title: 'Building @twentyhq; previously @airbnb',
-    image: 'https://github.com/FelixMalfait.png',
+    image: 'https://unavatar.io/github/FelixMalfait',
     source: 'github',
     sourceUrl:
       'https://github.com/twentyhq/twenty/pull/16176#pullrequestreview-3518895002',
@@ -60,7 +60,7 @@ export const testimonials: TestimonialItem[] = [
     name: 'Weiko',
     username: 'Weiko',
     title: 'Maintainer of TwentyHQ',
-    image: 'https://github.com/Weiko.png',
+    image: 'https://unavatar.io/github/Weiko',
     source: 'github',
     sourceUrl:
       'https://github.com/twentyhq/twenty/pull/16193#pullrequestreview-3520818844',
@@ -70,7 +70,7 @@ export const testimonials: TestimonialItem[] = [
     name: 'charlesBochet',
     username: 'charlesBochet',
     title: 'CTO of TwentyHQ',
-    image: 'https://github.com/charlesBochet.png',
+    image: 'https://unavatar.io/github/charlesBochet',
     source: 'github',
     sourceUrl:
       'https://github.com/twentyhq/twenty/pull/16221#pullrequestreview-3526059906',
@@ -81,7 +81,7 @@ export const testimonials: TestimonialItem[] = [
     name: 'sa-fw-an',
     username: 'sa-fw-an',
     title: 'Maintainer of Sugar Labs',
-    image: 'https://github.com/sa-fw-an.png',
+    image: 'https://unavatar.io/github/sa-fw-an',
     source: 'github',
     sourceUrl:
       'https://github.com/sugarlabs/www-v2/pull/583#issuecomment-3592122200',

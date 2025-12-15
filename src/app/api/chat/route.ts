@@ -186,11 +186,6 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { messages } = body;
 
-    console.log('Received request:', {
-      messagesCount: messages?.length,
-      bodyKeys: Object.keys(body),
-    });
-
     if (!messages || !Array.isArray(messages)) {
       console.error('Invalid messages format:', messages);
       return Response.json(
@@ -214,7 +209,6 @@ export async function POST(request: Request) {
 
     // Convert messages to core messages format
     const coreMessages = convertToCoreMessages(messages);
-    console.log('Converted messages:', { count: coreMessages.length });
 
     // Stream the response using AI SDK
     const result = streamText({

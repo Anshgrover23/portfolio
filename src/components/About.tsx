@@ -13,7 +13,7 @@ export const About = () => {
       </h2>
       <div className="space-y-6">
         <div className="text-gray-300 leading-relaxed">
-          <p>
+          <div>
             I'm <strong className="text-white">Ansh Grover</strong> —{' '}
             <strong className="text-white">full-stack developer</strong>{' '}
             focusing on{' '}
@@ -62,7 +62,7 @@ export const About = () => {
               <span className="font-semibold">Ruby</span>
             </Badge>
             .
-          </p>
+          </div>
         </div>
 
         <div className="bg-gray-900/50 p-6 rounded-lg">
