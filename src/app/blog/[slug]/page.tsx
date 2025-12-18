@@ -6,6 +6,7 @@ import { AnimatedSocialLinks } from '@/components/AnimatedSocialLinks';
 import { Chatbot } from '@/components/Chatbot';
 import { getBlogPost } from '@/data/blogPosts';
 import ShareButton from '@/components/ShareButton';
+import BlogFooter from '@/components/BlogFooter';
 
 export default async function BlogPostPage({
   params,
@@ -166,13 +167,9 @@ export default async function BlogPostPage({
               return null;
             })}
           </div>
+          <BlogFooter className="mt-12" />
         </article>
       </main>
-      {/* To Make Sure, The Floating Social Links doesn't hide the blog content */}
-      <div className="my-10"></div>
-
-      <AnimatedSocialLinks />
-      <Chatbot />
     </div>
   );
 }

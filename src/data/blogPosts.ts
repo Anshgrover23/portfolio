@@ -2,6 +2,7 @@ import { BlogPost } from '@/types/blog';
 
 const blogPosts: BlogPost[] = [
   {
+    id: 1,
     slug: 'building-tscircuit',
     title: 'My Journey Contributing to TSCircuit',
     excerpt:
