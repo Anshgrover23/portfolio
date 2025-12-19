@@ -8,4 +8,5 @@ export interface BlogPost {
   tags: string[];
   author: string;
   coverImage?: string;
+  isNew?: boolean;
 }

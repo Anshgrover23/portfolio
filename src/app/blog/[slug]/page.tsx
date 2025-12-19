@@ -1,11 +1,35 @@
-import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getBlogPost } from '@/data/blogPosts';
-import { Calendar, Clock, ArrowLeft, User } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock } from 'lucide-react';
+import { notFound } from 'next/navigation';
 import { Navigation } from '@/components/Navigation';
-import { AnimatedSocialLinks } from '@/components/AnimatedSocialLinks';
-import { MemoizedMarkdown } from '@/components/MemoizedMarkdown';
-import { Newsletter } from '@/components/Newsletter';
+import { getBlogPost } from '@/data/blogPosts';
+import ShareButton from '@/components/ShareButton';
+import BlogSocials from '@/components/BlogSocials';
+import { parseMarkdownIntoBlocks } from '@/lib/markdown-parser';
+import { MarkdownBlogBlock } from '@/components/MarkdownBlogBlock';
+
+import type { Metadata } from 'next';
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const slug = (await params).slug;
+
+  const post = getBlogPost(slug);
+
+  if (post)
+    return {
+      title: `${post.title} - Ansh Grover`,
+      description: post.excerpt,
+    };
+  else {
+    return {
+      title: 'Blog Post Not Found',
+    };
+  }
+}
 
 export default async function BlogPostPage({
   params,
@@ -19,67 +43,67 @@ export default async function BlogPostPage({
     notFound();
   }
 
+  const blocks = parseMarkdownIntoBlocks(post.content);
+
   return (
-    <div className="min-h-screen bg-black text-white">
-      <Navigation />
-      <div className="max-w-4xl mx-auto px-6 py-8 pt-24">
+    <div className="min-h-screen text-gray-100">
+      <div className="mb-10">
+        <Navigation />
+      </div>
+
+      <main className="mx-auto max-w-3xl px-6 py-16">
+        {/* Back Link */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors mb-8 group"
+          className="mb-8 inline-flex items-center gap-2 text-sm text-gray-400 hover:text-cyan-400 transition-colors"
         >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          <span>Back to Blog</span>
+          <ArrowLeft className="h-4 w-4" />
+          Back to all posts
         </Link>
 
-        <article className="bg-gray-900/30 backdrop-blur-sm rounded-lg border border-gray-800 p-8 md:p-12">
-          <header className="mb-8 pb-8 border-b border-gray-800">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              {post.title}
-            </h1>
-
-            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-400 mb-6">
-              <div className="flex items-center gap-2">
-                <User className="w-4 h-4" />
-                <span>{post.author}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <span>
-                  {new Date(post.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>{post.readTime}</span>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map(tag => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 text-sm rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </header>
-
-          <div className="prose prose-invert max-w-none">
-            <MemoizedMarkdown content={post.content} id={`blog-${slug}`} />
+        {/* Article Header */}
+        <header className="mb-12">
+          <div className="mb-6 flex flex-wrap gap-2">
+            {post.tags.map(tag => (
+              <span
+                key={tag}
+                className="rounded-full bg-cyan-400/10 px-4 py-1.5 text-sm font-medium text-cyan-400 border border-cyan-400/20"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
-        </article>
+          <h1 className="mb-6 text-4xl sm:text-5xl font-bold tracking-tight text-balance leading-tight">
+            {post.title}
+          </h1>
+          <p className="mb-8 text-xl text-gray-400 leading-relaxed">
+            {post.excerpt}
+          </p>
+          <div className="flex items-center justify-between border-t border-b border-gray-800/50 py-6 my-8">
+            <div className="flex items-center gap-6 text-sm text-gray-400">
+              <span className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                {post.date}
+              </span>
+              <span className="flex items-center gap-2">
+                <Clock className="h-4 w-4" />
+                {post.readTime}
+              </span>
+            </div>
+            {/* To Maintain SSR on this for better crawlability */}
+            <ShareButton url={`/blog/${post.slug}`} />
+          </div>
+        </header>
 
-        <div className="mt-12">
-          <Newsletter />
-        </div>
-      </div>
-      <AnimatedSocialLinks />
+        <article className="prose prose-invert prose-lg max-w-none">
+          <div className="space-y-6 text-gray-300 leading-relaxed">
+            {blocks.map((block, index) => (
+              <MarkdownBlogBlock content={block} key={`block-${index}`} />
+            ))}
+          </div>
+          <BlogSocials className="mt-8" />
+        </article>
+      </main>
     </div>
   );
 }

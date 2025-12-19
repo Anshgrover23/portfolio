@@ -66,6 +66,8 @@ NEXT_PUBLIC_GITHUB_USERNAME=your_github_username # optional, defaults to Anshgro
 
 ```env
 GEMINI_API_KEY=your_gemini_api_key
+NEXT_PUBLIC_HOST_URL=host_url_of_environment
+
 ```
 
 Uses Gemini 2.5 Flash with portfolio context. Get your key from [Google AI Studio](https://makersuite.google.com/app/apikey).
@@ -78,6 +80,7 @@ Add these environment variables in your hosting platform (Vercel, Netlify, etc.)
 
 - `GEMINI_API_KEY` - For chatbot functionality
 - `GRAPHQL_TOKEN` - For GitHub activity graph
+- `NEXT_PUBLIC_HOST_URL` - For Sharing Blog URL
 
 **Optional:**
 

@@ -1,89 +1,64 @@
 import Link from 'next/link';
-import { getBlogPosts } from '@/data/blogPosts';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { Navigation } from '@/components/Navigation';
-import { AnimatedSocialLinks } from '@/components/AnimatedSocialLinks';
-
-const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
-};
+import { getBlogPosts } from '@/data/blogPosts';
+import BlogSocials from '@/components/BlogSocials';
 
 export default function BlogPage() {
-  const posts = getBlogPosts();
+  const blogPosts = getBlogPosts();
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <Navigation />
-      <div className="max-w-6xl mx-auto px-6 py-8 pt-24">
-        <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Blog
-          </h1>
-          <p className="text-gray-400 text-lg">
-            Thoughts, tutorials, and insights on web development
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map(post => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="group bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-800 hover:border-blue-500/50 transition-all duration-300 overflow-hidden hover:transform hover:scale-105"
-            >
-              <div className="p-6">
-                <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    <span>{formatDate(post.date)}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{post.readTime}</span>
-                  </div>
-                </div>
-
-                <h2 className="text-xl font-semibold mb-3 text-white group-hover:text-blue-400 transition-colors">
-                  {post.title}
-                </h2>
-
-                <p className="text-gray-400 mb-4 line-clamp-3">
-                  {post.excerpt}
+      <main className="relative z-10 px-6 md:px-0">
+        <div className="mx-auto max-w-2xl py-12 sm:py-16 md:py-24">
+          {/* Header */}
+          <header className="mt-16 md:mt-0 mb-12 sm:mb-16">
+            <div className="flex justify-between items-center gap-4">
+              <div className="flex-1 min-w-0">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+                  <Link href="/" className="mb-4 text-white text-left">
+                    Ansh Grover
+                  </Link>
+                </h1>
+                <p className="mt-2 text-sm sm:text-base text-gray-400">
+                  Founder · Developer · Open Source
                 </p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {post.tags.map(tag => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 text-xs rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center text-blue-400 text-sm font-medium group-hover:gap-2 transition-all">
-                  <span>Read more</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
               </div>
-            </Link>
-          ))}
-        </div>
+              <BlogSocials />
+            </div>
+          </header>
 
-        {posts.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-gray-500 text-lg">
-              No blog posts yet. Check back soon!
-            </p>
+          {/* Blog Posts List */}
+          <div className="mt-4 sm:mt-8 md:mt-16">
+            <section className="space-y-4 sm:space-y-6">
+              {blogPosts.map(post => (
+                <article key={post.slug} className="group">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="inline-flex flex-wrap items-baseline gap-x-2 sm:gap-x-3 gap-y-1"
+                  >
+                    <span className="text-base sm:text-lg font-medium underline underline-offset-4 decoration-muted-foreground/40 group-hover:decoration-foreground transition-colors">
+                      {post.title}
+                    </span>
+                    {post.isNew && (
+                      <span className="rounded-full border border-white bg-gray-600/40 px-2 py-0.5 text-xs text-white">
+                        NEW
+                      </span>
+                    )}
+                    <span className="text-gray-400 text-xs sm:text-sm">
+                      {new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                      })}
+                    </span>
+                  </Link>
+                </article>
+              ))}
+            </section>
           </div>
-        )}
-      </div>
-      <AnimatedSocialLinks />
+        </div>
+      </main>
     </div>
   );
 }
