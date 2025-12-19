@@ -95,7 +95,6 @@ export default async function BlogPostPage({
           </div>
         </header>
 
-        {/* Article Content */}
         <article className="prose prose-invert prose-lg max-w-none">
           <div className="space-y-6 text-gray-300 leading-relaxed">
             {blocks.map((block, index) => (
