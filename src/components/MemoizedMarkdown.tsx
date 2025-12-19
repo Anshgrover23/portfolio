@@ -4,12 +4,14 @@ import { parseMarkdownIntoBlocks } from '@/lib/markdown-parser';
 import { memo, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 const MemoizedMarkdownBlock = memo(
   ({ content }: { content: string }) => {
     return (
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
         components={{
           a: ({ node, ...props }) => {
             const url = props.href || '';
@@ -29,6 +31,12 @@ const MemoizedMarkdownBlock = memo(
           ),
           em: ({ node, ...props }) => (
             <em {...props} className="italic text-gray-900" />
+          ),
+          u: ({ node, ...props }) => (
+            <u
+              {...props}
+              className="underline decoration-white/60 underline-offset-4"
+            />
           ),
           h1: ({ node, ...props }) => (
             <h1

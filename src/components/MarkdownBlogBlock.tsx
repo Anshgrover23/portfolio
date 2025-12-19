@@ -3,12 +3,14 @@
 import { memo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 export const MarkdownBlogBlock = memo(
   ({ content }: { content: string }) => {
     return (
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
         components={{
           h2: ({ node, ...props }) => (
             <h2
@@ -33,6 +35,12 @@ export const MarkdownBlogBlock = memo(
           ),
           em: ({ node, ...props }) => (
             <em {...props} className="text-gray-300 italic" />
+          ),
+          u: ({ node, ...props }) => (
+            <u
+              {...props}
+              className="underline decoration-white/60 underline-offset-4"
+            />
           ),
           ul: ({ node, ...props }) => (
             <ul
