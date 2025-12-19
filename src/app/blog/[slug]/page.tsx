@@ -8,7 +8,7 @@ import BlogSocials from '@/components/BlogSocials';
 import { parseMarkdownIntoBlocks } from '@/lib/markdown-parser';
 import { MarkdownBlogBlock } from '@/components/MarkdownBlogBlock';
 
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -91,7 +91,7 @@ export default async function BlogPostPage({
               </span>
             </div>
             {/* To Maintain SSR on this for better crawlability */}
-            <ShareButton title={post.title} url={`/blog/${post.slug}`} />
+            <ShareButton url={`/blog/${post.slug}`} />
           </div>
         </header>
 

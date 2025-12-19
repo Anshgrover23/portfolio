@@ -2,15 +2,7 @@
 import { Share2 } from 'lucide-react';
 import { toast } from 'sonner';
 
-export default function ShareButton({
-  title,
-  url,
-  children,
-}: {
-  title: string;
-  url: string;
-  children?: React.ReactNode;
-}) {
+export default function ShareButton({ url }: { url: string }) {
   return (
     <button
       onClick={() => {
