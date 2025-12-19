@@ -8,6 +8,29 @@ import BlogSocials from '@/components/BlogSocials';
 import { parseMarkdownIntoBlocks } from '@/lib/markdown-parser';
 import { MarkdownBlogBlock } from '@/components/MarkdownBlogBlock';
 
+import type { Metadata, ResolvingMetadata } from 'next';
+
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const slug = (await params).slug;
+
+  const post = getBlogPost(slug);
+
+  if (post)
+    return {
+      title: `${post.title} - Ansh Grover`,
+      description: post.excerpt,
+    };
+  else {
+    return {
+      title: 'Blog Post Not Found',
+    };
+  }
+}
+
 export default async function BlogPostPage({
   params,
 }: {

@@ -2,7 +2,7 @@ import { Chatbot } from '@/components/Chatbot';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Ansh Grover — Blog',
+  title: 'Blog - Thoughts & Learnings',
   description:
     'Thoughts on open source, developer tools, and lessons learned from contributing to projects like TSCircuit and Antiwork.',
   authors: [{ name: 'Ansh Grover', url: 'https://anshgrover.me/' }],
