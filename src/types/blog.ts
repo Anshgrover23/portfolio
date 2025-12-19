@@ -1,5 +1,4 @@
 export interface BlogPost {
-  id: 1;
   slug: string;
   title: string;
   excerpt: string;
@@ -9,4 +8,5 @@ export interface BlogPost {
   tags: string[];
   author: string;
   coverImage?: string;
+  isNew?: boolean;
 }

@@ -1,49 +1,62 @@
 import { BlogPost } from '@/types/blog';
 
-const blogPosts: BlogPost[] = [
-  {
-    id: 1,
-    slug: 'building-tscircuit',
-    title: 'My Journey Contributing to TSCircuit',
-    excerpt:
-      'Diving deep into the world of open-source electronics. How I contributed to TSCircuit and what I learned along the way.',
-    tags: ['Open Source', 'TypeScript', 'Electronics'],
-    author: 'Ansh Grover',
-    date: 'Dec 10, 2025',
-    readTime: '8 min read',
-    content: `## Introduction
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
-It all started with a simple fixing of a typo. I was just browsing through GitHub one evening, looking for some interesting TypeScript projects to which I could contribute, when I came across TSCircuit. Immediately, this project caught my attention—a tool for designing circuits using React components? That's exactly the kind of outside-the-box thinking that gets me excited.
+const blogsDirectory = path.join(process.cwd(), 'blogs');
 
-## First Contributions
-
-My first PR was nothing special, just a typo in the documentation. But it got me acquainted with the codebase and how contributions are done. The maintainers were super friendly, which motivated me to seek bigger issues to solve.
-
-## Growing into a Maintainer
-
-Over the next few months, I went from fixing bugs to implementing new features. I worked on the following:
-
-Improving the rendering pipeline for complex circuits
-
-New component types' addition
-- Test infrastructure optimization
-
-Each contribution taught me one thing or another about circuit design, React internals, and maintaining open-source projects.
-
-## Lessons Learned
-
-1. **Start small** - Don't try to tackle the biggest issue right away
-2. **Be predictable** - Steady contributions establish trust
-3. **Communicate** - Let the maintainers know how you are doing
-4. **Learn the domain** - Knowing the problem space makes you a better contributor.
-
-Next Steps Nowadays I'm one of the core maintainers in TSCircuit, and my work includes reviewing PRs and guiding new contributors through the same journey I've gone through. It's a tremendous feeling to be part of a project that is pushing the limits of what is possible using Web Technologies.
-    `,
-  },
-];
+let cachedBlogPosts: BlogPost[] | null = null;
 
 export function getBlogPosts(): BlogPost[] {
-  return blogPosts;
+  try {
+    if (!fs.existsSync(blogsDirectory)) {
+      console.warn('Blogs directory not found');
+      return [];
+    }
+
+    const fileNames = fs.readdirSync(blogsDirectory);
+    const allPostsData: BlogPost[] = fileNames
+      .filter(fileName => fileName.endsWith('.mdx') || fileName.endsWith('.md'))
+      .map((fileName, index) => {
+        const slug = fileName.replace(/\.mdx?$/, '');
+        const fullPath = path.join(blogsDirectory, fileName);
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const matterResult = matter(fileContents);
+
+        return {
+          slug,
+          title: matterResult.data.title || 'Untitled',
+          content: matterResult.content,
+          excerpt: matterResult.excerpt || '',
+          date:
+            matterResult.data.date || new Date().toISOString().split('T')[0],
+          readTime: matterResult.data.readTime || '5 min read',
+          tags: matterResult.data.tags || [],
+          author: matterResult.data.author || 'Ansh Grover',
+          coverImage: matterResult.data.coverImage,
+          isNew: isPostNew(matterResult.data.date),
+        };
+      });
+
+    cachedBlogPosts = allPostsData.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
+    return cachedBlogPosts;
+  } catch (error) {
+    console.error('Error reading blog posts:', error);
+    return [];
+  }
+}
+
+// posts done before 15 days considered as NEW
+function isPostNew(date: string) {
+  const postDate = new Date(date);
+  const today = new Date();
+  const someDaysAgo = new Date(today.getTime() - 15 * 24 * 60 * 60 * 1000);
+  const isNew = postDate >= someDaysAgo && postDate <= today;
+  return isNew ?? false;
 }
 
 export function getBlogPost(slug: string): BlogPost | undefined {

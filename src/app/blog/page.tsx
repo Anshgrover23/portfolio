@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { Navigation } from '@/components/Navigation';
 import { getBlogPosts } from '@/data/blogPosts';
@@ -42,7 +40,7 @@ export default function BlogPage() {
                     <span className="text-base sm:text-lg font-medium underline underline-offset-4 decoration-muted-foreground/40 group-hover:decoration-foreground transition-colors">
                       {post.title}
                     </span>
-                    {post.id === 1 && (
+                    {post.isNew && (
                       <span className="rounded-full border border-muted-foreground/30 px-2 py-0.5 text-xs text-muted-foreground">
                         NEW
                       </span>

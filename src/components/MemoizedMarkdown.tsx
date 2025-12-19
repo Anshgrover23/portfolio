@@ -1,14 +1,9 @@
 'use client';
 
-import { marked } from 'marked';
+import { parseMarkdownIntoBlocks } from '@/lib/markdown-parser';
 import { memo, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-
-function parseMarkdownIntoBlocks(markdown: string): string[] {
-  const tokens = marked.lexer(markdown);
-  return tokens.map(token => token.raw);
-}
 
 const MemoizedMarkdownBlock = memo(
   ({ content }: { content: string }) => {

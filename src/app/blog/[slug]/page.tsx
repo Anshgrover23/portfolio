@@ -5,6 +5,8 @@ import { Navigation } from '@/components/Navigation';
 import { getBlogPost } from '@/data/blogPosts';
 import ShareButton from '@/components/ShareButton';
 import BlogSocials from '@/components/BlogSocials';
+import { parseMarkdownIntoBlocks } from '@/lib/markdown-parser';
+import { MarkdownBlogBlock } from '@/components/MarkdownBlogBlock';
 
 export default async function BlogPostPage({
   params,
@@ -17,6 +19,8 @@ export default async function BlogPostPage({
   if (!post) {
     notFound();
   }
+
+  const blocks = parseMarkdownIntoBlocks(post.content);
 
   return (
     <div className="min-h-screen text-gray-100">
@@ -71,99 +75,9 @@ export default async function BlogPostPage({
         {/* Article Content */}
         <article className="prose prose-invert prose-lg max-w-none">
           <div className="space-y-6 text-gray-300 leading-relaxed">
-            {post.content.split('\n\n').map((paragraph, index) => {
-              // Handle headings
-              if (paragraph.startsWith('## ')) {
-                return (
-                  <h2
-                    key={index}
-                    className="text-3xl font-bold mt-12 mb-6 text-white tracking-tight first:mt-0"
-                  >
-                    {paragraph.replace('## ', '')}
-                  </h2>
-                );
-              }
-              if (paragraph.startsWith('### ')) {
-                return (
-                  <h3
-                    key={index}
-                    className="text-2xl font-semibold mt-10 mb-5 text-gray-100 tracking-tight"
-                  >
-                    {paragraph.replace('### ', '')}
-                  </h3>
-                );
-              }
-
-              // Handle lists
-              if (paragraph.match(/^\d\./m)) {
-                const items = paragraph.split('\n').filter(line => line.trim());
-                return (
-                  <ol
-                    key={index}
-                    className="space-y-4 my-8 ml-6 list-decimal list-outside"
-                  >
-                    {items.map((item, i) => {
-                      const match = item.match(
-                        /^\d+\.\s*\*\*(.+?)\*\*\s*-\s*(.+)$/
-                      );
-                      if (match) {
-                        return (
-                          <li key={i} className="pl-3 text-gray-300">
-                            <strong className="text-cyan-400 font-semibold">
-                              {match[1]}
-                            </strong>
-                            <span className="text-gray-400"> — </span>
-                            <span>{match[2]}</span>
-                          </li>
-                        );
-                      }
-                      return (
-                        <li key={i} className="pl-3 text-gray-300">
-                          {item.replace(/^\d+\.\s*/, '')}
-                        </li>
-                      );
-                    })}
-                  </ol>
-                );
-              }
-
-              if (paragraph.match(/^-\s/m)) {
-                const items = paragraph.split('\n').filter(line => line.trim());
-                return (
-                  <ul
-                    key={index}
-                    className="space-y-3 my-8 ml-6 list-disc list-outside"
-                  >
-                    {items.map((item, i) => (
-                      <li key={i} className="pl-2 text-gray-300">
-                        {item.replace(/^-\s*/, '')}
-                      </li>
-                    ))}
-                  </ul>
-                );
-              }
-
-              // Handle regular paragraphs
-              if (paragraph.trim()) {
-                return (
-                  <p
-                    key={index}
-                    className="text-gray-300 leading-relaxed text-lg my-6"
-                  >
-                    {paragraph.split(/\*\*(.+?)\*\*/).map((part, i) =>
-                      i % 2 === 1 ? (
-                        <strong key={i} className="text-white font-semibold">
-                          {part}
-                        </strong>
-                      ) : (
-                        part
-                      )
-                    )}
-                  </p>
-                );
-              }
-              return null;
-            })}
+            {blocks.map((block, index) => (
+              <MarkdownBlogBlock content={block} key={`block-${index}`} />
+            ))}
           </div>
           <BlogSocials className="mt-8" />
         </article>
