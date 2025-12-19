@@ -1,12 +1,10 @@
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Clock, Share2 } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { Navigation } from '@/components/Navigation';
-import { AnimatedSocialLinks } from '@/components/AnimatedSocialLinks';
-import { Chatbot } from '@/components/Chatbot';
 import { getBlogPost } from '@/data/blogPosts';
 import ShareButton from '@/components/ShareButton';
-import BlogFooter from '@/components/BlogFooter';
+import BlogSocials from '@/components/BlogSocials';
 
 export default async function BlogPostPage({
   params,
@@ -21,7 +19,7 @@ export default async function BlogPostPage({
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-gray-100">
+    <div className="min-h-screen text-gray-100">
       <div className="mb-10">
         <Navigation />
       </div>
@@ -167,7 +165,7 @@ export default async function BlogPostPage({
               return null;
             })}
           </div>
-          <BlogFooter className="mt-12" />
+          <BlogSocials className="mt-8" />
         </article>
       </main>
     </div>

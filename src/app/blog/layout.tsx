@@ -1,3 +1,4 @@
+import { Chatbot } from '@/components/Chatbot';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -19,5 +20,10 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <Chatbot />
+    </>
+  );
 }

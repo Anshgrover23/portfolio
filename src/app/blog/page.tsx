@@ -1,25 +1,12 @@
 'use client';
+
 import Link from 'next/link';
-import {
-  Calendar,
-  Clock,
-  ArrowRight,
-  Sparkles,
-  TrendingUp,
-  BookOpen,
-} from 'lucide-react';
 import { Navigation } from '@/components/Navigation';
-import { AnimatedSocialLinks } from '@/components/AnimatedSocialLinks';
-import { Chatbot } from '@/components/Chatbot';
 import { getBlogPosts } from '@/data/blogPosts';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import BlogFooter from '@/components/BlogFooter';
+import BlogSocials from '@/components/BlogSocials';
 
 export default function BlogPage() {
   const blogPosts = getBlogPosts();
-  const featuredPost = blogPosts[0];
-  const regularPosts = blogPosts.slice(1);
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
@@ -36,20 +23,15 @@ export default function BlogPage() {
                   </Link>
                 </h1>
                 <p className="mt-2 text-sm sm:text-base text-muted-foreground">
-                  Developer · Open Source · Writer
+                  Founder · Developer · Open Source
                 </p>
               </div>
-              <Avatar className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 border-2 border-border flex-shrink-0">
-                <AvatarImage src="/avatar.png" alt="Ansh Grover" />
-                <AvatarFallback className="text-xl sm:text-2xl font-bold bg-muted text-foreground">
-                  AG
-                </AvatarFallback>
-              </Avatar>
+              <BlogSocials />
             </div>
           </header>
 
           {/* Blog Posts List */}
-          <div className="mt-16 sm:mt-24 md:mt-32">
+          <div className="mt-4 sm:mt-8 md:mt-16">
             <section className="space-y-4 sm:space-y-6">
               {blogPosts.map(post => (
                 <article key={post.slug} className="group">
@@ -73,7 +55,6 @@ export default function BlogPage() {
               ))}
             </section>
           </div>
-          <BlogFooter />
         </div>
       </main>
     </div>

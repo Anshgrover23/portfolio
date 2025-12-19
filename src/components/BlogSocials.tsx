@@ -1,9 +1,13 @@
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-export default function BlogFooter({ className = '' }: { className?: string }) {
+export default function BlogSocials({
+  className = '',
+}: {
+  className?: string;
+}) {
   return (
-    <footer className={cn('mt-20 flex items-center gap-6', className)}>
+    <footer className={cn('flex items-center gap-6 pt-3', className)}>
       <Link
         href="https://github.com/Anshgrover23"
         target="_blank"
