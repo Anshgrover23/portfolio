@@ -20,7 +20,7 @@ export default function BlogPage() {
                     Ansh Grover
                   </Link>
                 </h1>
-                <p className="mt-2 text-sm sm:text-base text-muted-foreground">
+                <p className="mt-2 text-sm sm:text-base text-gray-400">
                   Founder · Developer · Open Source
                 </p>
               </div>
@@ -41,12 +41,16 @@ export default function BlogPage() {
                       {post.title}
                     </span>
                     {post.isNew && (
-                      <span className="rounded-full border border-muted-foreground/30 px-2 py-0.5 text-xs text-muted-foreground">
+                      <span className="rounded-full border border-white bg-gray-600/40 px-2 py-0.5 text-xs text-white">
                         NEW
                       </span>
                     )}
-                    <span className="text-muted-foreground text-xs sm:text-sm">
-                      {post.date}
+                    <span className="text-gray-400 text-xs sm:text-sm">
+                      {new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                      })}
                     </span>
                   </Link>
                 </article>
