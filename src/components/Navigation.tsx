@@ -10,6 +10,7 @@ import {
   Mail,
   Menu,
   X,
+  SquarePen,
 } from 'lucide-react';
 
 export const Navigation = () => {
@@ -52,6 +53,7 @@ export const Navigation = () => {
     { icon: Briefcase, label: 'Experience', href: '#experience' },
     { icon: GraduationCap, label: 'Education', href: '#education' },
     { icon: Code, label: 'Skills', href: '#skills' },
+    { icon: SquarePen, label: 'Blog', href: '/blog' },
     { icon: Mail, label: 'Contact', href: '#contact' },
   ];
 
