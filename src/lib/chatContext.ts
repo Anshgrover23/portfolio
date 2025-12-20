@@ -70,7 +70,6 @@ const buildBlogContext = () => {
     context += `   - Link: https://anshgrover.me/blog/${post.slug}\n`;
     context += '\n';
   });
-  console.log(context);
   return context;
 };
 
