@@ -15,7 +15,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navigation />
-      <div className="max-w-4xl mx-auto px-6 py-8 pt-24">
+      <div className="max-w-4xl mx-auto px-6 pt-6 pb-8 md:py-8 md:pt-24">
         <div id="home" className="scroll-mt-24">
           <Hero />
         </div>

@@ -51,7 +51,7 @@ export default async function BlogPostPage({
         <Navigation />
       </div>
 
-      <main className="mx-auto max-w-3xl px-6 py-16">
+      <main className="mx-auto max-w-3xl px-6 pt-0 pb-12 md:py-16">
         {/* Back Link */}
         <Link
           href="/blog"
