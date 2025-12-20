@@ -13,7 +13,7 @@ export default function BlogPage() {
         <div className="mx-auto max-w-2xl pt-7 pb-12 md:py-24">
           {/* Header */}
           <header className="md:mt-0 mb-12 sm:mb-16">
-            <div className="flex flex-col md:flex-row justify-between md:items-start md:items-center gap-4">
+            <div className="flex flex-col md:flex-row justify-between gap-4">
               <div className="flex-1 min-w-0">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                   <Link href="/" className="mb-4 text-white text-left">
