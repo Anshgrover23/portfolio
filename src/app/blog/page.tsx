@@ -10,10 +10,9 @@ export default function BlogPage() {
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <Navigation />
       <main className="relative z-10 px-6 md:px-0">
-        <div className="mx-auto max-w-2xl py-12 sm:py-16 md:py-24">
-          {/* Header */}
-          <header className="mt-16 md:mt-0 mb-12 sm:mb-16">
-            <div className="flex justify-between items-center gap-4">
+        <div className="mx-auto max-w-2xl pt-9 pb-12 md:py-24">
+          <header className="md:mt-0 mb-12 sm:mb-16">
+            <div className="flex flex-col md:flex-row justify-between gap-4">
               <div className="flex-1 min-w-0">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                   <Link href="/" className="mb-4 text-white text-left">
@@ -28,7 +27,6 @@ export default function BlogPage() {
             </div>
           </header>
 
-          {/* Blog Posts List */}
           <div className="mt-4 sm:mt-8 md:mt-16">
             <section className="space-y-4 sm:space-y-6">
               {blogPosts.map(post => (
