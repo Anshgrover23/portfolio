@@ -52,7 +52,6 @@ export default async function BlogPostPage({
       </div>
 
       <main className="mx-auto max-w-3xl px-6 pt-0 pb-12 md:py-16">
-        {/* Back Link */}
         <Link
           href="/blog"
           className="mb-8 inline-flex items-center gap-2 text-sm text-gray-400 hover:text-cyan-400 transition-colors"
@@ -61,7 +60,6 @@ export default async function BlogPostPage({
           Back to all posts
         </Link>
 
-        {/* Article Header */}
         <header className="mb-12">
           <div className="mb-6 flex flex-wrap gap-2">
             {post.tags.map(tag => (
@@ -90,7 +88,6 @@ export default async function BlogPostPage({
                 {post.readTime}
               </span>
             </div>
-            {/* To Maintain SSR on this for better crawlability */}
             <ShareButton url={`/blog/${post.slug}`} />
           </div>
         </header>

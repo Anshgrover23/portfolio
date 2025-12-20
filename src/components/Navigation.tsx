@@ -79,7 +79,6 @@ export const Navigation = () => {
 
   return (
     <>
-      {/* Desktop Navigation - centered */}
       <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 hidden md:block">
         <div className="bg-gray-900/80 backdrop-blur-md rounded-full px-3 py-1.5 border border-gray-700 relative">
           <div className="flex items-center gap-4 relative">
@@ -126,7 +125,6 @@ export const Navigation = () => {
         )}
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
       >
-        {/* Uniform hamburger lines - 18px wide, 2px thick, 5px gap */}
         <div className="relative w-[18px] h-[14px] flex flex-col justify-between">
           <span
             className={cn(
@@ -157,7 +155,6 @@ export const Navigation = () => {
           isOpen ? 'visible' : 'invisible'
         )}
       >
-        {/* Darker backdrop with click to close */}
         <div
           className={cn(
             'absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300',
@@ -166,7 +163,6 @@ export const Navigation = () => {
           onClick={() => setIsOpen(false)}
         />
 
-        {/* Slide-in panel */}
         <div
           className={cn(
             'fixed top-0 right-0 h-full w-72 bg-gray-900/95 backdrop-blur-md shadow-2xl',
@@ -175,7 +171,6 @@ export const Navigation = () => {
           )}
         >
           <div className="flex flex-col h-full">
-            {/* Header spacing to account for the floating button */}
             <div className="h-20" />
 
             <div className="flex-1 px-6">
