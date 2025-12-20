@@ -117,7 +117,7 @@ export const Navigation = () => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          'md:hidden fixed top-4 right-4 mt-2.5 z-50',
+          'md:hidden fixed top-4 right-4 mt-6 z-50',
           'w-12 h-12 flex items-center justify-center',
           'bg-gray-900/80 backdrop-blur-md rounded-xl border border-gray-700',
           'text-gray-300 hover:text-white hover:bg-gray-800/90',

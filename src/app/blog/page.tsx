@@ -10,7 +10,7 @@ export default function BlogPage() {
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <Navigation />
       <main className="relative z-10 px-6 md:px-0">
-        <div className="mx-auto max-w-2xl pt-7 pb-12 md:py-24">
+        <div className="mx-auto max-w-2xl pt-9 pb-12 md:py-24">
           <header className="md:mt-0 mb-12 sm:mb-16">
             <div className="flex flex-col md:flex-row justify-between gap-4">
               <div className="flex-1 min-w-0">

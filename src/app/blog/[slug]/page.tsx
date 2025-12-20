@@ -51,7 +51,7 @@ export default async function BlogPostPage({
         <Navigation />
       </div>
 
-      <main className="mx-auto max-w-3xl px-6 pt-0 pb-12 md:py-16">
+      <main className="mx-auto max-w-3xl px-6 pt-3 pb-12 md:py-16">
         <Link
           href="/blog"
           className="mb-8 inline-flex items-center gap-2 text-sm text-gray-400 hover:text-cyan-400 transition-colors"
