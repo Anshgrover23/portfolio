@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useRef, useLayoutEffect } from 'react';
+import { useState, useRef, useLayoutEffect, useEffect } from 'react';
+import { useScrollLock } from 'usehooks-ts';
 import type React from 'react';
 
 import { usePathname, useRouter } from 'next/navigation';
@@ -24,6 +25,7 @@ export const Navigation = () => {
     opacity: 0,
   });
   const navRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+
   const pathname = usePathname();
   const router = useRouter();
 
@@ -58,6 +60,28 @@ export const Navigation = () => {
     { icon: SquarePen, label: 'Blog', href: '/blog' },
     { icon: Mail, label: 'Contact', href: '#contact' },
   ];
+
+  const { lock, unlock } = useScrollLock({
+    autoLock: false,
+  });
+
+  useEffect(() => {
+    if (isOpen) {
+      lock();
+    } else {
+      unlock();
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen]);
 
   useLayoutEffect(() => {
     if (hoveredIndex !== null && navRefs.current[hoveredIndex]) {
@@ -177,6 +201,7 @@ export const Navigation = () => {
               <div className="space-y-1">
                 {navItems.map((item, index) => {
                   const Icon = item.icon;
+
                   return (
                     <a
                       key={index}
