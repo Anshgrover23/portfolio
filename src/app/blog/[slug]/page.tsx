@@ -5,7 +5,10 @@ import { Navigation } from '@/components/Navigation';
 import { getBlogPost } from '@/data/blogPosts';
 import ShareButton from '@/components/ShareButton';
 import BlogSocials from '@/components/BlogSocials';
-import { parseMarkdownIntoBlocks } from '@/lib/markdown-parser';
+import {
+  parseMarkdownIntoBlocks,
+  type ParsedBlock,
+} from '@/lib/markdown-parser';
 import { MarkdownBlogBlock } from '@/components/MarkdownBlogBlock';
 
 import type { Metadata } from 'next';
@@ -94,8 +97,8 @@ export default async function BlogPostPage({
 
         <article className="prose prose-invert prose-lg max-w-none">
           <div className="space-y-6 text-gray-300 leading-relaxed">
-            {blocks.map((block, index) => (
-              <MarkdownBlogBlock content={block} key={`block-${index}`} />
+            {blocks.map((block: ParsedBlock, index: number) => (
+              <MarkdownBlogBlock block={block} key={`block-${index}`} />
             ))}
           </div>
           <BlogSocials className="mt-8" />
