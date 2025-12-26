@@ -1,13 +1,21 @@
 'use client';
 
-import { parseMarkdownIntoBlocks } from '@/lib/markdown-parser';
+import {
+  parseMarkdownIntoBlocks,
+  type ParsedBlock,
+} from '@/lib/markdown-parser';
 import { memo, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import { TweetWrapper } from './TweetWrapper';
 
 const MemoizedMarkdownBlock = memo(
-  ({ content }: { content: string }) => {
+  ({ block }: { block: ParsedBlock }) => {
+    if (block.type === 'tweet' && block.tweetId) {
+      return <TweetWrapper id={block.tweetId} />;
+    }
+
     return (
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
@@ -109,12 +117,17 @@ const MemoizedMarkdownBlock = memo(
           },
         }}
       >
-        {content}
+        {block.content}
       </ReactMarkdown>
     );
   },
   (prevProps, nextProps) => {
-    if (prevProps.content !== nextProps.content) return false;
+    if (
+      prevProps.block.content !== nextProps.block.content ||
+      prevProps.block.type !== nextProps.block.type ||
+      prevProps.block.tweetId !== nextProps.block.tweetId
+    )
+      return false;
     return true;
   }
 );
@@ -127,8 +140,8 @@ export const MemoizedMarkdown = memo(
 
     return (
       <>
-        {blocks.map((block, index) => (
-          <MemoizedMarkdownBlock content={block} key={`${id}-block_${index}`} />
+        {blocks.map((block: ParsedBlock, index: number) => (
+          <MemoizedMarkdownBlock block={block} key={`${id}-block_${index}`} />
         ))}
       </>
     );
