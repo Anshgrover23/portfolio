@@ -54,12 +54,10 @@ export const Experience = () => {
           >
             <div className="text-3xl">
               {typeof exp.logo === 'string' && exp.logo.endsWith('.svg') ? (
-                
                 <Image
                   src={`/${exp.logo}`}
                   alt={`${exp.company} logo`}
                   className="rounded-full object-contain inline-block align-middle"
-                 
                   height={32}
                   width={32}
                 />
