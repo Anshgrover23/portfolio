@@ -33,6 +33,16 @@ export const testimonials: TestimonialItem[] = [
     sourceUrl:
       'https://github.com/antiwork/helper/pull/902#pullrequestreview-3103747910',
   },
+  {
+    quote: '$250 thanks',
+    name: 'Sahil Lavingia',
+    username: 'slavingia',
+    title: 'Founder of Gumroad',
+    image: 'https://unavatar.io/github/slavingia',
+    source: 'github',
+    sourceUrl:
+      'https://github.com/antiwork/gumboard/pull/400#issuecomment-3192271710',
+  },
   // Mediar-AI testimonials
   {
     quote: 'brilliant work!',
