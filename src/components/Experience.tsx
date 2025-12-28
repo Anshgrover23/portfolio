@@ -49,7 +49,7 @@ export const Experience = () => {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className={`flex items-start gap-4 p-6 rounded-lg bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 cursor-pointer relative ${exp.company === 'Antiwork' ? 'border-2 border-purple-500 shadow-[0_0_16px_4px_rgba(168,85,247,0.5)]' : ''}`}
+            className={`flex items-start gap-4 p-6 rounded-lg bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 cursor-pointer relative ${exp.company === 'Antiwork' ? 'border-2 border-cyan-500 shadow-[0_0_16px_4px_rgba(6,182,212,0.5)]' : ''}`}
             onClick={() => setSelectedCompany(exp.company)}
           >
             <div className="text-3xl">
