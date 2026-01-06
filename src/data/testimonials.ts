@@ -96,6 +96,17 @@ export const testimonials: TestimonialItem[] = [
     sourceUrl:
       'https://github.com/sugarlabs/www-v2/pull/583#issuecomment-3592122200',
   },
+  // Archestra testimonials
+  {
+    quote: 'looks good! thanks again for the contribution 🫶',
+    name: 'joeyorlando',
+    username: 'joeyorlando',
+    title: 'Maintainer of Archestra',
+    image: 'https://unavatar.io/github/joeyorlando',
+    source: 'github',
+    sourceUrl:
+      'https://github.com/archestra-ai/terraform-provider-archestra/pull/65#pullrequestreview-3632283836',
+  },
   // Other testimonials
   {
     quote: "You're the best Ansh :)",

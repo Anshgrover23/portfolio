@@ -280,6 +280,24 @@ export const experiences = [
     ],
   },
   {
+    company: 'Archestra',
+    role: 'Open Source Contributor',
+    period: '2025 - Present',
+    description:
+      'Built SSO provider infrastructure for the Terraform provider enabling enterprise authentication.',
+    logo: 'archestra.png',
+    link: 'https://github.com/archestra-ai/terraform-provider-archestra',
+    totalPRs: '1+',
+    contributions: [
+      {
+        title: 'Added SSO provider resource for OIDC and SAML',
+        description:
+          'Implemented full archestra_sso_provider resource with CRUD operations for both OIDC and SAML SSO configurations, including terraform import support, acceptance tests, and comprehensive field mappings (+2,302 lines).',
+        link: 'https://github.com/archestra-ai/terraform-provider-archestra/pull/65',
+      },
+    ],
+  },
+  {
     company: 'Sugar Labs',
     role: 'Open Source Contributor',
     period: '2025 - Present',

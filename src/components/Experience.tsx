@@ -23,20 +23,25 @@ export const Experience = () => {
       logo: '🤖',
       contributions: experiences[2].contributions,
     },
+    Archestra: {
+      name: 'Archestra',
+      logo: '🎭',
+      contributions: experiences[3].contributions,
+    },
     'Sugar Labs': {
       name: 'Sugar Labs',
       logo: '🍬',
-      contributions: experiences[3].contributions,
+      contributions: experiences[4].contributions,
     },
     TwentyHQ: {
       name: 'TwentyHQ',
       logo: '📊',
-      contributions: experiences[4].contributions,
+      contributions: experiences[5].contributions,
     },
     'Algora.io': {
       name: 'Algora.io',
       logo: '💰',
-      contributions: experiences[5].contributions,
+      contributions: experiences[6].contributions,
     },
   };
 
@@ -53,7 +58,8 @@ export const Experience = () => {
             onClick={() => setSelectedCompany(exp.company)}
           >
             <div className="text-3xl">
-              {typeof exp.logo === 'string' && exp.logo.endsWith('.svg') ? (
+              {typeof exp.logo === 'string' &&
+              (exp.logo.endsWith('.svg') || exp.logo.endsWith('.png')) ? (
                 <Image
                   src={`/${exp.logo}`}
                   alt={`${exp.company} logo`}
@@ -173,6 +179,19 @@ export const Experience = () => {
                       height={15}
                     />
                     Rust
+                  </span>
+                </div>
+              )}
+              {exp.company === 'Archestra' && (
+                <div className="flex flex-wrap gap-2 mt-4 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-purple-400/30 shadow-lg text-purple-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-purple-700/30">
+                    <Image
+                      src="/svg-icons/terraform.svg"
+                      alt="terraform-svg"
+                      width={15}
+                      height={15}
+                    />
+                    Terraform
                   </span>
                 </div>
               )}
