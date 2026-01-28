@@ -14,9 +14,9 @@ export const About = () => {
       <div className="space-y-6">
         <div className="text-gray-300 leading-relaxed">
           <div>
-            I'm <strong className="text-white">Ansh Grover</strong> —{' '}
-            <strong className="text-white">full-stack developer</strong>{' '}
-            focusing on{' '}
+            I'm <strong className="text-white">Ansh Grover</strong>, a{' '}
+            <strong className="text-white">Software Engineer</strong> with 1+
+            year of professional experience. I specialize in{' '}
             <Badge className="bg-gray-800 text-gray-200 hover:bg-gray-700 border-0 rounded-lg px-2 py-0.5 inline-flex items-center gap-1.5 h-[1.5em] align-middle font-semibold text-sm leading-none">
               <Image
                 src="/svg-icons/typescript.svg"
@@ -27,7 +27,7 @@ export const About = () => {
               />
               <span className="font-semibold">TypeScript</span>
             </Badge>
-            , testing infrastructure, and developer experience — currently
+            , testing infrastructure, and developer experience. Currently, I'm
             shipping across{' '}
             <Badge className="bg-gray-800 text-gray-200 hover:bg-gray-700 border-0 rounded-lg px-2 py-0.5 inline-flex items-center gap-1.5 h-[1.5em] align-middle font-semibold text-sm leading-none">
               <Image
@@ -72,57 +72,40 @@ export const About = () => {
           </h4>
           <ul className="text-gray-300 space-y-2">
             <li>
-              • <strong className="text-white">297 PRs</strong> merged across
-              open-source projects{' '}
+              • <strong className="text-white">1+ year</strong> of professional
+              software engineering experience
             </li>
             <li>
-              • <strong className="text-white">$40,000 bounty</strong> awarded
-              by{' '}
+              • Worked as{' '}
+              <strong className="text-white">Contract Software Engineer</strong>{' '}
+              at <strong className="text-white">Antiwork</strong>, recognized
+              with <strong className="text-white">$40,000</strong> in
+              compensation from{' '}
               <a
                 href="https://flexile.com/"
                 className="underline hover:text-accent transition-colors"
               >
                 Flexile
               </a>{' '}
-              for major contributions to{' '}
-              <strong className="text-white">Antiwork</strong>
+              for delivering major features
             </li>
             <li>
-              • Earned <strong className="text-white">$1200+ bounty</strong> via{' '}
+              • Built pricing page for{' '}
               <a
-                href="https://algora.io/Anshgrover23/profile"
+                href="https://binary.so"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="underline hover:text-accent transition-colors"
               >
-                algora.io
+                <strong className="text-white">binary.so</strong>
               </a>{' '}
-              for contributions to{' '}
-              <strong className="text-white">open-source</strong>
+              as Software Engineer
             </li>
             <li>
-              •{' '}
-              <span className="text-accent font-bold">
-                Previously received{' '}
-                <strong className="text-white">$1200+ overall</strong> in{' '}
-                <a
-                  href="https://github.com/sponsors/Anshgrover23"
-                  className="underline hover:text-accent transition-colors"
-                >
-                  GitHub Sponsorships
-                </a>
-              </span>{' '}
-              — fueling my open source work!
+              • <strong className="text-white">297 PRs</strong> merged across
+              open-source projects{' '}
             </li>
           </ul>
-          <div className="mt-4">
-            <a
-              href="https://github.com/sponsors/Anshgrover23"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-accent text-accent-foreground hover:bg-primary hover:text-primary-foreground font-semibold px-4 py-2 rounded transition-colors shadow-lg"
-            >
-              Sponsor me on GitHub
-            </a>
-          </div>
         </div>
       </div>
     </section>

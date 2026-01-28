@@ -198,17 +198,17 @@ export const Skills = () => {
 
   return (
     <section className="mb-16">
-      <h2 className="text-3xl font-bold mb-8 text-white flex items-center gap-3">
-        <BarChart3 className="h-8 w-8 text-accent" />
+      <h2 className="text-3xl font-bold mb-6 md:mb-8 text-white flex items-center gap-3">
+        <BarChart3 className="h-7 w-7 md:h-8 md:w-8 text-accent" />
         My Stack
       </h2>
-      <div className="space-y-8">
+      <div className="space-y-4 md:space-y-8">
         {skillCategories.map((category, index) => {
           const CategoryIcon = category.icon;
 
           return (
-            <div key={index} className="p-6 rounded-lg bg-gray-900/50">
-              <h3 className="text-xl font-semibold mb-4 text-purple-400 flex items-center gap-2">
+            <div key={index} className="p-4 md:p-6 rounded-lg bg-gray-900/50">
+              <h3 className="text-xl font-semibold mb-3 md:mb-4 text-purple-400 flex items-center gap-2">
                 <CategoryIcon className="h-5 w-5" />
                 {category.title}
               </h3>

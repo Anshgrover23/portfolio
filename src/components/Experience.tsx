@@ -50,14 +50,14 @@ export const Experience = () => {
       <h2 className="text-3xl font-bold mb-8 text-white">
         Organizations I've worked with
       </h2>
-      <div className="space-y-6">
+      <div className="space-y-4 md:space-y-6">
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className={`flex items-start gap-4 p-6 rounded-lg bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 cursor-pointer relative ${exp.company === 'Antiwork' ? 'border-2 border-cyan-500 shadow-[0_0_16px_4px_rgba(6,182,212,0.5)]' : ''}`}
+            className={`flex items-start gap-3 md:gap-4 p-4 md:p-6 rounded-lg bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 cursor-pointer relative ${exp.company === 'Antiwork' ? 'border-2 border-cyan-500 shadow-[0_0_16px_4px_rgba(6,182,212,0.5)]' : ''}`}
             onClick={() => setSelectedCompany(exp.company)}
           >
-            <div className="text-3xl">
+            <div className="text-2xl md:text-3xl flex-shrink-0">
               {typeof exp.logo === 'string' &&
               (exp.logo.endsWith('.svg') || exp.logo.endsWith('.png')) ? (
                 <Image
@@ -71,8 +71,8 @@ export const Experience = () => {
                 exp.logo
               )}
             </div>
-            <div className="flex-1">
-              <div className="flex items-center justify-between mb-2">
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 mb-2">
                 <a
                   href={exp.link}
                   target="_blank"
@@ -85,27 +85,29 @@ export const Experience = () => {
                 <span className="text-gray-400 text-sm">{exp.period}</span>
               </div>
               <p className="text-purple-400 mb-2">{exp.role}</p>
-              <p className="text-gray-300 text-sm mb-3">{exp.description}</p>
+              <p className="text-gray-300 text-sm mb-3 leading-relaxed">
+                {exp.description}
+              </p>
               {exp.headline && (
                 <p className="text-white text-sm font-semibold mb-4">
                   {exp.headline}
                 </p>
               )}
-              <div className="flex flex-col items-start gap-4 mb-2">
+              <div className="flex flex-col items-start gap-2 md:gap-4 mb-2">
                 <div className="flex items-center gap-2">
-                  <span className="text-green-400 font-semibold text-sm sm:text-sm">
+                  <span className="text-green-400 font-semibold text-sm">
                     PRs Merged:
                   </span>
-                  <span className="text-white text-sm sm:text-sm font-medium">
+                  <span className="text-white text-sm font-medium">
                     {exp.totalPRs}
                   </span>
                 </div>
                 {exp.totalBounties && (
                   <div className="flex items-center gap-2">
-                    <span className="text-yellow-400 font-semibold text-sm sm:text-sm">
+                    <span className="text-yellow-400 font-semibold text-sm">
                       Bounties Earned:
                     </span>
-                    <span className="text-white text-sm sm:text-sm font-medium">
+                    <span className="text-white text-sm font-medium">
                       {exp.totalBounties}
                     </span>
                   </div>
@@ -116,7 +118,7 @@ export const Experience = () => {
               </p>
               {/* Language badges bottom right (responsive) */}
               {exp.company === 'Antiwork' && (
-                <div className="flex flex-wrap gap-2 mt-4 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
+                <div className="flex flex-wrap gap-2 mt-3 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
                   <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-blue-400/30 shadow-lg text-blue-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-blue-700/30">
                     <Image
                       src="/svg-icons/typescript.svg"
@@ -148,7 +150,7 @@ export const Experience = () => {
                 </div>
               )}
               {exp.company === 'TSCircuit' && (
-                <div className="flex flex-wrap gap-2 mt-4 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
+                <div className="flex flex-wrap gap-2 mt-3 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
                   <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-blue-400/30 shadow-lg text-blue-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-blue-700/30">
                     <Image
                       src="/svg-icons/typescript.svg"
@@ -170,7 +172,7 @@ export const Experience = () => {
                 </div>
               )}
               {exp.company === 'Mediar-AI' && (
-                <div className="flex flex-wrap gap-2 mt-4 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
+                <div className="flex flex-wrap gap-2 mt-3 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
                   <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-orange-400/30 shadow-lg text-orange-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-orange-700/30">
                     <Image
                       src="/svg-icons/rust.svg"
@@ -192,7 +194,7 @@ export const Experience = () => {
                 </div>
               )}
               {exp.company === 'Archestra' && (
-                <div className="flex flex-wrap gap-2 mt-4 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
+                <div className="flex flex-wrap gap-2 mt-3 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
                   <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-purple-400/30 shadow-lg text-purple-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-purple-700/30">
                     <Image
                       src="/svg-icons/terraform.svg"
@@ -214,7 +216,7 @@ export const Experience = () => {
                 </div>
               )}
               {exp.company === 'Sugar Labs' && (
-                <div className="flex flex-wrap gap-2 mt-4 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
+                <div className="flex flex-wrap gap-2 mt-3 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
                   <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-blue-400/30 shadow-lg text-blue-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-blue-700/30">
                     <Image
                       src="/svg-icons/typescript.svg"
@@ -236,7 +238,7 @@ export const Experience = () => {
                 </div>
               )}
               {exp.company === 'TwentyHQ' && (
-                <div className="flex flex-wrap gap-2 mt-4 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
+                <div className="flex flex-wrap gap-2 mt-3 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
                   <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-blue-400/30 shadow-lg text-blue-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-blue-700/30">
                     <Image
                       src="/svg-icons/typescript.svg"

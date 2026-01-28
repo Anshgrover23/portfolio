@@ -144,10 +144,10 @@ export async function GitHubActivity() {
 
   if ('error' in result) {
     return (
-      <section className="mb-16 rounded-xl border border-white/10 bg-gray-950/80 p-8 text-gray-300">
+      <section className="mb-16 rounded-xl border border-white/10 bg-gray-950/80 p-4 md:p-8 text-gray-300">
         <div className="flex items-center gap-3 text-white">
-          <CalendarDays className="h-7 w-7 text-accent" />
-          <h3 className="text-2xl font-semibold">GitHub Activity</h3>
+          <CalendarDays className="h-6 w-6 md:h-7 md:w-7 text-accent" />
+          <h3 className="text-xl md:text-2xl font-semibold">GitHub Activity</h3>
         </div>
         <p className="mt-4 text-sm text-gray-400">{result.error}</p>
       </section>
@@ -159,12 +159,12 @@ export async function GitHubActivity() {
   const dateRangeLabel = formatDateRange(from, to);
 
   return (
-    <section className="mb-16 rounded-xl border border-white/10 bg-gray-950/80 p-8">
+    <section className="mb-16 rounded-xl border border-white/10 bg-gray-950/80 p-4 md:p-8">
       <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
-          <CalendarDays className="h-7 w-7 text-accent" />
+          <CalendarDays className="h-6 w-6 md:h-7 md:w-7 text-accent" />
           <div>
-            <h3 className="text-2xl font-semibold text-white">
+            <h3 className="text-xl md:text-2xl font-semibold text-white">
               GitHub Activity
             </h3>
             <p className="text-sm text-gray-400">
@@ -173,12 +173,12 @@ export async function GitHubActivity() {
             </p>
           </div>
         </div>
-        <div className="rounded-full border border-white/10 px-4 py-1 text-xs uppercase tracking-wider text-gray-400">
+        <div className="rounded-full border border-white/10 px-3 md:px-4 py-1 text-xs uppercase tracking-wider text-gray-400">
           @{username}
         </div>
       </div>
 
-      <div className="mt-6 overflow-x-auto">
+      <div className="mt-4 md:mt-6 overflow-x-auto">
         <div
           className="grid gap-1"
           style={{
@@ -205,8 +205,8 @@ export async function GitHubActivity() {
         </div>
       </div>
 
-      <div className="mt-6 flex flex-col gap-3 text-sm text-gray-400 md:flex-row md:items-center md:justify-between">
-        <div className="flex items-center gap-3">
+      <div className="mt-4 md:mt-6 flex flex-col gap-3 text-sm text-gray-400 md:flex-row md:items-center md:justify-between">
+        <div className="flex items-center gap-2 md:gap-3">
           <span>Less</span>
           <div className="flex items-center gap-1">
             {buildLegend(calendar.weeks)}

@@ -117,14 +117,14 @@ export const Chatbot = () => {
     <>
       {/* Notification Popup */}
       {showNotification && !isOpen && (
-        <div className="fixed bottom-36 right-6 md:bottom-24 z-50 animate-in slide-in-from-bottom-2 fade-in duration-300">
+        <div className="fixed bottom-24 right-4 md:right-6 md:bottom-24 z-50 animate-in slide-in-from-bottom-2 fade-in duration-300">
           <div className="bg-white rounded-lg shadow-2xl border border-gray-200 p-4 max-w-[280px] relative">
             <button
               onClick={() => setShowNotification(false)}
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
+              className="absolute top-2 right-2 p-1 text-gray-400 hover:text-gray-600 transition-colors touch-manipulation"
               aria-label="Close notification"
             >
-              <X className="h-4 w-4" />
+              <X className="h-5 w-5" />
             </button>
             <div className="flex items-start gap-3 pr-6">
               <div className="relative flex-shrink-0">
@@ -163,7 +163,7 @@ export const Chatbot = () => {
       {!isOpen && (
         <button
           onClick={handleOpenChat}
-          className="fixed bottom-24 right-6 md:bottom-6 z-50 group hover:scale-105 transition-transform"
+          className="fixed bottom-6 right-4 md:right-6 z-50 group hover:scale-105 transition-transform touch-manipulation"
           aria-label="Open chat"
         >
           <div className="relative">
@@ -184,7 +184,7 @@ export const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 md:bottom-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col max-h-[600px]">
+        <div className="fixed bottom-6 right-4 md:right-6 md:bottom-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col max-h-[600px]">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gray-50 rounded-t-lg">
             <div className="flex items-center gap-3">

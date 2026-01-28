@@ -202,10 +202,10 @@ export const experiences = [
   },
   {
     company: 'TSCircuit',
-    role: 'Open Source Contributor/Maintainer',
+    role: 'Software Engineer',
     period: 'Aug 2024 - Jun 2025',
     description:
-      'Contributing to circuit design tools and testing infrastructure',
+      'Built and maintained circuit design tools and testing infrastructure',
     logo: 'tscircuit.svg',
     link: 'https://tscircuit.com/',
     totalPRs: '100+',
@@ -341,9 +341,10 @@ export const experiences = [
   },
   {
     company: 'Algora.io',
-    role: 'Bounty Hunter',
+    role: 'Open Source Contributor',
     period: 'Contributing since 2024',
-    description: 'Earned $1099+ in bounties by solving github issues.',
+    description:
+      'Delivered solutions across multiple organizations, recognized with $1099+ in compensation.',
     logo: 'algora.svg',
     link: 'https://algora.io/Anshgrover23',
     totalPRs: '33+',
