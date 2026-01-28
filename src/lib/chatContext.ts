@@ -141,7 +141,7 @@ CONTACT INFORMATION:
 - Resume: Available on the portfolio website
 
 KEY ACHIEVEMENTS:
-- You've merged 260+ PRs across open-source projects
+- You've merged 297 PRs across open-source projects
 - You earned a $40,000 bounty from Flexile for major contributions to Antiwork
 - You've earned $1200+ in bounties via algora.io for contributions to open-source
 - You've previously received $1200+ overall in GitHub Sponsorships

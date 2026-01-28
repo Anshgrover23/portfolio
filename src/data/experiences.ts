@@ -1,8 +1,8 @@
 export const experiences = [
   {
     company: 'Antiwork',
-    role: 'Open Source Contributor',
-    period: '2025 - Present',
+    role: 'Contract Software Engineer',
+    period: 'Jul 2025 - Oct 2025',
     headline: 'Build multiple major features and shipped them perfectly.',
     logo: 'antiwork.svg',
     link: 'https://github.com/antiwork/helper',
@@ -203,7 +203,7 @@ export const experiences = [
   {
     company: 'TSCircuit',
     role: 'Open Source Contributor/Maintainer',
-    period: '2024 - Present',
+    period: 'Aug 2024 - Jun 2025',
     description:
       'Contributing to circuit design tools and testing infrastructure',
     logo: 'tscircuit.svg',
@@ -242,7 +242,7 @@ export const experiences = [
   {
     company: 'Mediar-AI',
     role: 'Open Source Contributor',
-    period: '2024 - Present',
+    period: 'Mar 2025 - Jun 2025',
     description:
       'Built dev tools, automation scripts, and published Screenpipe to Homebrew.',
     logo: 'mediar-ai.svg',
@@ -282,7 +282,7 @@ export const experiences = [
   {
     company: 'Archestra',
     role: 'Open Source Contributor',
-    period: '2025 - Present',
+    period: 'Contributing since 2025',
     description:
       'Built SSO provider infrastructure for the Terraform provider enabling enterprise authentication.',
     logo: 'archestra.png',
@@ -300,7 +300,7 @@ export const experiences = [
   {
     company: 'Sugar Labs',
     role: 'Open Source Contributor',
-    period: '2025 - Present',
+    period: 'Contributing since 2025',
     description:
       'Fixed UI bugs and improved user experience on the Sugar Labs website.',
     logo: 'sugarlabs.svg',
@@ -318,7 +318,7 @@ export const experiences = [
   {
     company: 'TwentyHQ',
     role: 'Open Source Contributor',
-    period: '2025 - Present',
+    period: 'Contributing since 2025',
     description:
       'Improved CSV import UX by making the download sample feature more discoverable.',
     logo: 'twentyhq.svg',
@@ -342,7 +342,7 @@ export const experiences = [
   {
     company: 'Algora.io',
     role: 'Bounty Hunter',
-    period: '2024 - Present',
+    period: 'Contributing since 2024',
     description: 'Earned $1099+ in bounties by solving github issues.',
     logo: 'algora.svg',
     link: 'https://algora.io/Anshgrover23',

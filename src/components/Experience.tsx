@@ -48,7 +48,7 @@ export const Experience = () => {
   return (
     <section className="mb-16">
       <h2 className="text-3xl font-bold mb-8 text-white">
-        Cool places I've contributed to
+        Organizations I've worked with
       </h2>
       <div className="space-y-6">
         {experiences.map((exp, index) => (
@@ -180,6 +180,15 @@ export const Experience = () => {
                     />
                     Rust
                   </span>
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-yellow-400/30 shadow-lg text-yellow-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-yellow-700/30">
+                    <Image
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
+                      alt="python-svg"
+                      width={15}
+                      height={15}
+                    />
+                    Python
+                  </span>
                 </div>
               )}
               {exp.company === 'Archestra' && (
@@ -192,6 +201,15 @@ export const Experience = () => {
                       height={15}
                     />
                     Terraform
+                  </span>
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-cyan-400/30 shadow-lg text-cyan-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-cyan-700/30">
+                    <Image
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg"
+                      alt="golang-svg"
+                      width={15}
+                      height={15}
+                    />
+                    Go
                   </span>
                 </div>
               )}

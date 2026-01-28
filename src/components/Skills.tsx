@@ -92,6 +92,20 @@ export const Skills = () => {
           },
         },
         {
+          name: 'Go',
+          icon: {
+            type: 'svg',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg',
+          },
+        },
+        {
+          name: 'Python',
+          icon: {
+            type: 'svg',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+          },
+        },
+        {
           name: 'Node.js',
           icon: {
             type: 'svg',

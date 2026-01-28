@@ -72,7 +72,7 @@ export const About = () => {
           </h4>
           <ul className="text-gray-300 space-y-2">
             <li>
-              • <strong className="text-white">260+ PRs</strong> merged across
+              • <strong className="text-white">297 PRs</strong> merged across
               open-source projects{' '}
             </li>
             <li>
