@@ -181,3 +181,12 @@
   animation: scroll var(--animation-duration, 40s)
     var(--animation-direction, forwards) linear infinite;
 }
+
+/* Hide scrollbar but keep content scrollable */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
