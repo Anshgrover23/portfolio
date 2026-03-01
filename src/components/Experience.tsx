@@ -7,48 +7,50 @@ import { experiences } from '@/data/experiences';
 export const Experience = () => {
   const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
 
+  const getExp = (company: string) =>
+    experiences.find(e => e.company === company)!;
   const companyData = {
     'CX Linux AI': {
       name: 'CX Linux AI',
-      logo: experiences[0].logo,
-      contributions: experiences[0].contributions,
+      logo: getExp('CX Linux AI').logo,
+      contributions: getExp('CX Linux AI').contributions,
     },
     Antiwork: {
       name: 'Antiwork',
-      logo: '🛠️',
-      contributions: experiences[1].contributions,
-      reposPrivate: experiences[1].reposPrivate,
-      compensationDetailsImage: experiences[1].compensationDetailsImage,
+      logo: getExp('Antiwork').logo,
+      contributions: getExp('Antiwork').contributions,
+      reposPrivate: getExp('Antiwork').reposPrivate,
+      compensationDetailsImage: getExp('Antiwork').compensationDetailsImage,
     },
     TSCircuit: {
       name: 'TSCircuit',
-      logo: '🔌',
-      contributions: experiences[2].contributions,
+      logo: getExp('TSCircuit').logo,
+      contributions: getExp('TSCircuit').contributions,
     },
     'Mediar-AI': {
       name: 'Mediar-AI',
-      logo: '🤖',
-      contributions: experiences[3].contributions,
+      logo: getExp('Mediar-AI').logo,
+      contributions: getExp('Mediar-AI').contributions,
     },
     Archestra: {
       name: 'Archestra',
-      logo: '🎭',
-      contributions: experiences[4].contributions,
+      logo: getExp('Archestra').logo,
+      contributions: getExp('Archestra').contributions,
     },
     'Sugar Labs': {
       name: 'Sugar Labs',
-      logo: '🍬',
-      contributions: experiences[5].contributions,
+      logo: getExp('Sugar Labs').logo,
+      contributions: getExp('Sugar Labs').contributions,
     },
     TwentyHQ: {
       name: 'TwentyHQ',
-      logo: '📊',
-      contributions: experiences[6].contributions,
+      logo: getExp('TwentyHQ').logo,
+      contributions: getExp('TwentyHQ').contributions,
     },
     'Algora.io': {
       name: 'Algora.io',
-      logo: '💰',
-      contributions: experiences[7].contributions,
+      logo: getExp('Algora.io').logo,
+      contributions: getExp('Algora.io').contributions,
     },
   };
 
@@ -61,7 +63,7 @@ export const Experience = () => {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className={`flex items-start gap-3 md:gap-4 p-4 md:p-6 rounded-lg bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 cursor-pointer relative ${exp.company === 'CX Linux AI' ? 'border-2 border-amber-500 shadow-[0_0_16px_4px_rgba(245,158,11,0.4)]' : ''}`}
+            className="flex items-start gap-3 md:gap-4 p-4 md:p-6 rounded-lg bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 cursor-pointer relative"
             onClick={() => setSelectedCompany(exp.company)}
           >
             <div className="text-2xl md:text-3xl flex-shrink-0">

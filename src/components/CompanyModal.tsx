@@ -62,9 +62,15 @@ export const CompanyModal = ({
         <DialogHeader className="space-y-1 pb-1">
           <DialogTitle className="flex items-center gap-3 text-xl sm:text-2xl font-bold">
             {typeof company.logo === 'string' &&
-            company.logo.startsWith('http') ? (
+            (company.logo.startsWith('http') ||
+              company.logo.endsWith('.svg') ||
+              company.logo.endsWith('.png')) ? (
               <Image
-                src={company.logo}
+                src={
+                  company.logo.startsWith('http')
+                    ? company.logo
+                    : `/${company.logo}`
+                }
                 alt={`${company.name} logo`}
                 width={32}
                 height={32}
@@ -73,7 +79,7 @@ export const CompanyModal = ({
             ) : (
               <span className="text-2xl">{company.logo}</span>
             )}
-            {company.name} — Featured Contributions
+            {company.name} Featured Contributions
           </DialogTitle>
         </DialogHeader>
 

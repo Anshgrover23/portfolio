@@ -17,7 +17,7 @@ export const Education = () => {
               </span>
             </div>
             <p className="text-purple-400 mb-1">
-              Bachelor of Technology — Artificial Intelligence
+              Bachelor of Technology, Artificial Intelligence
             </p>
           </div>
         </div>
