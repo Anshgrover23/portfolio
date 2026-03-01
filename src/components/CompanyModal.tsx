@@ -77,7 +77,7 @@ export const CompanyModal = ({
           </DialogTitle>
         </DialogHeader>
 
-        <div className="flex flex-col gap-5 pr-2 pb-1">
+        <div className="flex flex-col gap-5 max-h-[85vh] overflow-y-auto pr-2 pb-1 scrollbar-hide">
           {company.reposPrivate && (
             <div className="rounded-xl border border-gray-600/60 bg-gray-800/40 px-4 py-3.5">
               <p className="text-gray-400 text-sm leading-relaxed">
