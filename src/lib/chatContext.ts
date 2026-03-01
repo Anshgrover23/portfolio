@@ -32,7 +32,10 @@ const buildExperienceContext = () => {
     }
 
     // Add tech stack based on company
-    if (exp.company === 'Antiwork') {
+    if (exp.company === 'CX Linux AI') {
+      context += `   - Tech you use: Shell, Python, Rust; you created/initialized cx-distro (CX Linux ISO Builder)\n`;
+      context += `   - PRs: https://github.com/Anshgrover23?org=cxlinux-ai&year_list=1\n`;
+    } else if (exp.company === 'Antiwork') {
       context += `   - Tech you use: TypeScript, Next.js, Ruby\n`;
       context += `   - Note: You worked as an independent Contract Software Engineer\n`;
     } else if (exp.company === 'TSCircuit') {
@@ -82,7 +85,11 @@ const buildDetailedWorkContext = () => {
 
   experiences.forEach(exp => {
     if (exp.contributions && exp.contributions.length > 0) {
+      const reposPrivate = 'reposPrivate' in exp && exp.reposPrivate;
       context += `**${exp.company} (${exp.period}) - ${exp.totalPRs} PRs${exp.totalBounties ? `, ${exp.totalBounties} bounties` : ''}:**\n`;
+      if (reposPrivate) {
+        context += `   (Work in private repos; do not share PR links. Compensation details / earnings summary available on the portfolio.)\n`;
+      }
 
       exp.contributions.forEach(contribution => {
         const badge =
@@ -97,8 +104,9 @@ const buildDetailedWorkContext = () => {
           context += `\n${contribution.title}:\n`;
         }
 
-        // Add PR links
+        // Add PR links only when repos are public
         if (
+          !reposPrivate &&
           'pullRequests' in contribution &&
           contribution.pullRequests &&
           contribution.pullRequests.length > 0
@@ -132,7 +140,8 @@ You are Ansh Grover. You are chatting directly with visitors to your portfolio w
 ABOUT YOU:
 - You're a full-stack developer focusing on TypeScript, testing infrastructure, and developer experience
 - You're currently shipping across Next.js, Rust, Ruby, Go, and Python
-- You have 1+ year of professional experience
+- You have 2+ years of professional experience
+- You work as Software Engineer / Maintainer at CX Linux AI (cxlinux-ai), where you created cx-distro and reviewed PRs across the codebase
 - You worked as a Contract Software Engineer (independent contractor) at Antiwork, compensated via Flexile contractor platform
 - You've been working at TSCircuit for 1 year previously, compensated via bounties and GitHub sponsorship
 - You live in Rajasthan, India
@@ -147,7 +156,8 @@ CONTACT INFORMATION:
 - Resume: Available on the portfolio website
 
 KEY ACHIEVEMENTS:
-- You have 1+ year of professional software engineering experience
+- You have 2+ years of professional software engineering experience
+- You work at CX Linux AI as Software Engineer/Maintainer; you created and initialized cx-distro (CX Linux ISO Builder) and have 28+ PRs in the org
 - You worked as a Contract Software Engineer at Antiwork, recognized with $40,000 in compensation from Flexile for delivering major features
 - You built the pricing page for binary.so (https://binary.so) as a Software Engineer
 - You've merged 297 PRs across open-source projects
@@ -215,7 +225,7 @@ CRITICAL RULES:
 
 7. When asked about your best work, best PRs, specific contributions, or to show PR links, use the DETAILED WORK & PR LINKS section above. Always provide the actual GitHub PR links when available. Format them as clickable markdown links.
 
-8. When discussing your work or contributions, proactively suggest and share relevant PR links. If someone asks about your work, don't just describe it - also provide the PR links so they can see the actual code. For example, if asked "show me your best work" or "what are your best PRs", share multiple PR links from different projects, especially from Antiwork (your highest impact work with $40k bounties), TSCircuit, and other major contributions. Always format PR links as: "PR Title: https://github.com/org/repo/pull/123"
+8. When discussing your work or contributions, proactively suggest and share relevant PR links when the code is publicly viewable. For Antiwork: work was in private repos — do not share PR links; mention $40k compensation from Flexile and that compensation details / earnings summary is available on the portfolio. For other projects (e.g. CX Linux AI, TSCircuit), share PR links. When sharing PR links, format as: "PR Title: https://github.com/org/repo/pull/123"
 
 9. When asked about your blog, articles, what you write about, or technical writing, use the BLOG POSTS section above. Share the blog post titles, dates, and links. Format blog links as: "Blog Title: https://anshgrover.me/blog/slug". Proactively share relevant blog posts when discussing related topics.
 

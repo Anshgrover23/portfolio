@@ -22,7 +22,7 @@ export const testimonials: TestimonialItem[] = [
     sourceUrl:
       'https://github.com/tscircuit/eval/pull/163#pullrequestreview-2708124781',
   },
-  // Antiwork testimonials
+  // Antiwork testimonials (repos now private; no sourceUrl)
   {
     quote: 'Nice, thanks!',
     name: 'binary-koan',
@@ -30,8 +30,6 @@ export const testimonials: TestimonialItem[] = [
     title: 'Senior Software Engineer at Antiwork',
     image: 'https://unavatar.io/github/binary-koan',
     source: 'github',
-    sourceUrl:
-      'https://github.com/antiwork/helper/pull/902#pullrequestreview-3103747910',
   },
   {
     quote: '$250 thanks',
@@ -40,8 +38,6 @@ export const testimonials: TestimonialItem[] = [
     title: 'Founder of Gumroad',
     image: 'https://unavatar.io/github/slavingia',
     source: 'github',
-    sourceUrl:
-      'https://github.com/antiwork/gumboard/pull/400#issuecomment-3192271710',
   },
   // Mediar-AI testimonials
   {

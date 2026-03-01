@@ -12,6 +12,8 @@ import {
   Route,
   ServerCog,
   Shield,
+  Terminal,
+  Wrench,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -192,6 +194,34 @@ export const Skills = () => {
             src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/homebrew/homebrew-original.svg',
           },
         },
+      ],
+    },
+    {
+      title: 'Infrastructure & systems',
+      icon: Terminal,
+      skills: [
+        {
+          name: 'Shell',
+          icon: {
+            type: 'svg',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg',
+          },
+        },
+        {
+          name: 'Linux',
+          icon: {
+            type: 'svg',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg',
+          },
+        },
+        {
+          name: 'Debian',
+          icon: {
+            type: 'svg',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/debian/debian-original.svg',
+          },
+        },
+        { name: 'Make', icon: { type: 'lucide', icon: Wrench } },
       ],
     },
   ];

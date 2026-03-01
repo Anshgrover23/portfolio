@@ -15,8 +15,9 @@ export const About = () => {
         <div className="text-gray-300 leading-relaxed">
           <div>
             I'm <strong className="text-white">Ansh Grover</strong>, a{' '}
-            <strong className="text-white">Software Engineer</strong> with 1+
-            year of professional experience. I specialize in{' '}
+            <strong className="text-white">Software Engineer</strong> with{' '}
+            <strong className="text-white">2+ years</strong> of professional
+            experience. I specialize in{' '}
             <Badge className="bg-gray-800 text-gray-200 hover:bg-gray-700 border-0 rounded-lg px-2 py-0.5 inline-flex items-center gap-1.5 h-[1.5em] align-middle font-semibold text-sm leading-none">
               <Image
                 src="/svg-icons/typescript.svg"
@@ -72,25 +73,38 @@ export const About = () => {
           </h4>
           <ul className="text-gray-300 space-y-2">
             <li>
-              • <strong className="text-white">1+ year</strong> of professional
-              software engineering experience
+              <strong className="text-white">2+ years</strong> of software
+              engineering experience, shipping production code.
             </li>
             <li>
-              • Worked as{' '}
-              <strong className="text-white">Contract Software Engineer</strong>{' '}
-              at <strong className="text-white">Antiwork</strong>, recognized
-              with <strong className="text-white">$40,000</strong> in
-              compensation from{' '}
+              Created and led{' '}
+              <a
+                href="https://github.com/cxlinux-ai/cx-distro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-accent transition-colors"
+              >
+                <strong className="text-white">CX Linux ISO Builder</strong>
+              </a>{' '}
+              at <strong className="text-white">CX Linux AI</strong>, an AI
+              native Linux distro on Ubuntu and Debian with an embedded LLM.
+            </li>
+            <li>
+              Contract Software Engineer at{' '}
+              <strong className="text-white">Antiwork</strong>, recognized with{' '}
+              <strong className="text-white">$40,000</strong> in compensation
+              from{' '}
               <a
                 href="https://flexile.com/"
                 className="underline hover:text-accent transition-colors"
               >
                 Flexile
               </a>{' '}
-              for delivering major features
+              for shipping major product features (work in private repos;
+              compensation details available).
             </li>
             <li>
-              • Built pricing page for{' '}
+              Shipped the pricing page for{' '}
               <a
                 href="https://binary.so"
                 target="_blank"
@@ -99,11 +113,11 @@ export const About = () => {
               >
                 <strong className="text-white">binary.so</strong>
               </a>{' '}
-              as Software Engineer
+              as a Software Engineer.
             </li>
             <li>
-              • <strong className="text-white">297 PRs</strong> merged across
-              open-source projects{' '}
+              <strong className="text-white">297 PRs</strong> merged across open
+              source projects.
             </li>
           </ul>
         </div>

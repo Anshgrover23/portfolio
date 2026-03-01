@@ -5,8 +5,8 @@ import { FaXTwitter } from 'react-icons/fa6';
 
 export const Hero = () => {
   return (
-    <section className="mb-16">
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-12">
+    <section className="mb-12 pt-5 sm:pt-6 md:pt-8">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-10">
         <div className="flex-shrink-0 md:order-2">
           <Avatar className="w-24 h-24 md:w-32 md:h-32 border-2 border-white/20 mx-auto md:mx-0">
             <AvatarImage src="/avatar.png" alt="Ansh Grover" />
@@ -15,11 +15,14 @@ export const Hero = () => {
             </AvatarFallback>
           </Avatar>
         </div>
-        <div className="flex-1 min-w-0 pr-4 md:order-1">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-8 text-white text-left tracking-tight leading-tight">
-            Hi I'm Ansh — A Full Stack web developer
+        <div className="flex-1 min-w-0 md:pr-2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-3 text-white text-left tracking-tight leading-tight">
+            Hi I'm Ansh
           </h1>
-          <div className="flex flex-wrap items-center gap-4">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-medium text-gray-400 mb-6">
+            21, Open Source Engineer
+          </h2>
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <a
               href="/ansh-resume.pdf"
               download

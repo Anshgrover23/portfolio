@@ -8,40 +8,47 @@ export const Experience = () => {
   const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
 
   const companyData = {
+    'CX Linux AI': {
+      name: 'CX Linux AI',
+      logo: experiences[0].logo,
+      contributions: experiences[0].contributions,
+    },
     Antiwork: {
       name: 'Antiwork',
       logo: '🛠️',
-      contributions: experiences[0].contributions,
+      contributions: experiences[1].contributions,
+      reposPrivate: experiences[1].reposPrivate,
+      compensationDetailsImage: experiences[1].compensationDetailsImage,
     },
     TSCircuit: {
       name: 'TSCircuit',
       logo: '🔌',
-      contributions: experiences[1].contributions,
+      contributions: experiences[2].contributions,
     },
     'Mediar-AI': {
       name: 'Mediar-AI',
       logo: '🤖',
-      contributions: experiences[2].contributions,
+      contributions: experiences[3].contributions,
     },
     Archestra: {
       name: 'Archestra',
       logo: '🎭',
-      contributions: experiences[3].contributions,
+      contributions: experiences[4].contributions,
     },
     'Sugar Labs': {
       name: 'Sugar Labs',
       logo: '🍬',
-      contributions: experiences[4].contributions,
+      contributions: experiences[5].contributions,
     },
     TwentyHQ: {
       name: 'TwentyHQ',
       logo: '📊',
-      contributions: experiences[5].contributions,
+      contributions: experiences[6].contributions,
     },
     'Algora.io': {
       name: 'Algora.io',
       logo: '💰',
-      contributions: experiences[6].contributions,
+      contributions: experiences[7].contributions,
     },
   };
 
@@ -54,14 +61,16 @@ export const Experience = () => {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className={`flex items-start gap-3 md:gap-4 p-4 md:p-6 rounded-lg bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 cursor-pointer relative ${exp.company === 'Antiwork' ? 'border-2 border-cyan-500 shadow-[0_0_16px_4px_rgba(6,182,212,0.5)]' : ''}`}
+            className={`flex items-start gap-3 md:gap-4 p-4 md:p-6 rounded-lg bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 cursor-pointer relative ${exp.company === 'CX Linux AI' ? 'border-2 border-amber-500 shadow-[0_0_16px_4px_rgba(245,158,11,0.4)]' : ''}`}
             onClick={() => setSelectedCompany(exp.company)}
           >
             <div className="text-2xl md:text-3xl flex-shrink-0">
               {typeof exp.logo === 'string' &&
-              (exp.logo.endsWith('.svg') || exp.logo.endsWith('.png')) ? (
+              (exp.logo.startsWith('http') ||
+                exp.logo.endsWith('.svg') ||
+                exp.logo.endsWith('.png')) ? (
                 <Image
-                  src={`/${exp.logo}`}
+                  src={exp.logo.startsWith('http') ? exp.logo : `/${exp.logo}`}
                   alt={`${exp.company} logo`}
                   className="rounded-full object-contain inline-block align-middle"
                   height={32}
@@ -85,9 +94,11 @@ export const Experience = () => {
                 <span className="text-gray-400 text-sm">{exp.period}</span>
               </div>
               <p className="text-purple-400 mb-2">{exp.role}</p>
-              <p className="text-gray-300 text-sm mb-3 leading-relaxed">
-                {exp.description}
-              </p>
+              {exp.description && (
+                <p className="text-gray-300 text-sm mb-3 leading-relaxed">
+                  {exp.description}
+                </p>
+              )}
               {exp.headline && (
                 <p className="text-white text-sm font-semibold mb-4">
                   {exp.headline}
@@ -112,11 +123,35 @@ export const Experience = () => {
                     </span>
                   </div>
                 )}
+                {'reposPrivate' in exp && exp.reposPrivate && (
+                  <p className="text-gray-400 text-xs mt-1">
+                    Repos now private · Compensation details available
+                  </p>
+                )}
               </div>
               <p className="text-blue-400 text-sm mt-2">
                 Click to view featured contributions →
               </p>
               {/* Language badges bottom right (responsive) */}
+              {exp.company === 'CX Linux AI' && (
+                <div className="flex flex-wrap gap-2 mt-3 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-amber-400/30 shadow-lg text-amber-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-amber-700/30">
+                    Shell
+                  </span>
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-orange-400/30 shadow-lg text-orange-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-orange-700/30">
+                    <Image
+                      src="/svg-icons/rust.svg"
+                      alt="rust-svg"
+                      width={15}
+                      height={15}
+                    />
+                    Rust
+                  </span>
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-blue-400/30 shadow-lg text-blue-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-blue-700/30">
+                    Python
+                  </span>
+                </div>
+              )}
               {exp.company === 'Antiwork' && (
                 <div className="flex flex-wrap gap-2 mt-3 md:mt-0 md:absolute md:right-6 md:bottom-4 md:flex-row items-center md:items-end justify-start">
                   <span className="flex items-center gap-1 px-3 py-1 rounded-full backdrop-blur-md bg-white/10 border border-blue-400/30 shadow-lg text-blue-200 text-xs font-semibold transition-transform transform hover:scale-105 hover:bg-blue-700/30">

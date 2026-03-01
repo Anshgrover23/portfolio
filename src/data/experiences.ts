@@ -1,13 +1,84 @@
 export const experiences = [
   {
+    company: 'CX Linux AI',
+    role: 'Software Engineer / Maintainer',
+    period: 'Dec 2025 - Feb 2026',
+    description:
+      'AI-native Linux distribution. Reviewed PRs across the codebase, shipped distro tooling, packaging, and CI. Created and initialized cx-distro (CX Linux ISO Builder).',
+    logo: 'https://unavatar.io/github/cxlinux-ai',
+    link: 'https://github.com/Anshgrover23?org=cxlinux-ai&year_list=1',
+    totalPRs: '28+',
+    contributions: [
+      {
+        title: 'Created & initialized CX Linux ISO Builder (cx-distro)',
+        description:
+          'Bootstrapped the CX Linux distro — AI-native Linux distribution. Ubuntu/Debian base with embedded LLM. Built hybrid ISO (live boot + full installer), branding, and build pipeline.',
+        badge: 'Project lead',
+        pullRequests: [
+          {
+            title:
+              '#10 · Bootstrap cortex linux distro hybrid ISO (Live boot + Full installer mode)',
+            link: 'https://github.com/cxlinux-ai/cx-distro/pull/10',
+          },
+          {
+            title: '#53 · [WIP] rebrand to CX linux',
+            link: 'https://github.com/cxlinux-ai/cx-distro/pull/53',
+          },
+        ],
+      },
+      {
+        title: 'Core platform: packaging, CI, and developer experience',
+        description:
+          'Added Debian package infrastructure for cx-core, Python 3.13 support, release workflow fixes, unified CI dependency steps, and automated formatting/stale PR workflows.',
+        badge: 'cx-core',
+        pullRequests: [
+          {
+            title: '#660 · feat(packaging): Add Debian package infrastructure',
+            link: 'https://github.com/cxlinux-ai/cx-core/pull/660',
+          },
+          {
+            title: '#646 · feat: add Python 3.13 support',
+            link: 'https://github.com/cxlinux-ai/cx-core/pull/646',
+          },
+          {
+            title: '#655 · fix: add permissions to release workflow build job',
+            link: 'https://github.com/cxlinux-ai/cx-core/pull/655',
+          },
+          {
+            title:
+              '#640 · chore: unify dependency installation steps across workflows',
+            link: 'https://github.com/cxlinux-ai/cx-core/pull/640',
+          },
+          {
+            title:
+              '#618 · fix: add autofix-ci bot to CLA ignore list and fix lint error',
+            link: 'https://github.com/cxlinux-ai/cx-core/pull/618',
+          },
+          {
+            title:
+              '#614 · ci: add autofix.ci workflow for automatic formatting fixes',
+            link: 'https://github.com/cxlinux-ai/cx-core/pull/614',
+          },
+          {
+            title: '#613 · feat(ci): add stale PR management workflow',
+            link: 'https://github.com/cxlinux-ai/cx-core/pull/613',
+          },
+        ],
+      },
+    ],
+  },
+  {
     company: 'Antiwork',
     role: 'Contract Software Engineer',
     period: 'Jul 2025 - Oct 2025',
-    headline: 'Build multiple major features and shipped them perfectly.',
+    headline:
+      'Shipped major features end-to-end. Contract work in private repos; compensation details below.',
     logo: 'antiwork.svg',
-    link: 'https://github.com/antiwork/helper',
+    link: 'https://flexile.com',
     totalPRs: '55+',
     totalBounties: '$40,000 (Flexile)',
+    reposPrivate: true,
+    compensationDetailsImage: '/payment.png',
     contributions: [
       {
         title:
