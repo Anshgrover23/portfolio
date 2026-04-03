@@ -35,7 +35,7 @@ function Index() {
         <div id="skills" className="scroll-mt-24">
           <Skills />
         </div>
-        <div id="contact" className="scroll-mt-24">
+        <div id="contact" className="scroll-mt-28 md:scroll-mt-32">
           <BookCall />
         </div>
       </div>

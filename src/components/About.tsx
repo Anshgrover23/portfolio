@@ -73,35 +73,48 @@ export const About = () => {
           </h4>
           <ul className="text-gray-300 space-y-2">
             <li>
-              <strong className="text-white">2+ years</strong> of software
-              engineering experience, shipping production code.
-            </li>
-            <li>
-              Created and led{' '}
+              Got accepted into{' '}
               <a
-                href="https://github.com/cxlinux-ai/cx-distro"
+                href="https://x.com/Anshgrover23/status/2034579124673814875"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-accent transition-colors"
               >
-                <strong className="text-white">CX Linux ISO Builder</strong>
+                <strong className="text-white">
+                  Y Combinator Startup School
+                </strong>
               </a>{' '}
-              at <strong className="text-white">CX Linux AI</strong>, an AI
-              native Linux distro on Ubuntu and Debian with an embedded LLM.
+              (India cohort).
             </li>
             <li>
-              Contract Software Engineer at{' '}
-              <strong className="text-white">Antiwork</strong>, recognized with{' '}
-              <strong className="text-white">$40,000</strong> in compensation
-              from{' '}
+              Won <strong className="text-white">Top 20</strong> in the PR
+              category at the Automate Me If You Can Hackathon ($3000 prize
+              pool) organized by Accomplish AI and WeMakeDevs —{' '}
               <a
-                href="https://flexile.com/"
+                href="https://drive.google.com/file/d/1idAPCUDdt-lrYPx-Imf3_VaA9164ev6R/view"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="underline hover:text-accent transition-colors"
               >
-                Flexile
+                hackathon certificate
+              </a>
+              .
+            </li>
+            <li>
+              Participated in the{' '}
+              <strong className="text-white">
+                European Summer of Code 2026
+              </strong>
+              , contributing to the{' '}
+              <a
+                href="https://github.com/conda/rattler"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-accent transition-colors"
+              >
+                <strong className="text-white">Rattler</strong>
               </a>{' '}
-              for shipping major product features (work in private repos;
-              compensation details available).
+              repository.
             </li>
             <li>
               Shipped the pricing page for{' '}
@@ -114,6 +127,39 @@ export const About = () => {
                 <strong className="text-white">binary.so</strong>
               </a>{' '}
               as a Software Engineer.
+            </li>
+            <li>
+              Won around <strong className="text-white">$40,000 USD</strong>{' '}
+              from open source bounties; contributed to{' '}
+              <strong className="text-white">8+</strong> open source
+              organizations, mainly{' '}
+              <a
+                href="https://github.com/antiwork"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-accent transition-colors"
+              >
+                <strong className="text-white">Antiwork</strong>
+              </a>
+              ,{' '}
+              <a
+                href="https://tscircuit.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-accent transition-colors"
+              >
+                <strong className="text-white">TSCircuit</strong>
+              </a>
+              ,{' '}
+              <a
+                href="https://github.com/mediar-ai/screenpipe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-accent transition-colors"
+              >
+                <strong className="text-white">Screenpipe</strong>
+              </a>
+              , and others.
             </li>
             <li>
               <strong className="text-white">297 PRs</strong> merged across open

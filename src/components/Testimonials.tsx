@@ -25,7 +25,7 @@ export const Testimonials = ({ testimonials = [] }: TestimonialsProps) => {
         <MessageSquare className="h-8 w-8 text-accent" />
         Testimonials
       </h2>
-      <div className="rounded-md flex flex-col antialiased bg-transparent dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+      <div className="rounded-md flex flex-col antialiased bg-transparent dark:bg-grid-white/[0.05] items-center justify-center relative w-full max-w-full overflow-x-hidden">
         <InfiniteMovingCards
           items={testimonials}
           direction="left"

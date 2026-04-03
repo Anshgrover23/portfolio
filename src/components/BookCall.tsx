@@ -21,8 +21,8 @@ export const BookCall = () => {
 
   return (
     <section className="mb-16">
-      <div className="w-full bg-gray-900/50 border border-gray-800 rounded-lg shadow-lg p-8 text-center">
-        <p className="text-gray-300 text-lg mb-6">
+      <div className="w-full bg-gray-900/50 border border-gray-800 rounded-xl shadow-lg px-8 py-12 sm:px-12 sm:py-14 md:py-16 text-center min-h-[220px] sm:min-h-[240px] flex flex-col items-center justify-center">
+        <p className="text-gray-300 text-xl sm:text-2xl font-medium mb-8 max-w-lg mx-auto leading-snug">
           Hey, you scrolled this far, let's talk.
         </p>
         <div className="flex justify-center">

@@ -15,6 +15,11 @@ export interface TestimonialItem {
   username?: string;
 }
 
+/** Only link to a primary source (PR/issue/thread). Never fall back to profile URLs — those hide the testimonial context. */
+function getTestimonialHref(item: TestimonialItem): string | undefined {
+  return item.sourceUrl?.trim() || undefined;
+}
+
 export const InfiniteMovingCards = ({
   items,
   direction = 'left',
@@ -85,7 +90,7 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        'scroller relative z-20 w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]',
+        'scroller relative z-20 w-full max-w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_12%,white_88%,transparent)] sm:[mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]',
         className
       )}
     >
@@ -102,30 +107,34 @@ export const InfiniteMovingCards = ({
             : 'none',
         }}
       >
-        {items.map((item, idx) => (
-          <li
-            className="w-[380px] max-w-full relative rounded-2xl border border-gray-800 bg-gray-900/50 px-8 py-6 md:w-[520px]"
-            style={{
-              background:
-                'linear-gradient(180deg, rgba(17, 24, 39, 0.8) 0%, rgba(17, 24, 39, 0.4) 100%)',
-            }}
-            key={`item-${idx}`}
-          >
-            <blockquote>
+        {items.map((item, idx) => {
+          const href = getTestimonialHref(item);
+          const cardStyle = {
+            background:
+              'linear-gradient(180deg, rgba(17, 24, 39, 0.8) 0%, rgba(17, 24, 39, 0.4) 100%)',
+          } as const;
+          const cardShellClass =
+            'relative rounded-2xl border border-gray-800 bg-gray-900/50 px-5 py-5 sm:px-8 sm:py-6 h-full block text-left no-underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950';
+          const cardHoverClass = href
+            ? 'hover:border-accent/50 hover:bg-gray-900/70 cursor-pointer'
+            : '';
+
+          const body = (
+            <>
               {item.image && (
                 <div className="mb-4 flex items-center gap-3">
                   <img
                     src={item.image}
-                    alt={item.name || 'Testimonial'}
-                    className="h-12 w-12 rounded-full object-cover border-2 border-accent/50"
+                    alt=""
+                    className="h-12 w-12 rounded-full object-cover border-2 border-accent/50 pointer-events-none"
                   />
                   {item.name && (
-                    <div className="flex-1">
-                      <div className="text-sm font-semibold text-white">
+                    <div className="min-w-0 flex-1">
+                      <div className="text-sm font-semibold text-white break-words">
                         {item.name}
                       </div>
                       {item.title && (
-                        <div className="text-xs text-gray-400">
+                        <div className="text-xs text-gray-400 break-words">
                           {item.title}
                         </div>
                       )}
@@ -167,7 +176,6 @@ export const InfiniteMovingCards = ({
                   </span>
                 </div>
               )}
-              {/* Source badge */}
               <div className="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   {item.source === 'twitter' && (
@@ -189,21 +197,47 @@ export const InfiniteMovingCards = ({
                     </>
                   )}
                 </div>
-                {item.sourceUrl && (
-                  <a
-                    href={item.sourceUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-xs text-accent hover:text-accent/80 transition-colors"
-                  >
+                {href && (
+                  <span className="flex items-center gap-1 text-xs text-accent shrink-0">
                     View original
                     <ExternalLink className="h-3 w-3" />
-                  </a>
+                  </span>
                 )}
               </div>
-            </blockquote>
-          </li>
-        ))}
+            </>
+          );
+
+          return (
+            <li
+              className="shrink-0 w-[min(22rem,calc(100vw-2.5rem))] sm:w-[380px] md:w-[520px]"
+              key={`item-${idx}`}
+            >
+              {href ? (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={cardStyle}
+                  className={`${cardShellClass} ${cardHoverClass}`}
+                  aria-label={
+                    item.name
+                      ? `Open testimonial source for ${item.name}`
+                      : 'Open testimonial source'
+                  }
+                >
+                  <blockquote className="m-0">{body}</blockquote>
+                </a>
+              ) : (
+                <div
+                  style={cardStyle}
+                  className={`${cardShellClass} ${cardHoverClass}`}
+                >
+                  <blockquote className="m-0">{body}</blockquote>
+                </div>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
