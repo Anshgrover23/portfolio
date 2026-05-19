@@ -1,12 +1,49 @@
 'use client';
 
+import Image from 'next/image';
+
+const DEVICON =
+  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
+
+const TECH_ICONS = {
+  typescript: `${DEVICON}/typescript/typescript-original.svg`,
+  nextjs: `${DEVICON}/nextjs/nextjs-original.svg`,
+  rust: `${DEVICON}/rust/rust-original.svg`,
+  ruby: `${DEVICON}/ruby/ruby-original.svg`,
+} as const;
+
+function TechMention({
+  name,
+  iconSrc,
+  invert = false,
+}: {
+  name: string;
+  iconSrc: string;
+  invert?: boolean;
+}) {
+  return (
+    <span className="inline-flex items-center gap-1 align-baseline font-medium text-foreground">
+      <Image
+        src={iconSrc}
+        alt=""
+        width={18}
+        height={18}
+        className={`h-[1.05em] w-[1.05em] shrink-0 ${invert ? 'invert' : ''}`}
+        aria-hidden
+      />
+      <span>{name}</span>
+    </span>
+  );
+}
+
 const PROOF_POINTS: { idx: string; body: React.ReactNode }[] = [
   {
     idx: '01',
     body: (
       <>
-        <span className="font-mono tabular-nums text-foreground">$45.9k+</span>{' '}
-        in open source bounties across{' '}
+        Earned more than{' '}
+        <span className="font-mono tabular-nums text-foreground">$45,000</span>{' '}
+        USD in open source bounties across{' '}
         <span className="font-mono tabular-nums text-foreground">8+</span> orgs (
         <a
           href="https://github.com/antiwork"
@@ -34,7 +71,7 @@ const PROOF_POINTS: { idx: string; body: React.ReactNode }[] = [
         >
           Screenpipe
         </a>
-        ).
+        , etc.).
       </>
     ),
   },
@@ -42,16 +79,18 @@ const PROOF_POINTS: { idx: string; body: React.ReactNode }[] = [
     idx: '02',
     body: (
       <>
-        Top 20 in the PR track at Automate Me If You Can (
+        Won the{' '}
         <a
           href="https://drive.google.com/file/d/1idAPCUDdt-lrYPx-Imf3_VaA9164ev6R/view"
           target="_blank"
           rel="noopener noreferrer"
           className="text-foreground underline-offset-4 hover:underline"
         >
-          certificate
-        </a>
-        ).
+          Automate me if u can
+        </a>{' '}
+        hackathon —{' '}
+        <span className="font-mono tabular-nums text-foreground">$3,000</span>{' '}
+        prize pool in the PR category.
       </>
     ),
   },
@@ -69,6 +108,16 @@ const PROOF_POINTS: { idx: string; body: React.ReactNode }[] = [
           Rattler
         </a>
         .
+      </>
+    ),
+  },
+  {
+    idx: '04',
+    body: (
+      <>
+        Invitee under YC Startup School India 2026 — around{' '}
+        <span className="font-mono tabular-nums text-foreground">$25k</span> in
+        credits across different AI tools.
       </>
     ),
   },
@@ -104,12 +153,12 @@ export const About = () => {
             (YC S26) with{' '}
             <span className="font-mono tabular-nums text-foreground">2.5+</span>{' '}
             years shipping production software, focused on{' '}
-            <span className="font-medium text-foreground">TypeScript</span>,
+            <TechMention name="TypeScript" iconSrc={TECH_ICONS.typescript} />{' '}
             testing and release automation, and developer experience. I ship in{' '}
-            <span className="font-medium text-foreground">Next.js</span>,{' '}
-            <span className="font-medium text-foreground">Rust</span>, and{' '}
-            <span className="font-medium text-foreground">Ruby</span> across
-            product teams and bounty programs.
+            <TechMention name="Next.js" iconSrc={TECH_ICONS.nextjs} invert />{' '}
+            <TechMention name="Rust" iconSrc={TECH_ICONS.rust} /> and{' '}
+            <TechMention name="Ruby" iconSrc={TECH_ICONS.ruby} /> across product
+            teams and bounty programs.
           </p>
           <p className="text-pretty">
             Alongside Screenpipe, my public track record includes{' '}

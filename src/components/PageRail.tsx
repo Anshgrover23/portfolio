@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 type RailLink = { id: string; label: string };
 
 const SECTIONS: RailLink[] = [
-  { id: 'about', label: 'Positioning' },
+  { id: 'about', label: 'History' },
   { id: 'experience', label: 'Experience' },
   { id: 'testimonials', label: 'Testimonials' },
   { id: 'blog', label: 'Writing' },

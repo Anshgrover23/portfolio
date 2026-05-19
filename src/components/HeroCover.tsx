@@ -124,9 +124,8 @@ export function HeroCover() {
                       rel="noopener noreferrer"
                       className="font-medium text-foreground decoration-accent decoration-2 underline-offset-[5px] hover:underline"
                     >
-                      Screenpipe
-                    </a>{' '}
-                    (YC&nbsp;S26)
+                      Screenpipe&nbsp;|&nbsp;YC&nbsp;S26
+                    </a>
                   </span>
                 </li>
                 <li className="flex gap-3">
