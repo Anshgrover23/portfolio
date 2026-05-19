@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 import { notFound } from 'next/navigation';
-import { Navigation } from '@/components/Navigation';
 import { getBlogPost } from '@/data/blogPosts';
 import ShareButton from '@/components/ShareButton';
 import BlogSocials from '@/components/BlogSocials';
@@ -49,15 +48,11 @@ export default async function BlogPostPage({
   const blocks = parseMarkdownIntoBlocks(post.content);
 
   return (
-    <div className="min-h-screen text-gray-100">
-      <div className="mb-10">
-        <Navigation />
-      </div>
-
-      <main className="mx-auto max-w-3xl px-6 pt-3 pb-12 md:py-16">
+    <div className="min-h-screen bg-background text-foreground">
+      <main className="mx-auto max-w-3xl px-6 pb-12 pt-8 md:py-14 md:pt-10">
         <Link
           href="/blog"
-          className="mb-8 inline-flex items-center gap-2 text-sm text-gray-400 hover:text-cyan-400 transition-colors"
+          className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-accent"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to all posts
@@ -68,20 +63,20 @@ export default async function BlogPostPage({
             {post.tags.map(tag => (
               <span
                 key={tag}
-                className="rounded-full bg-cyan-400/10 px-4 py-1.5 text-sm font-medium text-cyan-400 border border-cyan-400/20"
+                className="rounded-md border border-line bg-muted px-3 py-1 font-mono text-xs font-medium uppercase tracking-wide text-foreground"
               >
                 {tag}
               </span>
             ))}
           </div>
-          <h1 className="mb-6 text-4xl sm:text-5xl font-bold tracking-tight text-balance leading-tight">
+          <h1 className="font-display mb-6 text-balance text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
             {post.title}
           </h1>
-          <p className="mb-8 text-xl text-gray-400 leading-relaxed">
+          <p className="mb-8 text-xl leading-relaxed text-muted-foreground">
             {post.excerpt}
           </p>
-          <div className="flex items-center justify-between border-t border-b border-gray-800/50 py-6 my-8">
-            <div className="flex items-center gap-6 text-sm text-gray-400">
+          <div className="my-8 flex items-center justify-between border-y border-line py-6">
+            <div className="flex items-center gap-6 font-mono text-sm text-muted-foreground">
               <span className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
                 {post.date}
@@ -95,8 +90,8 @@ export default async function BlogPostPage({
           </div>
         </header>
 
-        <article className="prose prose-invert prose-lg max-w-none">
-          <div className="space-y-6 text-gray-300 leading-relaxed">
+        <article className="prose prose-neutral max-w-none prose-lg">
+          <div className="space-y-6 leading-relaxed text-muted-foreground">
             {blocks.map((block: ParsedBlock, index: number) => (
               <MarkdownBlogBlock block={block} key={`block-${index}`} />
             ))}

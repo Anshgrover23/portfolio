@@ -12,7 +12,7 @@ export default function BlogSocials({
         href="https://github.com/Anshgrover23"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-muted-foreground hover:text-white transition-colors"
+        className="text-muted-foreground transition-colors hover:text-foreground"
         aria-label="GitHub"
       >
         <svg
@@ -32,7 +32,7 @@ export default function BlogSocials({
         href="https://twitter.com/Anshgrover23"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-muted-foreground hover:text-white transition-colors"
+        className="text-muted-foreground transition-colors hover:text-foreground"
         aria-label="X (Twitter)"
       >
         <svg
@@ -48,7 +48,7 @@ export default function BlogSocials({
         href="https://linkedin.com/in/anshgrover23"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-muted-foreground hover:text-white transition-colors"
+        className="text-muted-foreground transition-colors hover:text-foreground"
         aria-label="LinkedIn"
       >
         <svg

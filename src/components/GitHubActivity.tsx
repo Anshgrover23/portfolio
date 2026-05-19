@@ -56,7 +56,7 @@ async function fetchContributions(): Promise<ContributionResult> {
   if (!githubToken) {
     return {
       error:
-        'Missing GitHub API token. Set GRAPHQL_TOKEN in your environment to enable the activity graph.',
+        'Contribution graph is optional. Add GRAPHQL_TOKEN to your server environment to load live GitHub data.',
     };
   }
 
@@ -83,7 +83,7 @@ async function fetchContributions(): Promise<ContributionResult> {
 
   if (!response.ok) {
     return {
-      error: `Failed to fetch contributions from GitHub (status ${response.status}).`,
+      error: `GitHub returned HTTP ${response.status}. The graph stays hidden until the request succeeds.`,
     };
   }
 
@@ -105,7 +105,7 @@ async function fetchContributions(): Promise<ContributionResult> {
 
   if (!calendar) {
     return {
-      error: 'GitHub response did not contain contribution data.',
+      error: 'GitHub did not return contribution calendar data for this user.',
     };
   }
 
@@ -144,12 +144,32 @@ export async function GitHubActivity() {
 
   if ('error' in result) {
     return (
-      <section className="mb-16 rounded-xl border border-white/10 bg-gray-950/80 p-4 md:p-8 text-gray-300">
-        <div className="flex items-center gap-3 text-white">
-          <CalendarDays className="h-6 w-6 md:h-7 md:w-7 text-accent" />
-          <h3 className="text-xl md:text-2xl font-semibold">GitHub Activity</h3>
+      <section
+        className="mb-16 md:mb-20"
+        aria-labelledby="github-activity-heading"
+      >
+        <div className="border-t border-line/80 pt-6">
+          <div className="flex items-start gap-3">
+            <CalendarDays
+              className="mt-0.5 h-5 w-5 shrink-0 text-accent"
+              strokeWidth={1.5}
+            />
+            <div className="min-w-0">
+              <h3
+                id="github-activity-heading"
+                className="font-display text-lg font-semibold tracking-tight text-foreground md:text-xl"
+              >
+                GitHub activity
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {result.error}
+              </p>
+              <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-muted-foreground">
+                Optional · the block stays minimal without a token.
+              </p>
+            </div>
+          </div>
         </div>
-        <p className="mt-4 text-sm text-gray-400">{result.error}</p>
       </section>
     );
   }
@@ -159,26 +179,42 @@ export async function GitHubActivity() {
   const dateRangeLabel = formatDateRange(from, to);
 
   return (
-    <section className="mb-16 rounded-xl border border-white/10 bg-gray-950/80 p-4 md:p-8">
-      <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-        <div className="flex items-center gap-3">
-          <CalendarDays className="h-6 w-6 md:h-7 md:w-7 text-accent" />
+    <section
+      className="mb-16 md:mb-20"
+      aria-labelledby="github-activity-heading"
+    >
+      <div className="flex flex-col gap-3 border-t border-line/80 pt-6 md:flex-row md:items-end md:justify-between">
+        <div className="flex items-start gap-3">
+          <CalendarDays
+            className="mt-1 h-5 w-5 shrink-0 text-accent"
+            strokeWidth={1.5}
+          />
           <div>
-            <h3 className="text-xl md:text-2xl font-semibold text-white">
-              GitHub Activity
+            <h3
+              id="github-activity-heading"
+              className="font-display text-xl font-semibold tracking-tight text-foreground md:text-2xl"
+            >
+              GitHub activity
             </h3>
-            <p className="text-sm text-gray-400">
-              {calendar.totalContributions.toLocaleString()} contributions in
-              the last year · {dateRangeLabel}
+            <p className="mt-1 text-sm text-muted-foreground">
+              <span className="font-mono tabular-nums text-foreground">
+                {calendar.totalContributions.toLocaleString()}
+              </span>{' '}
+              contributions in the last year · {dateRangeLabel}
             </p>
           </div>
         </div>
-        <div className="rounded-full border border-white/10 px-3 md:px-4 py-1 text-xs uppercase tracking-wider text-gray-400">
-          @{username}
-        </div>
+        <a
+          href={`https://github.com/${username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 self-start font-mono text-[11px] uppercase tracking-meta text-muted-foreground transition-colors hover:text-foreground md:self-end"
+        >
+          @{username} ↗
+        </a>
       </div>
 
-      <div className="mt-4 md:mt-6 overflow-x-auto">
+      <div className="mt-6 overflow-x-auto rounded-md border border-line/80 bg-canvas-muted/60 p-2">
         <div
           className="grid gap-1"
           style={{
@@ -192,7 +228,7 @@ export async function GitHubActivity() {
                 key={`${weekIndex}-${day.date}`}
                 className="rounded-[2px]"
                 style={{
-                  backgroundColor: day.color || 'rgba(255,255,255,0.08)',
+                  backgroundColor: day.color || 'hsl(var(--muted))',
                   gridColumn: weekIndex + 1,
                   gridRow: dayIndex + 1,
                 }}
@@ -205,15 +241,13 @@ export async function GitHubActivity() {
         </div>
       </div>
 
-      <div className="mt-4 md:mt-6 flex flex-col gap-3 text-sm text-gray-400 md:flex-row md:items-center md:justify-between">
-        <div className="flex items-center gap-2 md:gap-3">
+      <div className="mt-4 flex flex-col gap-2 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-wrap items-center gap-2">
           <span>Less</span>
-          <div className="flex items-center gap-1">
-            {buildLegend(calendar.weeks)}
-          </div>
+          <div className="flex items-center gap-1">{buildLegend(calendar.weeks)}</div>
           <span>More</span>
         </div>
-        <p className="text-xs uppercase tracking-widest text-gray-500">
+        <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
           {Math.round(
             (calendar.totalContributions / Math.max(totalDays, 1)) * 100
           ) / 100}{' '}
@@ -261,11 +295,11 @@ function selectLegendColors(weeks: ContributionWeek[]) {
   }
 
   const fallback = [
-    'rgba(255,255,255,0.08)',
-    'rgba(39,55,77,0.4)',
-    'rgba(51,153,102,0.6)',
-    'rgba(64,192,128,0.75)',
-    'rgba(72,232,152,0.9)',
+    'hsl(var(--muted))',
+    'hsl(172 18% 78%)',
+    'hsl(172 22% 58%)',
+    'hsl(172 24% 44%)',
+    'hsl(172 26% 32%)',
   ];
 
   if (sorted.length === 0) {

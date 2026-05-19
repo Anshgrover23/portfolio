@@ -19,22 +19,37 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: [
-          'var(--font-inter)',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          'Segoe UI',
-          'Roboto',
-          'Oxygen',
-          'Ubuntu',
-          'Cantarell',
-          'Fira Sans',
-          'Droid Sans',
-          'Helvetica Neue',
-          'sans-serif',
-        ],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'ui-serif', 'Georgia', 'serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
+      },
+      letterSpacing: {
+        display: '-0.03em',
+        'display-tight': '-0.04em',
+        meta: '0.06em',
+      },
+      lineHeight: {
+        display: '1.1',
+        prose: '1.65',
       },
       colors: {
+        canvas: {
+          DEFAULT: '#FAF6EE',
+          muted: '#F1EBDC',
+        },
+        ink: {
+          DEFAULT: '#181410',
+          muted: '#6B6555',
+        },
+        line: '#E6DFCE',
+        /* "Ember" — pale rust beige + deep rust ink. Replaces the timid
+         * teal pill the old portfolio used. */
+        spot: {
+          teal: '#F4E5D4',
+          'teal-fg': '#7A2F12',
+          ember: '#F4E5D4',
+          'ember-fg': '#7A2F12',
+        },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

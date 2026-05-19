@@ -139,17 +139,17 @@ export const Chatbot = () => {
               </div>
               <div className="flex-1">
                 <p className="text-sm font-semibold text-gray-900 mb-1">
-                  Ansh is here!
+                  Ask about my work
                 </p>
                 <p className="text-xs text-gray-600 mb-3">
-                  Want to chat? I'm available to answer questions about my work
-                  and experience.
+                  Screenpipe, OSS, contracts — answers from this site, not a
+                  sales script.
                 </p>
                 <button
                   onClick={handleOpenChat}
                   className="w-full bg-gray-900 text-white hover:bg-gray-800 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                 >
-                  Start Chat
+                  Open chat
                 </button>
               </div>
             </div>

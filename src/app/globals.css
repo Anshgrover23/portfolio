@@ -2,104 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Warm bone canvas, near-black warm ink, single rust accent.
+     * Pulled from print-editorial / warm Solarized — not AI purple.
+     */
+    --background: 38 32% 96%;
+    --foreground: 28 18% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 28 18% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 28 18% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 28 18% 10%;
+    --primary-foreground: 38 32% 96%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 38 22% 92%;
+    --secondary-foreground: 28 18% 10%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 38 18% 92%;
+    --muted-foreground: 28 10% 38%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 15 68% 44%;
+    --accent-foreground: 38 32% 96%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 38 32% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 38 18% 86%;
+    --input: 38 18% 86%;
+    --ring: 15 68% 44%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    --canvas-subtle: 38 24% 94%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 38 32% 96%;
+    --sidebar-foreground: 28 18% 10%;
+    --sidebar-primary: 15 68% 44%;
+    --sidebar-primary-foreground: 38 32% 96%;
+    --sidebar-accent: 38 22% 92%;
+    --sidebar-accent-foreground: 28 18% 10%;
+    --sidebar-border: 38 18% 86%;
+    --sidebar-ring: 15 68% 44%;
   }
 
   .dark {
-    --background: 230 36% 12%; /* #11172a */
-    --foreground: 220 28% 90%; /* #dfe5ec */
-
-    --card: 224 25% 15%; /* #1a2233 */
-    --card-foreground: 220 28% 90%; /* #dfe5ec */
-
-    --popover: 224 25% 15%; /* #1a2233 */
-    --popover-foreground: 220 28% 90%; /* #dfe5ec */
-
-    --primary: 174 27% 48%; /* #599692 */
-    --primary-foreground: 220 28% 90%; /* #dfe5ec */
-
-    --secondary: 215 10% 40%; /* #626c7d */
-    --secondary-foreground: 220 28% 90%; /* #dfe5ec */
-
-    --muted: 215 10% 40%; /* #626c7d */
-    --muted-foreground: 220 15% 60%; /* softer gray */
-
-    --accent: 207 69% 58%; /* #4A90E2 */
-    --accent-foreground: 220 28% 90%; /* #dfe5ec */
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 220 28% 90%;
-
-    --border: 220 28% 16%; /* #222b3a */
-    --input: 220 28% 16%;
-    --ring: 207 69% 58%; /* #4A90E2 */
-    --sidebar-background: 230 36% 12%;
-    --sidebar-foreground: 220 28% 90%;
-    --sidebar-primary: 174 27% 48%;
-    --sidebar-primary-foreground: 220 28% 90%;
-    --sidebar-accent: 207 69% 58%;
-    --sidebar-accent-foreground: 220 28% 90%;
-    --sidebar-border: 220 28% 16%;
-    --sidebar-ring: 207 69% 58%;
+    --background: 28 10% 7%;
+    --foreground: 38 28% 92%;
+    --card: 28 10% 9%;
+    --card-foreground: 38 28% 92%;
+    --popover: 28 10% 9%;
+    --popover-foreground: 38 28% 92%;
+    --primary: 38 28% 92%;
+    --primary-foreground: 28 10% 7%;
+    --secondary: 28 8% 14%;
+    --secondary-foreground: 38 28% 92%;
+    --muted: 28 8% 14%;
+    --muted-foreground: 38 12% 62%;
+    --accent: 15 70% 52%;
+    --accent-foreground: 28 10% 7%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 38 28% 92%;
+    --border: 28 8% 18%;
+    --input: 28 8% 18%;
+    --ring: 15 70% 52%;
+    --sidebar-background: 28 10% 7%;
+    --sidebar-foreground: 38 28% 92%;
+    --sidebar-primary: 15 70% 52%;
+    --sidebar-primary-foreground: 28 10% 7%;
+    --sidebar-accent: 28 8% 14%;
+    --sidebar-accent-foreground: 38 28% 92%;
+    --sidebar-border: 28 8% 18%;
+    --sidebar-ring: 15 70% 52%;
   }
 }
 
 @layer base {
   html {
     font-size: 100%;
+    scroll-padding-top: 4rem;
   }
 
   @media (min-width: 1024px) {
     html {
-      font-size: 90%;
+      font-size: 95%;
     }
   }
 
@@ -108,78 +97,96 @@
   }
 
   body {
-    @apply bg-black text-white;
-    font-family:
-      var(--font-inter),
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      'Roboto',
-      'Oxygen',
-      'Ubuntu',
-      'Cantarell',
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-      sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
-}
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.06;
+    text-wrap: balance;
+    /* Fraunces optical-size axis cue — large display glyphs */
+    font-variation-settings: 'opsz' 144, 'SOFT' 50;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  h3,
+  h4 {
+    font-variation-settings: 'opsz' 36, 'SOFT' 60;
+    letter-spacing: -0.018em;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(--font-mono), ui-monospace, monospace;
+  }
+
+  ::selection {
+    background-color: hsl(15 68% 44% / 0.18);
+    color: hsl(28 18% 10%);
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-@keyframes scroll {
-  to {
-    transform: translate(calc(-50% - 0.5rem));
+@layer components {
+  .type-display {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    font-variation-settings: 'opsz' 144, 'SOFT' 50;
   }
-}
 
-.animate-scroll {
-  animation: scroll var(--animation-duration, 40s)
-    var(--animation-direction, forwards) linear infinite;
+  /* Editorial italic numerals, à la print magazine section markers */
+  .type-numeral {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: 'opsz' 36, 'SOFT' 80;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+
+  .type-meta {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .type-body-lg {
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+  }
+
+  /* Atmospheric paper grain — a fixed full-bleed noise layer.
+   * SVG turbulence rendered to a data URL, no JS, no extra GPU cost
+   * because it never scrolls (we sit it on a fixed pseudo-element).
+   */
+  .paper-grain::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0 0.03  0 0 0 0.9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
 }
 
 /* Hide scrollbar but keep content scrollable */
@@ -189,4 +196,85 @@
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Quiet section entry: opacity + translate only; respects reduced motion */
+@keyframes section-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-rise {
+  animation: section-rise 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.section-rise-delayed {
+  animation-delay: 90ms;
+}
+
+/* Staggered hero load. Each direct child fades in after the previous,
+ * driven by --i set inline. Pure CSS, no JS scroll listeners.
+ */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.hero-stagger > * {
+  --i: 0;
+  opacity: 0;
+  animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--i) * 90ms);
+}
+
+/* Single-line marquee for the status strip in the rail */
+@keyframes status-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.55;
+  }
+}
+
+.status-dot {
+  position: relative;
+}
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  background: currentColor;
+  animation: status-pulse 2.4s ease-in-out infinite;
+  opacity: 0.25;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-rise,
+  .section-rise-delayed,
+  .hero-stagger > *,
+  .status-dot::after {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }

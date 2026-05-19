@@ -1,7 +1,6 @@
 'use client';
 
-import { InfiniteMovingCards } from './InfiniteMovingCards';
-import { MessageSquare } from 'lucide-react';
+import { QuoteTestimonial } from './QuoteTestimonial';
 
 export interface TestimonialItem {
   quote?: string;
@@ -20,19 +19,30 @@ interface TestimonialsProps {
 
 export const Testimonials = ({ testimonials = [] }: TestimonialsProps) => {
   return (
-    <section id="testimonials" className="mb-16">
-      <h2 className="text-3xl font-bold mb-8 text-white flex items-center gap-3">
-        <MessageSquare className="h-8 w-8 text-accent" />
-        Testimonials
-      </h2>
-      <div className="rounded-md flex flex-col antialiased bg-transparent dark:bg-grid-white/[0.05] items-center justify-center relative w-full max-w-full overflow-x-hidden">
-        <InfiniteMovingCards
-          items={testimonials}
-          direction="left"
-          speed="normal"
-          pauseOnHover={true}
-        />
+    <section
+      className="mb-16 md:mb-20 section-rise section-rise-delayed"
+      aria-labelledby="testimonials-heading"
+    >
+      <div className="mb-10 flex items-baseline gap-4">
+        <span className="type-numeral shrink-0 text-[1.6rem] text-accent">
+          02
+        </span>
+        <div className="min-w-0 flex-1">
+          <h2
+            id="testimonials-heading"
+            className="font-display flex items-baseline gap-3 text-[1.875rem] font-bold tracking-tight text-foreground md:text-[2.5rem]"
+            style={{ letterSpacing: '-0.03em' }}
+          >
+            Testimonials
+            <span className="block h-px flex-1 self-center bg-foreground/15" />
+          </h2>
+          <p className="mt-3 max-w-prose text-sm text-muted-foreground">
+            Maintainer notes and thread excerpts — sourced when the conversation
+            is public.
+          </p>
+        </div>
       </div>
+      <QuoteTestimonial items={testimonials} />
     </section>
   );
 };
