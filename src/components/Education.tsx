@@ -27,10 +27,6 @@ export const Education = () => {
             <p className="font-display mt-1 text-base italic font-light text-accent">
               B.Tech, Artificial Intelligence
             </p>
-            <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">
-              Coursework around machine learning, systems, and discrete math —
-              running parallel to full-time engineering work.
-            </p>
           </div>
           <time className="self-start whitespace-nowrap font-mono text-xs text-muted-foreground tabular-nums sm:self-baseline">
             Aug 2023 – May 2027{' '}

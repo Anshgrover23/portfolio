@@ -7,7 +7,8 @@ import { Skills } from '@/components/Skills';
 import { Testimonials } from '@/components/Testimonials';
 import { BookCall } from '@/components/BookCall';
 import { AnimatedSocialLinks } from '@/components/AnimatedSocialLinks';
-import { GitHubActivity } from '@/components/GitHubActivity';
+// dead code — re-enable when GRAPHQL_TOKEN works
+// import { GitHubActivity } from '@/components/GitHubActivity';
 import { Chatbot } from '@/components/Chatbot';
 import { SiteFooter } from '@/components/SiteFooter';
 import { PageRail } from '@/components/PageRail';
@@ -54,7 +55,8 @@ function Index() {
             <div id="blog" className="scroll-mt-6 md:scroll-mt-8">
               <BlogHomeList />
             </div>
-            <GitHubActivity />
+            {/* dead code — re-enable when GRAPHQL_TOKEN works */}
+            {/* <GitHubActivity /> */}
             <div id="education" className="scroll-mt-6 md:scroll-mt-8">
               <Education />
             </div>

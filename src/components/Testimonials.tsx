@@ -34,7 +34,6 @@ export const Testimonials = ({ testimonials = [] }: TestimonialsProps) => {
             style={{ letterSpacing: '-0.03em' }}
           >
             Testimonials
-            <span className="block h-px flex-1 self-center bg-foreground/15" />
           </h2>
           <p className="mt-3 max-w-prose text-sm text-muted-foreground">
             What founders and engineers I&apos;ve worked with say — in their

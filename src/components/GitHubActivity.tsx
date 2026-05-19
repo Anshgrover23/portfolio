@@ -15,6 +15,8 @@ type ContributionCalendar = {
   weeks: ContributionWeek[];
 };
 
+const USER_FACING_ERROR = 'general error 404';
+
 type ContributionResult =
   | {
       calendar: ContributionCalendar;
@@ -24,7 +26,7 @@ type ContributionResult =
       to: string;
     }
   | {
-      error: string;
+      error: true;
     };
 
 const GITHUB_GRAPHQL_ENDPOINT = 'https://api.github.com/graphql';
@@ -54,10 +56,7 @@ async function fetchContributions(): Promise<ContributionResult> {
   const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME || DEFAULT_USERNAME;
 
   if (!githubToken) {
-    return {
-      error:
-        'Contribution graph is optional. Add GRAPHQL_TOKEN to your server environment to load live GitHub data.',
-    };
+    return { error: true };
   }
 
   const to = new Date();
@@ -82,31 +81,20 @@ async function fetchContributions(): Promise<ContributionResult> {
   });
 
   if (!response.ok) {
-    return {
-      error: `GitHub returned HTTP ${response.status}. The graph stays hidden until the request succeeds.`,
-    };
+    return { error: true };
   }
 
   const payload = await response.json();
 
   if (payload.errors) {
-    return {
-      error: payload.errors
-        .map(
-          (item: { message?: string }) =>
-            item?.message ?? 'Unknown GitHub API error'
-        )
-        .join(', '),
-    };
+    return { error: true };
   }
 
   const calendar: ContributionCalendar | undefined =
     payload?.data?.user?.contributionsCollection?.contributionCalendar;
 
   if (!calendar) {
-    return {
-      error: 'GitHub did not return contribution calendar data for this user.',
-    };
+    return { error: true };
   }
 
   const totalDays = calendar.weeks.reduce(
@@ -162,10 +150,7 @@ export async function GitHubActivity() {
                 GitHub activity
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {result.error}
-              </p>
-              <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-muted-foreground">
-                Optional · the block stays minimal without a token.
+                {USER_FACING_ERROR}
               </p>
             </div>
           </div>
