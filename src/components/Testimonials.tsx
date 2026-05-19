@@ -25,7 +25,7 @@ export const Testimonials = ({ testimonials = [] }: TestimonialsProps) => {
     >
       <div className="mb-10 flex items-baseline gap-4">
         <span className="type-numeral shrink-0 text-[1.6rem] text-accent">
-          02
+          03
         </span>
         <div className="min-w-0 flex-1">
           <h2
@@ -37,8 +37,8 @@ export const Testimonials = ({ testimonials = [] }: TestimonialsProps) => {
             <span className="block h-px flex-1 self-center bg-foreground/15" />
           </h2>
           <p className="mt-3 max-w-prose text-sm text-muted-foreground">
-            Maintainer notes and thread excerpts — sourced when the conversation
-            is public.
+            What founders and engineers I&apos;ve worked with say — in their
+            words, not mine.
           </p>
         </div>
       </div>

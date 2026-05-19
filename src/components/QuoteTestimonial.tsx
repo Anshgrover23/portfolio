@@ -7,6 +7,7 @@
 
 import {
   AnimatePresence,
+  LayoutGroup,
   MotionConfig,
   motion,
   type Variants,
@@ -27,56 +28,51 @@ const caveat = Caveat({
 /** v2: prior key often hid cue forever; bump so layout fixes show again */
 const PILL_SKETCH_STORAGE = 'testimonial-pill-sketch-dismissed-v2';
 
-/** Editorial motion — slower than default so changes feel intentional, not instant */
+/** Snappy editorial motion — ~250ms quote, spring pill ~320ms settle */
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 const EASE_IN_OUT = [0.45, 0, 0.55, 1] as const;
-const QUOTE_ENTER = 0.72;
-const QUOTE_EXIT = 0.52;
-const META_ENTER = 0.58;
-const META_EXIT = 0.42;
-const META_DELAY = 0.14;
-const PILL_DURATION = 0.48;
+const QUOTE_CROSSFADE = 0.26;
+const META_CROSSFADE = 0.22;
+const META_DELAY = 0.03;
+const PILL_SPRING = { type: 'spring' as const, stiffness: 580, damping: 34, mass: 0.62 };
+const LAYOUT_SPRING = { type: 'spring' as const, stiffness: 620, damping: 36, mass: 0.58 };
+const NAME_SPRING = { type: 'spring' as const, stiffness: 520, damping: 32, mass: 0.55 };
 
 const quoteVariants: Variants = {
   initial: {
     opacity: 0,
-    filter: 'blur(12px)',
-    scale: 0.94,
-    y: 18,
+    filter: 'blur(4px)',
+    y: 6,
   },
   animate: {
     opacity: 1,
     filter: 'blur(0px)',
-    scale: 1,
     y: 0,
-    transition: { duration: QUOTE_ENTER, ease: EASE_OUT },
+    transition: { duration: QUOTE_CROSSFADE, ease: EASE_OUT },
   },
   exit: {
     opacity: 0,
-    filter: 'blur(10px)',
-    scale: 0.96,
-    y: -14,
-    transition: { duration: QUOTE_EXIT, ease: EASE_IN_OUT },
+    filter: 'blur(3px)',
+    y: -5,
+    transition: { duration: QUOTE_CROSSFADE * 0.75, ease: EASE_IN_OUT },
   },
 };
 
 const metaVariants: Variants = {
-  initial: { opacity: 0, y: 10, filter: 'blur(6px)' },
+  initial: { opacity: 0, y: 5 },
   animate: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: {
-      duration: META_ENTER,
+      duration: META_CROSSFADE,
       delay: META_DELAY,
       ease: EASE_OUT,
     },
   },
   exit: {
     opacity: 0,
-    y: -6,
-    filter: 'blur(4px)',
-    transition: { duration: META_EXIT, ease: EASE_IN_OUT },
+    y: -4,
+    transition: { duration: META_CROSSFADE * 0.75, ease: EASE_IN_OUT },
   },
 };
 
@@ -163,9 +159,23 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
 
   const activeIndexRef = useRef(safeIndex);
   const wheelZoneRef = useRef<HTMLDivElement>(null);
+  const avatarRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const skipInitialScrollRef = useRef(true);
 
   useEffect(() => {
     activeIndexRef.current = safeIndex;
+  }, [safeIndex]);
+
+  useEffect(() => {
+    if (skipInitialScrollRef.current) {
+      skipInitialScrollRef.current = false;
+      return;
+    }
+    avatarRefs.current[safeIndex]?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center',
+    });
   }, [safeIndex]);
 
   /** Scroll / trackpad over this block cycles quotes (page still scrolls at ends). */
@@ -224,7 +234,7 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
         <div className="flex w-full max-w-none flex-col items-center gap-8 md:gap-9">
           {/* Marks are positioned inside this box so they sit near the quote, not at viewport edges */}
           <div className="flex min-h-[7rem] w-full justify-center px-2 pt-1 md:min-h-[8rem] md:px-4">
-            <div className="relative w-full max-w-[min(100%,34rem)] sm:max-w-[38rem] md:max-w-[42rem] px-10 sm:px-12 md:px-14">
+            <div className="relative w-full max-w-[min(100%,34rem)] px-10 sm:max-w-[38rem] sm:px-12 md:max-w-[42rem] md:px-14">
               <motion.span
                 key={`open-${safeIndex}`}
                 className="pointer-events-none absolute left-1 top-0 select-none font-serif leading-none text-foreground/[0.18] sm:left-2"
@@ -234,22 +244,24 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
                 aria-hidden
                 initial={{ opacity: 0.35, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: QUOTE_ENTER * 0.85, ease: EASE_OUT }}
+                transition={{ duration: QUOTE_CROSSFADE * 0.85, ease: EASE_OUT }}
               >
                 &ldquo;
               </motion.span>
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={safeIndex}
-                  variants={quoteVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  className="font-display relative z-[1] m-0 w-full px-1 text-center text-[1.65rem] font-light leading-snug tracking-tight text-foreground will-change-[opacity,filter,transform] sm:px-2 sm:text-3xl md:text-[clamp(1.875rem,2.75vw,2.5rem)] md:leading-[1.42]"
-                >
-                  {active.quote}
-                </motion.p>
-              </AnimatePresence>
+              <div className="relative min-h-[5.5rem] w-full sm:min-h-[6rem] md:min-h-[6.5rem]">
+                <AnimatePresence mode="sync" initial={false}>
+                  <motion.p
+                    key={safeIndex}
+                    variants={quoteVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    className="font-display absolute inset-x-0 top-0 z-[1] m-0 w-full px-1 text-center text-[1.65rem] font-light leading-snug tracking-tight text-foreground will-change-[opacity,filter,transform] sm:px-2 sm:text-3xl md:text-[clamp(1.875rem,2.75vw,2.5rem)] md:leading-[1.42]"
+                  >
+                    {active.quote}
+                  </motion.p>
+                </AnimatePresence>
+              </div>
               <motion.span
                 key={`close-${safeIndex}`}
                 className="pointer-events-none absolute bottom-0 right-1 select-none font-serif leading-none text-foreground/[0.18] sm:right-2"
@@ -260,7 +272,7 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
                 initial={{ opacity: 0.35, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{
-                  duration: QUOTE_ENTER * 0.85,
+                  duration: QUOTE_CROSSFADE * 0.85,
                   delay: META_DELAY * 0.5,
                   ease: EASE_OUT,
                 }}
@@ -271,15 +283,15 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
           </div>
 
           <div className="flex w-full flex-col items-center gap-6">
-            <div className="flex min-h-[4.25rem] w-full flex-col items-center justify-center gap-2 text-center">
-              <AnimatePresence mode="wait">
+            <div className="relative flex min-h-[4.25rem] w-full flex-col items-center justify-center text-center">
+              <AnimatePresence mode="sync" initial={false}>
                 <motion.div
                   key={`meta-${safeIndex}`}
                   variants={metaVariants}
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="flex flex-col items-center gap-3 text-center will-change-[opacity,filter,transform]"
+                  className="absolute inset-x-0 top-0 flex flex-col items-center gap-3 text-center will-change-[opacity,filter,transform]"
                 >
                   {active.role ? (
                     <p className="m-0 w-full max-w-none px-2 text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground md:px-4">
@@ -366,11 +378,13 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
               ) : null}
               <div
                 className={cn(
-                  'relative z-20 flex w-full max-w-full flex-nowrap items-center justify-center gap-3 overflow-x-auto overscroll-x-contain px-2 pb-1 sm:px-4',
+                  'relative z-20 flex w-full max-w-full flex-nowrap items-center justify-center gap-3 overflow-x-auto overscroll-x-contain py-2',
+                  'scroll-px-6 px-6 sm:scroll-px-8 sm:px-8',
                   '[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden',
                   'sm:gap-4 md:gap-5'
                 )}
               >
+              <LayoutGroup id="testimonial-avatars">
               {slides.map((t, index) => {
                 const isActive = safeIndex === index;
                 const isHovered = hoveredIndex === index && !isActive;
@@ -379,8 +393,11 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
                 return (
                   <motion.button
                     key={`quote-slide-${index}`}
+                    ref={(node) => {
+                      avatarRefs.current[index] = node;
+                    }}
                     type="button"
-                    layout={false}
+                    layout
                     aria-pressed={isActive}
                     aria-label={`Show testimonial from ${t.author}`}
                     onMouseDown={(e) => {
@@ -394,27 +411,35 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                     style={{ zIndex: isActive ? 30 : isHovered ? 20 : 10 }}
-                    className="relative isolate flex shrink-0 cursor-pointer touch-manipulation select-none items-center gap-0 overflow-hidden rounded-full border-0 bg-transparent p-0 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                    animate={{
-                      backgroundColor: isActive
-                        ? 'hsl(var(--foreground))'
-                        : isHovered
-                          ? 'hsl(var(--muted))'
-                          : 'transparent',
-                      paddingLeft: showName ? 12 : 10,
-                      paddingRight: showName ? 22 : 10,
-                      paddingTop: 10,
-                      paddingBottom: 10,
-                      boxShadow: isActive
-                        ? '0 10px 15px -3px rgba(47, 52, 55, 0.12), 0 4px 6px -2px rgba(47, 52, 55, 0.06)'
-                        : '0 0 0 0 rgba(0,0,0,0)',
-                    }}
-                    transition={{
-                      duration: PILL_DURATION,
-                      ease: EASE_OUT,
-                    }}
+                    transition={{ layout: LAYOUT_SPRING }}
+                    className={cn(
+                      'relative isolate flex shrink-0 cursor-pointer touch-manipulation select-none items-center overflow-visible rounded-full border-0 bg-transparent outline-none',
+                      'p-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent/70',
+                      isActive && showName && 'pr-4'
+                    )}
                   >
-                  <div className="relative shrink-0">
+                    {isActive ? (
+                      <motion.div
+                        layoutId="testimonial-active-pill"
+                        className="absolute inset-0 rounded-full bg-foreground shadow-[0_10px_15px_-3px_rgba(47,52,55,0.12),0_4px_6px_-2px_rgba(47,52,55,0.06)]"
+                        transition={PILL_SPRING}
+                      />
+                    ) : null}
+                    {isHovered ? (
+                      <motion.div
+                        className="absolute inset-0 rounded-full bg-muted"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.14, ease: EASE_OUT }}
+                      />
+                    ) : null}
+                  <span
+                    className={cn(
+                      'relative z-10 flex items-center',
+                      showName ? 'w-max' : 'min-w-0'
+                    )}
+                  >
                     {t.avatar ? (
                       <div
                         className="relative shrink-0 overflow-hidden rounded-full"
@@ -432,7 +457,7 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
                           width={AVATAR}
                           height={AVATAR}
                           draggable={false}
-                          className="rounded-full object-cover pointer-events-none"
+                          className="pointer-events-none rounded-full object-cover"
                           style={{ width: AVATAR_PX, height: AVATAR_PX }}
                           sizes={`${AVATAR}px`}
                         />
@@ -446,22 +471,31 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
                         {t.author.slice(0, 1)}
                       </div>
                     )}
-                    </div>
-                    {showName ? (
-                      <span
-                        className={cn(
-                          'ml-2.5 block max-w-[9rem] truncate text-left text-base font-medium sm:max-w-[11rem]',
-                          isActive
-                            ? 'text-primary-foreground'
-                            : 'text-foreground'
-                        )}
-                      >
-                        {t.author}
-                      </span>
-                    ) : null}
+                    <motion.span
+                      aria-hidden={!showName}
+                      className={cn(
+                        'block shrink-0 overflow-hidden whitespace-nowrap pl-2.5 pr-0.5 text-left text-base font-medium',
+                        isActive
+                          ? 'text-primary-foreground'
+                          : 'text-foreground'
+                      )}
+                      initial={false}
+                      animate={{
+                        maxWidth: showName ? 280 : 0,
+                        opacity: showName ? 1 : 0,
+                      }}
+                      transition={{
+                        maxWidth: NAME_SPRING,
+                        opacity: { duration: 0.16, ease: EASE_OUT },
+                      }}
+                    >
+                      {t.author}
+                    </motion.span>
+                  </span>
                   </motion.button>
                 );
               })}
+              </LayoutGroup>
               </div>
             </div>
           </div>

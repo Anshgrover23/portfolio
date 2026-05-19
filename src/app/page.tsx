@@ -45,11 +45,11 @@ function Index() {
             <div id="about" className="scroll-mt-6 md:scroll-mt-8">
               <About />
             </div>
-            <div id="testimonials" className="scroll-mt-6 md:scroll-mt-8">
-              <Testimonials testimonials={testimonials} />
-            </div>
             <div id="experience" className="scroll-mt-6 md:scroll-mt-8">
               <ExperienceHomeList />
+            </div>
+            <div id="testimonials" className="scroll-mt-6 md:scroll-mt-8">
+              <Testimonials testimonials={testimonials} />
             </div>
             <div id="blog" className="scroll-mt-6 md:scroll-mt-8">
               <BlogHomeList />

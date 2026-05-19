@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Baby, Target } from 'lucide-react';
 
 /**
  * HeroCover — full-bleed magazine-cover first view.
@@ -62,9 +63,9 @@ export function HeroCover() {
               />
               <span>Founding engineer</span>
               <span className="text-muted-foreground/60">·</span>
-              <span className="text-muted-foreground">Screenpipe</span>
+              <span className="text-muted-foreground">Contract</span>
               <span className="text-muted-foreground/60">·</span>
-              <span className="text-muted-foreground">YC&nbsp;S26</span>
+              <span className="text-muted-foreground">Open source</span>
             </span>
           </p>
           <p className="type-meta hidden text-muted-foreground sm:block">
@@ -108,36 +109,67 @@ export function HeroCover() {
               </span>
             </h1>
 
-            <p className="mt-6 max-w-[40rem] text-pretty border-l-2 border-accent pl-5 text-base leading-[1.6] text-foreground/85 sm:text-[1.05rem] md:mt-7">
-              Founding engineer at{' '}
-              <a
-                href="https://screenpi.pe/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-foreground decoration-accent decoration-2 underline-offset-[5px] hover:underline"
-              >
-                Screenpipe
-              </a>{' '}
-              (YC&nbsp;S26). Before that,{' '}
-              <span className="font-mono text-[0.95em] tabular-nums text-foreground">
-                2.5
-              </span>{' '}
-              years of contract and OSS work —{' '}
-              <span className="font-mono text-[0.95em] tabular-nums text-foreground">
-                315+
-              </span>{' '}
-              merged PRs across{' '}
-              <span className="font-mono text-[0.95em] tabular-nums text-foreground">
-                8+
-              </span>{' '}
-              orgs, mostly TypeScript and Rust.
-            </p>
+            <div className="mt-6 max-w-[40rem] border-l-2 border-accent pl-5 md:mt-7">
+              <ul className="space-y-2.5 text-base leading-snug text-foreground/85 sm:text-[1.05rem] sm:leading-[1.6]">
+                <li className="flex gap-3">
+                  <span
+                    aria-hidden
+                    className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                  />
+                  <span>
+                    Founding engineer at{' '}
+                    <a
+                      href="https://screenpi.pe/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-foreground decoration-accent decoration-2 underline-offset-[5px] hover:underline"
+                    >
+                      Screenpipe
+                    </a>{' '}
+                    (YC&nbsp;S26)
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span
+                    aria-hidden
+                    className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                  />
+                  <span className="min-w-0 max-w-[34rem] text-pretty">
+                    <span className="font-mono text-[0.95em] tabular-nums text-foreground">
+                      2.5
+                    </span>{' '}
+                    years across contract engineering and open source.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span
+                    aria-hidden
+                    className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                  />
+                  <span className="min-w-0 max-w-[34rem] text-pretty">
+                    More than{' '}
+                    <span className="font-mono text-[0.95em] tabular-nums text-foreground">
+                      315
+                    </span>{' '}
+                    merged pull requests at{' '}
+                    <span className="font-mono text-[0.95em] tabular-nums text-foreground">
+                      8
+                    </span>{' '}
+                    organizations.
+                  </span>
+                </li>
+              </ul>
+            </div>
 
             {/* Mission card — quiet warm pane sitting on the cream paper. */}
             <div className="mt-8 max-w-[34rem] rounded-xl border border-foreground/10 bg-background/60 p-5 backdrop-blur-sm md:p-6">
               <p className="type-meta text-accent">
                 <span className="inline-flex items-center gap-2 align-middle">
-                  <span aria-hidden>🚀</span>
+                  <Target
+                    aria-hidden
+                    className="h-3.5 w-3.5 shrink-0 text-accent"
+                    strokeWidth={1.5}
+                  />
                   <span>My mission</span>
                 </span>
               </p>
@@ -204,11 +236,14 @@ export function HeroCover() {
           <div className="border-t border-foreground/15 pt-4">
             <ul className="type-meta grid grid-cols-2 gap-y-3 text-muted-foreground lg:grid-cols-4 lg:gap-0">
               <li className="flex items-baseline gap-2 lg:justify-start">
-                <span aria-hidden className="text-accent">
-                  ★
+                <Baby
+                  aria-hidden
+                  className="h-3 w-3 shrink-0 text-accent"
+                  strokeWidth={1.5}
+                />
+                <span className="text-foreground normal-case">
+                  God&apos;s child
                 </span>
-                <span className="tabular-nums text-foreground">320+</span>
-                <span>stars</span>
               </li>
               <li className="flex items-baseline gap-2 lg:justify-center">
                 <span aria-hidden className="text-accent">
