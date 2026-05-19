@@ -12,7 +12,13 @@ export default function Providers({ children }: { children: ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="light"
+        forcedTheme="light"
+        enableSystem={false}
+        disableTransitionOnChange
+      >
         <TooltipProvider>
           <Toaster />
           <Sonner />
