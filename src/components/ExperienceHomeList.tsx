@@ -30,7 +30,8 @@ export function ExperienceHomeList() {
               Experience
             </h2>
             <p className="mt-3 max-w-prose text-sm text-muted-foreground">
-              Tap a role for the full write-up — contributions, PRs, and stack.
+              Founding, contract, and open-source work — what shipped at each
+              stop.
             </p>
           </div>
         </div>

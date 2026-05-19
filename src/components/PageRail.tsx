@@ -120,7 +120,7 @@ export function PageRail() {
         </nav>
 
         <div className="space-y-3 text-sm">
-          <p className="type-meta text-muted-foreground/70">Elsewhere</p>
+          <p className="type-meta normal-case text-muted-foreground/70">Connect with me</p>
           <ul className="space-y-1.5">
             <li>
               <a
@@ -161,6 +161,21 @@ export function PageRail() {
               >
                 <span className="font-mono text-[11px] uppercase tracking-wide">
                   LinkedIn
+                </span>
+                <span aria-hidden className="text-muted-foreground/50">
+                  ↗
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://algora.io/Anshgrover23"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <span className="font-mono text-[11px] uppercase tracking-wide">
+                  Algora.io
                 </span>
                 <span aria-hidden className="text-muted-foreground/50">
                   ↗

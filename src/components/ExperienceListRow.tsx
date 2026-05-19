@@ -47,7 +47,7 @@ export function ExperienceListRow({
               Current
             </span>
           )}
-          {exp.badge && !isCurrent && (
+          {exp.badge && (
             <span className="rounded-full border border-accent/20 bg-accent/8 px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wide text-accent">
               {exp.badge}
             </span>

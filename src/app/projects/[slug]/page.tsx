@@ -41,7 +41,6 @@ export default async function ProjectOrgPage({ params }: Props) {
   const badge = 'badge' in exp ? exp.badge : undefined;
   const highlights = 'highlights' in exp ? exp.highlights : undefined;
   const isCurrent = 'isCurrent' in exp && exp.isCurrent;
-  const companyNote = 'companyNote' in exp ? exp.companyNote : undefined;
   const mergedPRsRepo =
     'mergedPRsRepo' in exp ? exp.mergedPRsRepo : undefined;
   const careerMergedPRs =
@@ -134,16 +133,6 @@ export default async function ProjectOrgPage({ params }: Props) {
             {exp.description && (
               <p className="mt-6 max-w-prose text-sm leading-relaxed text-muted-foreground md:text-base">
                 {exp.description}
-              </p>
-            )}
-            {companyNote && (
-              <p className="mt-3 max-w-prose text-sm leading-relaxed text-muted-foreground/90 md:text-base">
-                {companyNote}
-              </p>
-            )}
-            {exp.headline && (
-              <p className="mt-4 max-w-prose text-sm font-medium leading-relaxed text-foreground md:text-base">
-                {exp.headline}
               </p>
             )}
 
@@ -245,13 +234,6 @@ export default async function ProjectOrgPage({ params }: Props) {
                 </div>
               )}
             </dl>
-            {careerMergedPRs && mergedPRsRepo && (
-              <p className="mt-3 max-w-prose font-mono text-[11px] leading-relaxed text-muted-foreground">
-                {exp.totalPRs} merged to github.com/{mergedPRsRepo} as founding
-                engineer. {careerMergedPRs ?? EXPERIENCE_STATS.mergedPRs}{' '}
-                includes contract and OSS work across all organizations.
-              </p>
-            )}
           </header>
 
           {featuredContributions.length > 0 && (

@@ -18,7 +18,6 @@ export type Experience = {
   role: string;
   period: string;
   description?: string;
-  headline?: string;
   logo: string;
   link: string;
   totalPRs: string;
@@ -31,8 +30,6 @@ export type Experience = {
   featured?: boolean;
   reposPrivate?: boolean;
   compensationDetailsImage?: string;
-  /** Clarifies org vs product (e.g. Screenpipe vs Mediar AI). */
-  companyNote?: string;
   /** GitHub repo scope for totalPRs (e.g. screenpipe/screenpipe). */
   mergedPRsRepo?: string;
   /** All-orgs merged PR count shown alongside repo-scoped totalPRs. */
@@ -50,12 +47,6 @@ export const experiences = [
     badge: 'YC S26',
     isCurrent: true,
     featured: true,
-    description:
-      'Local-first AI memory — screen and audio capture, search, and agents on your machine. Founding engineer at Screenpipe (Y Combinator S26).',
-    companyNote:
-      'Screenpipe and Mediar AI are separate companies with the same founders. I work on the Screenpipe product; earlier open-source work shipped through the Mediar AI GitHub org.',
-    headline:
-      'Own integrations, desktop UX, and the path from capture to chat — mostly TypeScript and Rust on the main product repo.',
     logo: 'mediar-ai.svg',
     link: 'https://screenpi.pe/',
     totalPRs: '60+',
@@ -208,7 +199,7 @@ export const experiences = [
     company: 'Antiwork',
     role: 'Contract Software Engineer',
     period: 'Jul 2025 - Oct 2025',
-    headline:
+    description:
       'Shipped major features end-to-end. Contract work in private repos; compensation details below.',
     logo: 'antiwork.svg',
     link: 'https://flexile.com',

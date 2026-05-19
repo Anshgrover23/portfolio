@@ -14,19 +14,11 @@ import {
 } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
-import { Caveat } from 'next/font/google';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { TestimonialItem } from '@/components/Testimonials';
 import { cn } from '@/lib/utils';
 
-const caveat = Caveat({
-  subsets: ['latin'],
-  weight: ['600', '700'],
-  display: 'swap',
-});
-
-/** v2: prior key often hid cue forever; bump so layout fixes show again */
-const PILL_SKETCH_STORAGE = 'testimonial-pill-sketch-dismissed-v2';
+const DEFAULT_USERNAME = 'louis030195';
 
 /** Snappy editorial motion — ~250ms quote, spring pill ~320ms settle */
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
@@ -119,38 +111,32 @@ function toSlides(items: TestimonialItem[]): QuoteSlide[] {
     .filter(Boolean) as QuoteSlide[];
 }
 
+/** Index in `toSlides(dedupeByAuthor(items))` for a username, else 0. */
+function defaultSlideIndex(items: TestimonialItem[], username: string): number {
+  const target = username.trim().toLowerCase();
+  let slideIndex = 0;
+  for (const t of dedupeByAuthor(items)) {
+    const quote = (t.quote ?? t.text ?? '').trim();
+    if (!quote) continue;
+    const key = (t.username ?? t.name ?? '').trim().toLowerCase();
+    if (key === target) return slideIndex;
+    slideIndex++;
+  }
+  return 0;
+}
+
 export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
   const slides = useMemo(() => toSlides(dedupeByAuthor(items)), [items]);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(() =>
+    defaultSlideIndex(items, DEFAULT_USERNAME)
+  );
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [pillCueReady, setPillCueReady] = useState(false);
-  const [sketchCueDismissed, setSketchCueDismissed] = useState(false);
-
-  useEffect(() => {
-    try {
-      setSketchCueDismissed(
-        sessionStorage.getItem(PILL_SKETCH_STORAGE) === '1'
-      );
-    } catch {
-      setSketchCueDismissed(false);
-    }
-    setPillCueReady(true);
-  }, []);
 
   useEffect(() => {
     setActiveIndex((i) =>
       slides.length ? Math.min(Math.max(0, i), slides.length - 1) : 0
     );
   }, [slides.length]);
-
-  const dismissSketchCue = useCallback(() => {
-    setSketchCueDismissed(true);
-    try {
-      sessionStorage.setItem(PILL_SKETCH_STORAGE, '1');
-    } catch {
-      /* ignore */
-    }
-  }, []);
 
   const safeIndex = slides.length
     ? Math.min(Math.max(0, activeIndex), slides.length - 1)
@@ -208,12 +194,11 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
       e.preventDefault();
       activeIndexRef.current = next;
       setActiveIndex(next);
-      dismissSketchCue();
     };
 
     root.addEventListener('wheel', onWheel, { passive: false });
     return () => root.removeEventListener('wheel', onWheel);
-  }, [dismissSketchCue, slides.length]);
+  }, [slides.length]);
 
   if (slides.length === 0) {
     return (
@@ -320,62 +305,7 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
               </AnimatePresence>
             </div>
 
-            {/* Cue lives outside overflow-x so it is not clipped (CSS overflow clips abs children). */}
-            <div className="relative z-20 w-full pb-1 pt-14">
-              {pillCueReady && !sketchCueDismissed && slides.length > 1 ? (
-                <motion.div
-                  className="pointer-events-none absolute left-1/2 top-1 z-[60] flex w-max max-w-[min(100%,18rem)] -translate-x-1/2 translate-x-6 flex-col items-center drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] sm:translate-x-8"
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: [0, -5, 0] }}
-                  transition={{
-                    opacity: { duration: 0.55, ease: EASE_OUT },
-                    y: {
-                      duration: 2.8,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    },
-                  }}
-                  aria-hidden
-                >
-                  <p
-                    className={cn(
-                      caveat.className,
-                      'mb-0.5 text-center text-[1.85rem] leading-none tracking-wide text-ink sm:text-[2.1rem]',
-                      '-rotate-[8deg]',
-                      '[text-shadow:0_0_1px_rgba(255,255,255,0.9),0_1px_2px_rgba(47,52,55,0.12)]'
-                    )}
-                  >
-                    click me!
-                  </p>
-                  <svg
-                    width="72"
-                    height="64"
-                    viewBox="0 0 72 64"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="text-ink/80 -mt-0.5 shrink-0"
-                  >
-                    <path
-                      d="M 38 4 C 34 22 32 36 36 50"
-                      stroke="currentColor"
-                      strokeWidth="2.4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M 40 2 C 36 20 34 38 38 48"
-                      stroke="currentColor"
-                      strokeWidth="1.1"
-                      strokeLinecap="round"
-                      className="opacity-70"
-                    />
-                    <path
-                      d="M 36 52 L 30 44 L 42 44 Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </motion.div>
-              ) : null}
+            <div className="relative z-20 w-full pb-1 pt-1">
               <div
                 className={cn(
                   'relative z-20 flex w-full max-w-full flex-nowrap items-center justify-center gap-3 overflow-x-auto overscroll-x-contain py-2',
@@ -404,7 +334,6 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
                       if (e.button === 0) e.preventDefault();
                     }}
                     onClick={(e) => {
-                      dismissSketchCue();
                       setActiveIndex(index);
                       e.currentTarget.focus({ preventScroll: true });
                     }}

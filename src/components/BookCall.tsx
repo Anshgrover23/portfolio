@@ -101,7 +101,7 @@ export const BookCall = () => {
             Tell me what you are shipping.
           </p>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Cal.com opens inline. No back-and-forth scheduling.
+            Founders | Engineers | HRs
           </p>
           <Button
             data-cal-namespace="meeting"
