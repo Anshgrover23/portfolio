@@ -278,3 +278,31 @@
     filter: none;
   }
 }
+
+/* Cal.com inline embed — column_view (event | calendar | slots) */
+.cal-booking-shell {
+  background-image:
+    linear-gradient(hsl(var(--border) / 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--border) / 0.35) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: center;
+  padding: 0.75rem;
+}
+
+.cal-booking-shell .cal-embed {
+  min-height: 32rem;
+  border-radius: calc(var(--radius) - 2px);
+  background: hsl(var(--card));
+}
+
+@media (min-width: 768px) {
+  .cal-booking-shell .cal-embed {
+    min-height: 36rem;
+  }
+}
+
+.cal-booking-shell .cal-embed iframe {
+  width: 100% !important;
+  min-height: inherit;
+  border: 0;
+}

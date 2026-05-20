@@ -216,7 +216,7 @@ export function SiteNav() {
 
             <Link
               href="/#contact"
-              className="group hidden items-center justify-center gap-1.5 rounded-full border border-foreground/15 bg-foreground px-4 py-1.5 text-sm font-semibold text-background transition hover:-translate-y-px hover:bg-accent active:translate-y-0 active:scale-[0.98] sm:inline-flex"
+              className="group hidden items-center justify-center gap-1.5 rounded-full border border-foreground/15 bg-foreground px-4 py-1.5 text-sm font-semibold text-background transition-[transform,background-color,color,border-color] hover:-translate-y-px hover:border-foreground hover:bg-background hover:text-foreground active:translate-y-0 active:scale-[0.98] sm:inline-flex"
             >
               Schedule call
               <span

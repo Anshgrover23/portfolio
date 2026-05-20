@@ -48,7 +48,7 @@ Feel free to fork, star, or contribute! Don't forget to follow me as well.
 
 ## Book a Call (Cal.com)
 
-The site uses a Cal.com embed for booking calls (see `src/components/BookCall.tsx`). No extra env vars are required—just ensure the link in the button points to your Cal.com username. The current link is `anshgrover/meeting`.
+The site uses a Cal.com **inline** embed for booking calls (see `src/components/BookCall.tsx`). No extra env vars are required—update `calLink` if your event slug changes. Current link: `anshgrover/meeting` (`column_view` layout).
 
 ## GitHub Activity Setup
 
