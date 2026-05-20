@@ -279,7 +279,7 @@
   }
 }
 
-/* Cal.com inline embed — column_view (event | calendar | slots) */
+/* Cal.com inline embed — month_view (event | calendar | slots) */
 .cal-booking-shell {
   background-image:
     linear-gradient(hsl(var(--border) / 0.35) 1px, transparent 1px),
@@ -290,19 +290,13 @@
 }
 
 .cal-booking-shell .cal-embed {
-  min-height: 32rem;
+  overflow: hidden;
   border-radius: calc(var(--radius) - 2px);
   background: hsl(var(--card));
 }
 
-@media (min-width: 768px) {
-  .cal-booking-shell .cal-embed {
-    min-height: 36rem;
-  }
-}
-
 .cal-booking-shell .cal-embed iframe {
   width: 100% !important;
-  min-height: inherit;
   border: 0;
+  display: block;
 }

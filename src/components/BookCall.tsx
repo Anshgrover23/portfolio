@@ -1,10 +1,27 @@
 'use client';
 
-import Cal from '@calcom/embed-react';
+import Cal, { getCalApi } from '@calcom/embed-react';
+import { useEffect } from 'react';
 
 const CAL_LINK = 'anshgrover/meeting';
+const CAL_NAMESPACE = 'meeting';
 
 export const BookCall = () => {
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi({ namespace: CAL_NAMESPACE });
+      cal('ui', {
+        theme: 'light',
+        cssVarsPerTheme: {
+          light: { 'cal-brand': '#292929' },
+          dark: { 'cal-brand': '#fafafa' },
+        },
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+      });
+    })();
+  }, []);
+
   return (
     <section className="mb-16" aria-labelledby="contact-heading">
       <div className="mb-6 flex items-baseline gap-4">
@@ -34,14 +51,15 @@ export const BookCall = () => {
 
         <div className="cal-booking-shell overflow-hidden rounded-lg border border-line bg-card shadow-[0_1px_2px_rgba(47,52,55,0.04)]">
           <Cal
-            namespace="meeting"
+            namespace={CAL_NAMESPACE}
             calLink={CAL_LINK}
+            className="cal-embed w-full"
+            style={{ width: '100%' }}
             config={{
-              layout: 'column_view',
+              layout: 'month_view',
+              useSlotsViewOnSmallScreen: 'true',
               theme: 'light',
             }}
-            className="cal-embed w-full"
-            style={{ width: '100%', minHeight: '32rem' }}
           />
         </div>
 
