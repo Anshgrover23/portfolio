@@ -13,10 +13,7 @@ function getWorkBullets(exp: Experience): string[] {
   if (exp.description) {
     return [exp.description];
   }
-  return exp.contributions
-    .filter(c => !('section' in c) || c.section !== 'prior-oss')
-    .slice(0, 3)
-    .map(c => c.title);
+  return exp.contributions.slice(0, 3).map(c => c.title);
 }
 
 type ExperienceWorkAccordionProps = {

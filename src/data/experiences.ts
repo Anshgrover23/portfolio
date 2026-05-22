@@ -10,7 +10,6 @@ export type ExperienceContribution = {
   badge?: string;
   link?: string;
   pullRequests?: { title: string; link: string }[];
-  section?: 'prior-oss';
 };
 
 export type Experience = {
@@ -34,8 +33,6 @@ export type Experience = {
   mergedPRsRepo?: string;
   /** All-orgs merged PR count shown alongside repo-scoped totalPRs. */
   careerMergedPRs?: string;
-  /** Explains prior-oss section when work landed in a sibling org’s repos. */
-  priorOssNote?: string;
   location?: string;
 };
 
@@ -47,13 +44,11 @@ export const experiences = [
     badge: 'YC S26',
     isCurrent: true,
     featured: true,
-    logo: 'mediar-ai.svg',
+    logo: 'screenpipe.png',
     link: 'https://screenpi.pe/',
     totalPRs: '60+',
     mergedPRsRepo: 'screenpipe/screenpipe',
     careerMergedPRs: '315+',
-    priorOssNote:
-      'Bounty work before joining full-time — merged on the Mediar AI GitHub org (separate company from Screenpipe, shared founders).',
     techStack: [
       { label: 'Rust', icon: '/svg-icons/rust.svg' },
       { label: 'TypeScript', icon: '/svg-icons/typescript.svg' },
@@ -63,7 +58,6 @@ export const experiences = [
       'Shipped Windows desktop reliability: WebView2 browser, extension pairing, overlay routing, and capture edge cases',
       'Owned chat and memory UX: unified search across chats and memories, connection suggestions, and core thread/sidebar fixes',
       'Fixed meetings and capture pipelines: live STT recovery, recording schedules, paused-audio controls, and memories staying in sync',
-      'Joined full-time after OSS on distribution and desktop automation (Homebrew core release, Terminator examples)',
     ],
     contributions: [
       {
@@ -89,33 +83,9 @@ export const experiences = [
       {
         title: 'Homebrew release for Screenpipe',
         description:
-          'Published Screenpipe to Homebrew with CI/CD integration — distribution path used before joining as founding engineer.',
+          'Published Screenpipe to Homebrew with CI/CD integration.',
         bounty: '$50 bounty',
         link: 'https://github.com/mediar-ai/screenpipe/pull/623',
-        section: 'prior-oss',
-      },
-      {
-        title: 'Highlight element debugging (Terminator)',
-        description:
-          'Visual bounding-box overlay for Terminator to debug AI desktop automation workflows.',
-        bounty: '$100 bounty',
-        link: 'https://github.com/mediar-ai/terminator/pull/41',
-        section: 'prior-oss',
-      },
-      {
-        title: 'Gmail automation example',
-        description:
-          'Automation script for Gmail operations — part of Terminator example suite.',
-        bounty: '$100 bounty',
-        link: 'https://github.com/mediar-ai/terminator/pull/38',
-        section: 'prior-oss',
-      },
-      {
-        title: 'VLC media player automation',
-        description:
-          'Example script for YouTube streams and local playback via desktop automation.',
-        link: 'https://github.com/mediar-ai/terminator/pull/35',
-        section: 'prior-oss',
       },
     ],
   },
@@ -444,6 +414,44 @@ export const experiences = [
         description: 'Set up initial fake-backend endpoints and architecture.',
         bounty: '$25+ bounty',
         link: 'https://github.com/tscircuit/fake-reddit/pull/3',
+      },
+    ],
+  },
+  {
+    company: 'Mediar-AI',
+    role: 'Open Source Contributor',
+    period: 'Mar 2025 - Jun 2025',
+    description:
+      'Built dev tools and automation scripts for Terminator.',
+    logo: 'mediar-ai.png',
+    link: 'https://github.com/mediar-ai',
+    totalPRs: '20+',
+    totalBounties: '$280+',
+    techStack: [
+      { label: 'Rust', icon: '/svg-icons/rust.svg' },
+      { label: 'TypeScript', icon: '/svg-icons/typescript.svg' },
+    ] satisfies ExperienceTech[],
+    contributions: [
+      {
+        title: 'Highlight Element Debugging Tool',
+        description:
+          'Created a visual bounding box feature for Terminator to help devs debug AI workflows.',
+        bounty: '$100 bounty',
+        link: 'https://github.com/mediar-ai/terminator/pull/41',
+      },
+      {
+        title: 'Gmail Automation Tool',
+        description:
+          'Implements a script to automate Gmail operations like sending mail.',
+        bounty: '$100 bounty',
+        link: 'https://github.com/mediar-ai/terminator/pull/38',
+      },
+      {
+        title: 'VLC Media Player Automation',
+        description:
+          'Add VLC media player automation example script with support for YouTube streams and local video playback.',
+        bounty: '$80 bounty',
+        link: 'https://github.com/mediar-ai/terminator/pull/35',
       },
     ],
   },

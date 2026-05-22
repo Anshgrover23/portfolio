@@ -47,14 +47,6 @@ export default async function ProjectOrgPage({ params }: Props) {
     'careerMergedPRs' in exp
       ? exp.careerMergedPRs
       : undefined;
-  const priorOssNote = 'priorOssNote' in exp ? exp.priorOssNote : undefined;
-
-  const priorContributions = exp.contributions.filter(
-    c => 'section' in c && c.section === 'prior-oss'
-  );
-  const featuredContributions = exp.contributions.filter(
-    c => !('section' in c) || c.section !== 'prior-oss'
-  );
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -236,53 +228,19 @@ export default async function ProjectOrgPage({ params }: Props) {
             </dl>
           </header>
 
-          {featuredContributions.length > 0 && (
-            <section className="mb-10" aria-labelledby="contrib-heading">
-              <h2
-                id="contrib-heading"
-                className="mb-5 font-display text-xl font-semibold tracking-tight text-foreground"
-              >
-                Featured contributions
-              </h2>
-              <ExperienceOrgContributions
-                contributions={featuredContributions}
-                reposPrivate={exp.reposPrivate}
-                compensationDetailsImage={exp.compensationDetailsImage}
-              />
-            </section>
-          )}
-
-          {priorContributions.length > 0 && (
-            <section aria-labelledby="prior-oss-heading">
-              <h2
-                id="prior-oss-heading"
-                className="mb-2 font-display text-xl font-semibold tracking-tight text-foreground"
-              >
-                Open source before full-time
-              </h2>
-              <p className="mb-5 max-w-prose text-sm text-muted-foreground">
-                {priorOssNote ??
-                  'Public PRs and bounties that led into the founding engineer role.'}
-              </p>
-              <ExperienceOrgContributions contributions={priorContributions} />
-            </section>
-          )}
-
-          {featuredContributions.length === 0 && priorContributions.length === 0 && (
-            <section aria-labelledby="contrib-heading">
-              <h2
-                id="contrib-heading"
-                className="mb-5 font-display text-xl font-semibold tracking-tight text-foreground"
-              >
-                Featured contributions
-              </h2>
-              <ExperienceOrgContributions
-                contributions={exp.contributions}
-                reposPrivate={exp.reposPrivate}
-                compensationDetailsImage={exp.compensationDetailsImage}
-              />
-            </section>
-          )}
+          <section aria-labelledby="contrib-heading">
+            <h2
+              id="contrib-heading"
+              className="mb-5 font-display text-xl font-semibold tracking-tight text-foreground"
+            >
+              Featured contributions
+            </h2>
+            <ExperienceOrgContributions
+              contributions={exp.contributions}
+              reposPrivate={exp.reposPrivate}
+              compensationDetailsImage={exp.compensationDetailsImage}
+            />
+          </section>
         </article>
       </main>
     </div>
