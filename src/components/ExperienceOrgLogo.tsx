@@ -13,6 +13,8 @@ const sizeMap = {
   lg: { box: 'h-14 w-14', dim: 56 },
 } as const;
 
+const LOCAL_IMAGE = /\.(png|jpe?g|webp|avif|svg|gif)$/i;
+
 export function ExperienceOrgLogo({
   logo,
   company,
@@ -22,16 +24,18 @@ export function ExperienceOrgLogo({
   const { box, dim } = sizeMap[size];
   const isRemote = logo.startsWith('http') || logo.startsWith('//');
   const hasImage =
-    logo.startsWith('http') || logo.endsWith('.svg') || logo.endsWith('.png');
+    isRemote || LOCAL_IMAGE.test(logo);
 
   const inner = hasImage ? (
     <Image
       src={isRemote ? logo : `/${logo}`}
-      alt=""
+      alt={`${company} logo`}
       width={dim}
       height={dim}
+      sizes={`${dim}px`}
+      quality={90}
       className="rounded-md object-contain"
-      unoptimized={isRemote}
+      unoptimized={isRemote || logo.endsWith('.svg')}
     />
   ) : (
     <span className="text-2xl" aria-hidden>
