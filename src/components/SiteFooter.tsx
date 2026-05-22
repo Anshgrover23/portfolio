@@ -13,6 +13,8 @@ const EXTERNAL = [
   { href: 'https://algora.io/Anshgrover23', label: 'Algora' },
 ];
 
+const REPO_URL = 'https://github.com/Anshgrover23/portfolio';
+
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
@@ -112,7 +114,7 @@ export function SiteFooter() {
                     Reading
                   </span>
                   <br />
-                  Designing Data-Intensive Apps
+                  System architectural designs
                 </li>
               </ul>
             </div>
@@ -121,7 +123,21 @@ export function SiteFooter() {
 
         <div className="mt-12 flex flex-col gap-2 border-t border-line/70 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono tabular-nums">
-            © {year} Ansh Grover. All work shipped under MIT or a private repo.
+            © {year} Ansh Grover{' '}
+            <span className="text-muted-foreground/50" aria-hidden>
+              ·
+            </span>{' '}
+            <a
+              href={REPO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+            >
+              MIT License
+              <span aria-hidden className="text-muted-foreground/40">
+                ↗
+              </span>
+            </a>
           </p>
           <p className="font-mono">
             <Link

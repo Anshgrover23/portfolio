@@ -80,7 +80,7 @@ export function PageRail() {
             context for AI agents.
           </p>
           <p className="mt-2 font-mono text-[10.5px] uppercase tracking-[0.14em] text-muted-foreground/85">
-            YC S26 · IST · Open to selective contract
+            YC S26 · IST
           </p>
         </div>
 
