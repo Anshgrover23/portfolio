@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Navigation } from '@/components/Navigation';
 import { getBlogPosts } from '@/data/blogPosts';
 import BlogSocials from '@/components/BlogSocials';
 
@@ -7,20 +6,22 @@ export default function BlogPage() {
   const blogPosts = getBlogPosts();
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      <Navigation />
+    <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
       <main className="relative z-10 px-6 md:px-0">
-        <div className="mx-auto max-w-2xl pt-9 pb-12 md:py-24">
+        <div className="mx-auto max-w-2xl pb-12 pt-8 md:pb-16 md:pt-12">
           <header className="md:mt-0 mb-12 sm:mb-16">
             <div className="flex flex-col md:flex-row justify-between gap-4">
               <div className="flex-1 min-w-0">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                  <Link href="/" className="mb-4 text-white text-left">
+                <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+                  <Link
+                    href="/"
+                    className="mb-4 text-left text-foreground underline-offset-4 hover:underline"
+                  >
                     Ansh Grover
                   </Link>
                 </h1>
-                <p className="mt-2 text-sm sm:text-base text-gray-400">
-                  Founder · Developer · Open Source
+                <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+                  Engineer · Open source · Contracts
                 </p>
               </div>
               <BlogSocials />
@@ -39,11 +40,11 @@ export default function BlogPage() {
                       {post.title}
                     </span>
                     {post.isNew && (
-                      <span className="rounded-full border border-white bg-gray-600/40 px-2 py-0.5 text-xs text-white">
-                        NEW
+                      <span className="rounded-md border border-line bg-spot-teal px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wide text-spot-teal-fg">
+                        New
                       </span>
                     )}
-                    <span className="text-gray-400 text-xs sm:text-sm">
+                    <span className="font-mono text-xs text-muted-foreground sm:text-sm tabular-nums">
                       {new Date(post.date).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'short',

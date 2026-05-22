@@ -1,4 +1,5 @@
 import { Chatbot } from '@/components/Chatbot';
+import { SHOW_FLOATING_CHROME } from '@/lib/featureFlags';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function BlogLayout({
   return (
     <>
       {children}
-      <Chatbot />
+      {SHOW_FLOATING_CHROME && <Chatbot />}
     </>
   );
 }

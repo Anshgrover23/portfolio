@@ -1,18 +1,21 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { getCalApi } from '@calcom/embed-react';
-import { useEffect, useState } from 'react';
-import { Plus } from 'lucide-react';
+import Cal, { getCalApi } from '@calcom/embed-react';
+import { useEffect } from 'react';
+
+const CAL_LINK = 'anshgrover/meeting';
+const CAL_NAMESPACE = 'meeting';
 
 export const BookCall = () => {
-  const [isHovered, setIsHovered] = useState(false);
-
   useEffect(() => {
-    (async function () {
-      const cal = await getCalApi({ namespace: 'meeting' });
+    (async () => {
+      const cal = await getCalApi({ namespace: CAL_NAMESPACE });
       cal('ui', {
+        theme: 'light',
+        cssVarsPerTheme: {
+          light: { 'cal-brand': '#292929' },
+          dark: { 'cal-brand': '#fafafa' },
+        },
         hideEventTypeDetails: false,
         layout: 'month_view',
       });
@@ -20,43 +23,55 @@ export const BookCall = () => {
   }, []);
 
   return (
-    <section className="mb-16">
-      <div className="w-full bg-gray-900/50 border border-gray-800 rounded-xl shadow-lg px-8 py-12 sm:px-12 sm:py-14 md:py-16 text-center min-h-[220px] sm:min-h-[240px] flex flex-col items-center justify-center">
-        <p className="text-gray-300 text-xl sm:text-2xl font-medium mb-8 max-w-lg mx-auto leading-snug">
-          Hey, you scrolled this far, let's talk.
-        </p>
-        <div className="flex justify-center">
-          <Button
-            data-cal-namespace="meeting"
-            data-cal-link="anshgrover/meeting"
-            data-cal-config='{"layout":"month_view"}'
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg shadow-sm flex items-center gap-2 border border-gray-700 transition-all duration-300 group relative overflow-visible"
-          >
-            <Avatar className="w-5 h-5 border border-gray-600 transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
-              <AvatarImage src="/avatar.png" alt="Ansh Grover" />
-              <AvatarFallback className="bg-gray-800 text-white text-xs">
-                AG
-              </AvatarFallback>
-            </Avatar>
-            <div
-              className={`flex items-center gap-1.5 transition-all duration-300 ease-in-out ${
-                isHovered
-                  ? 'opacity-100 translate-x-0 max-w-[100px]'
-                  : 'opacity-0 -translate-x-2 max-w-0 overflow-hidden'
-              }`}
-            >
-              <Plus className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-              <span className="bg-gray-800/50 text-gray-200 text-xs px-2.5 py-1 rounded-full whitespace-nowrap border border-dashed border-gray-500/60">
-                You
-              </span>
-            </div>
-            <span className="whitespace-nowrap font-semibold">
-              Book a Free Call
-            </span>
-          </Button>
+    <section className="mb-16" aria-labelledby="contact-heading">
+      <div className="mb-6 flex items-baseline gap-4">
+        <span className="type-numeral shrink-0 text-[1.6rem] text-accent">
+          07
+        </span>
+        <h2
+          id="contact-heading"
+          className="font-display flex items-baseline gap-3 text-[1.875rem] font-bold tracking-tight text-foreground md:text-[2.5rem]"
+          style={{ letterSpacing: '-0.03em' }}
+        >
+          Contact
+          <span className="block h-px flex-1 self-center bg-foreground/15" />
+        </h2>
+      </div>
+
+      <div className="border-t border-line/80 pt-5">
+        <div className="mb-6 space-y-2 text-center">
+          <p className="type-meta text-muted-foreground/80">Book a call</p>
+          <p className="font-display text-xl font-semibold tracking-tight text-foreground md:text-2xl">
+            Tell me what you are shipping.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Founders · Engineers · HRs
+          </p>
         </div>
+
+        <div className="cal-booking-shell overflow-hidden rounded-lg border border-line bg-card shadow-[0_1px_2px_rgba(47,52,55,0.04)]">
+          <Cal
+            namespace={CAL_NAMESPACE}
+            calLink={CAL_LINK}
+            className="cal-embed w-full"
+            style={{ width: '100%' }}
+            config={{
+              layout: 'month_view',
+              useSlotsViewOnSmallScreen: 'true',
+              theme: 'light',
+            }}
+          />
+        </div>
+
+        <p className="mt-5 text-center font-mono text-[11px] text-muted-foreground">
+          Prefer email?{' '}
+          <a
+            href="mailto:anshgrover938@gmail.com"
+            className="text-foreground underline-offset-4 hover:underline"
+          >
+            anshgrover938@gmail.com
+          </a>
+        </p>
       </div>
     </section>
   );

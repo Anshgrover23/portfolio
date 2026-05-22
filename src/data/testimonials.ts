@@ -12,16 +12,6 @@ export const testimonials: TestimonialItem[] = [
     sourceUrl:
       'https://github.com/tscircuit/core/pull/459#pullrequestreview-2524271526',
   },
-  {
-    quote: 'ayyyy nice work',
-    name: 'seveibar',
-    username: 'seveibar',
-    title: 'Founder of TSCircuit',
-    image: 'https://unavatar.io/github/seveibar',
-    source: 'github',
-    sourceUrl:
-      'https://github.com/tscircuit/eval/pull/163#pullrequestreview-2708124781',
-  },
   // Antiwork testimonials (repos now private; no sourceUrl)
   {
     quote: 'Nice, thanks!',
@@ -39,16 +29,15 @@ export const testimonials: TestimonialItem[] = [
     image: 'https://unavatar.io/github/slavingia',
     source: 'github',
   },
-  // Mediar-AI testimonials
+  // Mediar-AI / public note
   {
-    quote: 'brilliant work!',
+    quote: "You're the best Ansh :)",
     name: 'louis030195',
     username: 'louis030195',
     title: 'Founder of Mediar-AI',
-    image: 'https://unavatar.io/github/louis030195',
-    source: 'github',
-    sourceUrl:
-      'https://github.com/mediar-ai/terminator/pull/41#issuecomment-2916909541',
+    image: 'https://unavatar.io/twitter/louis030195',
+    source: 'twitter',
+    sourceUrl: 'https://x.com/louis030195/status/1989746246748393684',
   },
   // TwentyHQ testimonials
   {
@@ -83,7 +72,7 @@ export const testimonials: TestimonialItem[] = [
   },
   // Sugar Labs testimonials
   {
-    quote: 'Looks good. Thanks for contributing :)',
+    quote: 'Looks good. Thanks for contributing.',
     name: 'sa-fw-an',
     username: 'sa-fw-an',
     title: 'Maintainer of Sugar Labs',
@@ -94,7 +83,7 @@ export const testimonials: TestimonialItem[] = [
   },
   // Archestra testimonials
   {
-    quote: 'looks good! thanks again for the contribution 🫶',
+    quote: 'looks good! thanks again for the contribution.',
     name: 'joeyorlando',
     username: 'joeyorlando',
     title: 'Maintainer of Archestra',
@@ -104,12 +93,4 @@ export const testimonials: TestimonialItem[] = [
       'https://github.com/archestra-ai/terraform-provider-archestra/pull/65#pullrequestreview-3632283836',
   },
   // Other testimonials
-  {
-    quote: "You're the best Ansh :)",
-    name: 'louis030195',
-    username: 'louis030195',
-    image: 'https://unavatar.io/twitter/louis030195',
-    source: 'twitter',
-    sourceUrl: 'https://x.com/louis030195/status/1989746246748393684',
-  },
 ];

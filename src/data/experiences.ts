@@ -1,4 +1,94 @@
+export type ExperienceTech = {
+  label: string;
+  icon?: string;
+};
+
+export type ExperienceContribution = {
+  title: string;
+  description: string;
+  bounty?: string;
+  badge?: string;
+  link?: string;
+  pullRequests?: { title: string; link: string }[];
+};
+
+export type Experience = {
+  company: string;
+  role: string;
+  period: string;
+  description?: string;
+  logo: string;
+  link: string;
+  totalPRs: string;
+  totalBounties?: string;
+  techStack: ExperienceTech[];
+  contributions: ExperienceContribution[];
+  badge?: string;
+  highlights?: string[];
+  isCurrent?: boolean;
+  featured?: boolean;
+  reposPrivate?: boolean;
+  compensationDetailsImage?: string;
+  /** GitHub repo scope for totalPRs (e.g. screenpipe/screenpipe). */
+  mergedPRsRepo?: string;
+  /** All-orgs merged PR count shown alongside repo-scoped totalPRs. */
+  careerMergedPRs?: string;
+  location?: string;
+};
+
 export const experiences = [
+  {
+    company: 'Screenpipe',
+    role: 'Founding Engineer',
+    period: '2026 — Present',
+    badge: 'YC S26',
+    isCurrent: true,
+    featured: true,
+    logo: 'screenpipe.png',
+    link: 'https://screenpi.pe/',
+    totalPRs: '60+',
+    mergedPRsRepo: 'screenpipe/screenpipe',
+    careerMergedPRs: '315+',
+    techStack: [
+      { label: 'Rust', icon: '/svg-icons/rust.svg' },
+      { label: 'TypeScript', icon: '/svg-icons/typescript.svg' },
+    ] satisfies ExperienceTech[],
+    highlights: [
+      'Built the connections platform: generic OAuth plus Slack, Jira, Gmail, Microsoft 365, Notion, Supabase, QuickBooks, and a dozen more — wired into Pi chat and pipes',
+      'Shipped Windows desktop reliability: WebView2 browser, extension pairing, overlay routing, and capture edge cases',
+      'Owned chat and memory UX: unified search across chats and memories, connection suggestions, and core thread/sidebar fixes',
+      'Fixed meetings and capture pipelines: live STT recovery, recording schedules, paused-audio controls, and memories staying in sync',
+    ],
+    contributions: [
+      {
+        title: 'Integrations & OAuth',
+        description:
+          'Introduced shared OAuth infrastructure and shipped production connectors (Slack, Jira, Gmail, Microsoft Graph, Notion, Vercel, Cal.com, Google Sheets, and others). Connected accounts feed Pi’s system prompt; onboarding and pipe install guide users through setup.',
+      },
+      {
+        title: 'Windows desktop & browser',
+        description:
+          'Owned-browser WebView2 startup, session reuse, one-click extension pairing, overlay/timeline behavior, and fixes for capture when recording or using extensions on Windows.',
+      },
+      {
+        title: 'Chat, search & pipes',
+        description:
+          'Search across chats and memories in one place, smart connection suggestions on the dashboard, chat UI (branch, retry, rename), and pipes discover/offline UX.',
+      },
+      {
+        title: 'Meetings, capture & settings',
+        description:
+          'Meeting transcript recovery when live STT fails, recording schedule enforcement, API key and connector settings, and analytics noise reduction for on-call.',
+      },
+      {
+        title: 'Homebrew release for Screenpipe',
+        description:
+          'Published Screenpipe to Homebrew with CI/CD integration.',
+        bounty: '$50 bounty',
+        link: 'https://github.com/mediar-ai/screenpipe/pull/623',
+      },
+    ],
+  },
   {
     company: 'CX Linux AI',
     role: 'Software Engineer / Maintainer',
@@ -8,6 +98,14 @@ export const experiences = [
     logo: 'https://unavatar.io/github/cxlinux-ai',
     link: 'https://github.com/Anshgrover23?org=cxlinux-ai&year_list=1',
     totalPRs: '28+',
+    techStack: [
+      { label: 'Shell' },
+      { label: 'Rust', icon: '/svg-icons/rust.svg' },
+      {
+        label: 'Python',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+      },
+    ] satisfies ExperienceTech[],
     contributions: [
       {
         title: 'Created & initialized CX Linux ISO Builder (cx-distro)',
@@ -71,12 +169,17 @@ export const experiences = [
     company: 'Antiwork',
     role: 'Contract Software Engineer',
     period: 'Jul 2025 - Oct 2025',
-    headline:
+    description:
       'Shipped major features end-to-end. Contract work in private repos; compensation details below.',
     logo: 'antiwork.svg',
     link: 'https://flexile.com',
     totalPRs: '55+',
     totalBounties: '$40,000 (Flexile)',
+    techStack: [
+      { label: 'TypeScript', icon: '/svg-icons/typescript.svg' },
+      { label: 'Next.js', icon: '/svg-icons/nextjs.svg' },
+      { label: 'Ruby', icon: '/svg-icons/ruby.svg' },
+    ] satisfies ExperienceTech[],
     reposPrivate: true,
     compensationDetailsImage: '/payment.png',
     contributions: [
@@ -281,6 +384,10 @@ export const experiences = [
     link: 'https://tscircuit.com/',
     totalPRs: '100+',
     totalBounties: '$809+',
+    techStack: [
+      { label: 'TypeScript', icon: '/svg-icons/typescript.svg' },
+      { label: 'React', icon: '/svg-icons/reactjs.svg' },
+    ] satisfies ExperienceTech[],
     contributions: [
       {
         title: 'Issue Roulette Game',
@@ -315,11 +422,15 @@ export const experiences = [
     role: 'Open Source Contributor',
     period: 'Mar 2025 - Jun 2025',
     description:
-      'Built dev tools, automation scripts, and published Screenpipe to Homebrew.',
-    logo: 'mediar-ai.svg',
-    link: 'https://www.mediar.ai/',
+      'Built dev tools and automation scripts for Terminator.',
+    logo: 'mediar-ai.png',
+    link: 'https://github.com/mediar-ai',
     totalPRs: '20+',
-    totalBounties: '$250+',
+    totalBounties: '$280+',
+    techStack: [
+      { label: 'Rust', icon: '/svg-icons/rust.svg' },
+      { label: 'TypeScript', icon: '/svg-icons/typescript.svg' },
+    ] satisfies ExperienceTech[],
     contributions: [
       {
         title: 'Highlight Element Debugging Tool',
@@ -339,14 +450,8 @@ export const experiences = [
         title: 'VLC Media Player Automation',
         description:
           'Add VLC media player automation example script with support for YouTube streams and local video playback.',
+        bounty: '$80 bounty',
         link: 'https://github.com/mediar-ai/terminator/pull/35',
-      },
-      {
-        title: 'Homebrew Release for Screenpipe',
-        description:
-          'Published the Screenpipe tool to Homebrew with CI/CD integration.',
-        bounty: '$50 bounty',
-        link: 'https://github.com/mediar-ai/screenpipe/pull/623',
       },
     ],
   },
@@ -359,6 +464,13 @@ export const experiences = [
     logo: 'archestra.png',
     link: 'https://github.com/archestra-ai/terraform-provider-archestra',
     totalPRs: '1+',
+    techStack: [
+      { label: 'Terraform', icon: '/svg-icons/terraform.svg' },
+      {
+        label: 'Go',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg',
+      },
+    ] satisfies ExperienceTech[],
     contributions: [
       {
         title: 'Added SSO provider resource for OIDC and SAML',
@@ -377,6 +489,10 @@ export const experiences = [
     logo: 'sugarlabs.svg',
     link: 'https://github.com/sugarlabs',
     totalPRs: '1+',
+    techStack: [
+      { label: 'TypeScript', icon: '/svg-icons/typescript.svg' },
+      { label: 'React', icon: '/svg-icons/reactjs.svg' },
+    ] satisfies ExperienceTech[],
     contributions: [
       {
         title: 'Fixed UI bugs on stats cards',
@@ -395,6 +511,10 @@ export const experiences = [
     logo: 'twentyhq.svg',
     link: 'https://github.com/twentyhq',
     totalPRs: '2+',
+    techStack: [
+      { label: 'TypeScript', icon: '/svg-icons/typescript.svg' },
+      { label: 'Next.js', icon: '/svg-icons/nextjs.svg' },
+    ] satisfies ExperienceTech[],
     contributions: [
       {
         title: 'Fixed markdown link formatting',
@@ -420,6 +540,7 @@ export const experiences = [
     link: 'https://algora.io/Anshgrover23',
     totalPRs: '33+',
     totalBounties: '$1099+',
+    techStack: [] satisfies ExperienceTech[],
     contributions: [
       {
         title: 'Multiple Bounty Completions',
@@ -430,4 +551,4 @@ export const experiences = [
       },
     ],
   },
-];
+] satisfies Experience[];
