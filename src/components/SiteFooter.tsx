@@ -11,6 +11,7 @@ const EXTERNAL = [
   { href: 'https://twitter.com/Anshgrover23', label: 'X' },
   { href: 'https://www.linkedin.com/in/anshgrover23/', label: 'LinkedIn' },
   { href: 'https://algora.io/Anshgrover23', label: 'Algora' },
+  { href: 'https://topmate.io/anshgrover', label: 'Topmate' },
 ];
 
 const REPO_URL = 'https://github.com/Anshgrover23/portfolio';
