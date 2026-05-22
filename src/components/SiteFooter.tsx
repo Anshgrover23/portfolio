@@ -81,7 +81,7 @@ export function SiteFooter() {
               </ul>
             </div>
             <div>
-              <p className="type-meta mb-3 text-muted-foreground/70">Elsewhere</p>
+              <p className="type-meta mb-3 text-muted-foreground/70">Connect</p>
               <ul className="space-y-1.5">
                 {EXTERNAL.map(item => (
                   <li key={item.href}>
