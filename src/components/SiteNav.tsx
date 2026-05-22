@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 type NavItem = {
@@ -38,21 +38,42 @@ function matchesRoute(pathname: string, item: NavItem) {
   );
 }
 
+function scrollToSection(sectionId: string) {
+  document.getElementById(sectionId)?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  });
+}
+
 function NavLink({
   item,
   active,
+  pathname,
   onNavigate,
   className,
 }: {
   item: NavItem;
   active: boolean;
+  pathname: string;
   onNavigate?: () => void;
   className?: string;
 }) {
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (item.sectionId && isHome(pathname)) {
+      event.preventDefault();
+      onNavigate?.();
+      scrollToSection(item.sectionId);
+      window.history.replaceState(null, '', `#${item.sectionId}`);
+      return;
+    }
+
+    onNavigate?.();
+  };
+
   return (
     <Link
       href={item.href}
-      onClick={onNavigate}
+      onClick={handleClick}
       className={cn(
         'relative rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors duration-200',
         active
@@ -116,6 +137,16 @@ export function SiteNav() {
   }, [onHome, pathname]);
 
   useEffect(() => {
+    if (!onHome) return;
+
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+
+    const timer = window.setTimeout(() => scrollToSection(hash), 50);
+    return () => window.clearTimeout(timer);
+  }, [onHome, pathname]);
+
+  useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
 
@@ -138,6 +169,18 @@ export function SiteNav() {
   );
 
   const closeMobile = () => setMobileOpen(false);
+
+  const handleContactClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isHome(pathname)) {
+      event.preventDefault();
+      closeMobile();
+      scrollToSection('contact');
+      window.history.replaceState(null, '', '#contact');
+      return;
+    }
+
+    closeMobile();
+  };
 
   return (
     <>
@@ -184,20 +227,20 @@ export function SiteNav() {
           {/* Desktop: editorial segmented control — pill outlined with a
               warm hairline so it sits inside the page palette, not a generic
               shadcn segmented control */}
-          <motion.div
-            layout
-            className="hidden items-center gap-0.5 rounded-full border border-foreground/12 bg-background/70 px-1 py-1 backdrop-blur-sm md:flex"
-          >
-            {NAV_ITEMS.map(item => (
-              <NavLink
-                key={item.label}
-                item={item}
-                active={isItemActive(item)}
-              />
-            ))}
-          </motion.div>
+          <div className="hidden items-center gap-0.5 rounded-full border border-foreground/12 bg-background/70 px-1 py-1 backdrop-blur-sm md:flex">
+            <LayoutGroup id={pathname}>
+              {NAV_ITEMS.map(item => (
+                <NavLink
+                  key={item.label}
+                  item={item}
+                  active={isItemActive(item)}
+                  pathname={pathname}
+                />
+              ))}
+            </LayoutGroup>
+          </div>
 
-          <motion.div layout className="flex shrink-0 items-center gap-2 sm:gap-2.5">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
             <a
               href="https://github.com/Anshgrover23"
               target="_blank"
@@ -216,6 +259,7 @@ export function SiteNav() {
 
             <Link
               href="/#contact"
+              onClick={handleContactClick}
               className="group hidden items-center justify-center gap-1.5 rounded-full border border-foreground/15 bg-foreground px-4 py-1.5 text-sm font-semibold text-background transition-[transform,background-color,color,border-color] hover:-translate-y-px hover:border-foreground hover:bg-background hover:text-foreground active:translate-y-0 active:scale-[0.98] sm:inline-flex"
             >
               Schedule call
@@ -256,7 +300,7 @@ export function SiteNav() {
                 />
               </span>
             </button>
-          </motion.div>
+          </div>
         </nav>
 
         <AnimatePresence>
@@ -280,7 +324,21 @@ export function SiteNav() {
                       <li key={item.label}>
                         <Link
                           href={item.href}
-                          onClick={closeMobile}
+                          onClick={event => {
+                            if (item.sectionId && isHome(pathname)) {
+                              event.preventDefault();
+                              closeMobile();
+                              scrollToSection(item.sectionId);
+                              window.history.replaceState(
+                                null,
+                                '',
+                                `#${item.sectionId}`,
+                              );
+                              return;
+                            }
+
+                            closeMobile();
+                          }}
                           className={cn(
                             'flex items-center justify-between rounded-md px-3 py-3 text-base font-medium transition-colors',
                             active
@@ -300,10 +358,10 @@ export function SiteNav() {
                     );
                   })}
                 </ul>
-                <motion.div layout className="flex flex-col gap-2 border-t border-line/80 pt-4">
+                <div className="flex flex-col gap-2 border-t border-line/80 pt-4">
                   <Link
                     href="/#contact"
-                    onClick={closeMobile}
+                    onClick={handleContactClick}
                     className="flex w-full items-center justify-center rounded-md border border-line bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground active:scale-[0.98]"
                   >
                     Schedule call
@@ -319,7 +377,7 @@ export function SiteNav() {
                       ↗
                     </span>
                   </a>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           )}
