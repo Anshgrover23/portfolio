@@ -3,8 +3,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
+import { LayoutGroup, motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { YcLogo } from '@/components/YcLogo';
 
 type NavItem = {
   label: string;
@@ -100,7 +101,6 @@ export function SiteNav() {
   const onHome = isHome(pathname);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -146,17 +146,6 @@ export function SiteNav() {
     return () => window.clearTimeout(timer);
   }, [onHome, pathname]);
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [mobileOpen]);
-
   const isItemActive = useCallback(
     (item: NavItem) => {
       if (matchesRoute(pathname, item)) return true;
@@ -168,18 +157,12 @@ export function SiteNav() {
     [pathname, onHome, activeSection],
   );
 
-  const closeMobile = () => setMobileOpen(false);
-
   const handleContactClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (isHome(pathname)) {
       event.preventDefault();
-      closeMobile();
       scrollToSection('contact');
       window.history.replaceState(null, '', '#contact');
-      return;
     }
-
-    closeMobile();
   };
 
   return (
@@ -271,117 +254,17 @@ export function SiteNav() {
               </span>
             </Link>
 
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-line/90 bg-card/80 text-foreground transition-colors hover:bg-muted md:hidden"
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-nav-panel"
-              onClick={() => setMobileOpen(open => !open)}
+            <span
+              className="inline-flex shrink-0 items-center gap-[3px] md:hidden"
+              aria-label="Y Combinator S26"
             >
-              <span className="sr-only">{mobileOpen ? 'Close menu' : 'Open menu'}</span>
-              <span aria-hidden className="relative block h-2.5 w-4">
-                <span
-                  className={cn(
-                    'absolute left-0 h-[1.5px] w-full bg-current transition-all duration-200',
-                    mobileOpen ? 'top-[5px] rotate-45' : 'top-0',
-                  )}
-                />
-                <span
-                  className={cn(
-                    'absolute left-0 top-[5px] h-[1.5px] w-full bg-current transition-opacity duration-200',
-                    mobileOpen ? 'opacity-0' : 'opacity-100',
-                  )}
-                />
-                <span
-                  className={cn(
-                    'absolute left-0 h-[1.5px] w-full bg-current transition-all duration-200',
-                    mobileOpen ? 'top-[5px] -rotate-45' : 'top-[10px]',
-                  )}
-                />
+              <YcLogo className="size-[1.0625rem] shrink-0 rounded-[4px]" />
+              <span className="font-sans text-[1.0625rem] font-bold leading-none tracking-[-0.05em] text-foreground">
+                S26
               </span>
-            </button>
+            </span>
           </div>
         </nav>
-
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              id="mobile-nav-panel"
-              initial={{ opacity: 0, y: -6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="border-t border-line/90 bg-background/98 backdrop-blur-md md:hidden"
-            >
-              <div className="mx-auto max-w-[1200px] space-y-4 px-6 py-5 md:px-10 lg:px-12">
-                <p className="type-meta text-muted-foreground normal-case">
-                  Founding engineer · YC S26
-                </p>
-                <ul className="space-y-1">
-                  {NAV_ITEMS.map(item => {
-                    const active = isItemActive(item);
-                    return (
-                      <li key={item.label}>
-                        <Link
-                          href={item.href}
-                          onClick={event => {
-                            if (item.sectionId && isHome(pathname)) {
-                              event.preventDefault();
-                              closeMobile();
-                              scrollToSection(item.sectionId);
-                              window.history.replaceState(
-                                null,
-                                '',
-                                `#${item.sectionId}`,
-                              );
-                              return;
-                            }
-
-                            closeMobile();
-                          }}
-                          className={cn(
-                            'flex items-center justify-between rounded-md px-3 py-3 text-base font-medium transition-colors',
-                            active
-                              ? 'bg-muted text-foreground'
-                              : 'text-muted-foreground hover:bg-muted/60 hover:text-foreground',
-                          )}
-                        >
-                          {item.label}
-                          {active && (
-                            <span
-                              className="h-1.5 w-1.5 rounded-full bg-accent"
-                              aria-hidden
-                            />
-                          )}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-                <div className="flex flex-col gap-2 border-t border-line/80 pt-4">
-                  <Link
-                    href="/#contact"
-                    onClick={handleContactClick}
-                    className="flex w-full items-center justify-center rounded-md border border-line bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground active:scale-[0.98]"
-                  >
-                    Schedule call
-                  </Link>
-                  <a
-                    href="https://github.com/Anshgrover23"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex w-full items-center justify-center gap-2 rounded-md border border-line/90 px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                  >
-                    GitHub
-                    <span aria-hidden className="text-muted-foreground/60">
-                      ↗
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
 
       <div aria-hidden className="h-[3.25rem] shrink-0 sm:h-14" />

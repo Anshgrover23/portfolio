@@ -28,6 +28,9 @@
     --accent: 15 68% 44%;
     --accent-foreground: 38 32% 96%;
 
+    /* Y Combinator brand orange — #FF6600 */
+    --yc-orange: 24 100% 50%;
+
     --destructive: 0 72% 45%;
     --destructive-foreground: 38 32% 96%;
 
@@ -64,6 +67,8 @@
     --muted-foreground: 38 12% 62%;
     --accent: 15 70% 52%;
     --accent-foreground: 28 10% 7%;
+
+    --yc-orange: 24 100% 55%;
     --destructive: 0 62% 50%;
     --destructive-foreground: 38 28% 92%;
     --border: 28 8% 18%;
