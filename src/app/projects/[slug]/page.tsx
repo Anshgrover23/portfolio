@@ -11,6 +11,14 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+function externalLinkLabel(link: string, fallback: string) {
+  try {
+    return new URL(link).hostname.replace(/^www\./, '');
+  } catch {
+    return fallback;
+  }
+}
+
 export function generateStaticParams() {
   return getExperienceSlugs().map(slug => ({ slug }));
 }
@@ -116,7 +124,7 @@ export default async function ProjectOrgPage({ params }: Props) {
                   rel="noopener noreferrer"
                   className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-foreground underline-offset-4 hover:underline"
                 >
-                  {exp.company === 'Screenpipe' ? 'screenpi.pe' : 'Organization'}
+                  {externalLinkLabel(exp.link, exp.company)}
                   <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.5} />
                 </a>
               </div>
