@@ -66,7 +66,7 @@ NEXT_PUBLIC_GITHUB_USERNAME=your_github_username # optional, defaults to Anshgro
 
 ```env
 GEMINI_API_KEY=your_gemini_api_key
-NEXT_PUBLIC_HOST_URL=host_url_of_environment
+NEXT_PUBLIC_HOST_URL=https://anshgrover.com
 
 ```
 

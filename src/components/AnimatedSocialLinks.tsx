@@ -30,7 +30,7 @@ export const AnimatedSocialLinks = () => {
     },
     {
       icon: FaXTwitter as IconComponent,
-      href: 'https://twitter.com/Anshgrover23',
+      href: 'https://x.com/Anshgrover23',
       label: 'X / Twitter',
     },
     {

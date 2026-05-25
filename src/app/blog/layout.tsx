@@ -1,12 +1,16 @@
 import { Chatbot } from '@/components/Chatbot';
 import { SHOW_FLOATING_CHROME } from '@/lib/featureFlags';
 import { Metadata } from 'next';
+import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Blog - Thoughts & Learnings',
   description:
     'Thoughts on open source, developer tools, and lessons learned from contributing to projects like TSCircuit and Antiwork.',
-  authors: [{ name: 'Ansh Grover', url: 'https://anshgrover.me/' }],
+  authors: [{ name: 'Ansh Grover', url: SITE_URL }],
+  alternates: {
+    canonical: '/blog',
+  },
   icons: {
     icon: [
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },

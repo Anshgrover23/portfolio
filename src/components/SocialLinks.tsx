@@ -6,7 +6,7 @@ export const SocialLinks = () => {
     { icon: Home, href: '#', label: 'Home' },
     { icon: Github, href: 'https://github.com/Anshgrover23', label: 'GitHub' },
     { icon: Mail, href: 'mailto:anshgrover23@gmail.com', label: 'Email' },
-    { icon: X, href: 'https://twitter.com/anshgrover23', label: 'Twitter' },
+    { icon: X, href: 'https://x.com/Anshgrover23', label: 'X' },
   ];
 
   return (
