@@ -9,8 +9,10 @@ import {
   type ParsedBlock,
 } from '@/lib/markdown-parser';
 import { MarkdownBlogBlock } from '@/components/MarkdownBlogBlock';
+import { JsonLd } from '@/components/JsonLd';
 
 import type { Metadata } from 'next';
+import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -25,6 +27,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: `${post.title} - Ansh Grover`,
       description: post.excerpt,
+      alternates: {
+        canonical: `/blog/${slug}`,
+      },
+      openGraph: {
+        title: post.title,
+        description: post.excerpt,
+        type: 'article',
+        publishedTime: post.date,
+        authors: ['Ansh Grover'],
+        url: `/blog/${slug}`,
+        tags: post.tags,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: post.excerpt,
+      },
     };
   else {
     return {
@@ -47,8 +66,32 @@ export default async function BlogPostPage({
 
   const blocks = parseMarkdownIntoBlocks(post.content);
 
+  const articleStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+      url: SITE_URL,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/blog/${post.slug}`,
+    },
+    keywords: post.tags.join(', '),
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <JsonLd data={articleStructuredData} />
       <main className="mx-auto max-w-3xl px-6 pb-12 pt-8 md:py-14 md:pt-10">
         <Link
           href="/blog"

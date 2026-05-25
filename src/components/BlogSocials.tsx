@@ -29,7 +29,7 @@ export default function BlogSocials({
         </svg>
       </Link>
       <Link
-        href="https://twitter.com/Anshgrover23"
+        href="https://x.com/Anshgrover23"
         target="_blank"
         rel="noopener noreferrer"
         className="text-muted-foreground transition-colors hover:text-foreground"

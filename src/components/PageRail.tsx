@@ -139,7 +139,7 @@ export function PageRail() {
             </li>
             <li>
               <a
-                href="https://twitter.com/Anshgrover23"
+                href="https://x.com/Anshgrover23"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"

@@ -1,6 +1,8 @@
 {
   "name": "Ansh Grover - Portfolio",
   "short_name": "Ansh Portfolio",
+  "start_url": "https://anshgrover.com/",
+  "scope": "https://anshgrover.com/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

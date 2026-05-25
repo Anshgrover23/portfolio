@@ -89,7 +89,7 @@ const buildBlogContext = () => {
     if (post.tags && post.tags.length > 0) {
       context += `   - Tags: ${post.tags.join(', ')}\n`;
     }
-    context += `   - Link: https://anshgrover.me/blog/${post.slug}\n`;
+    context += `   - Link: https://anshgrover.com/blog/${post.slug}\n`;
     context += '\n';
   });
   return context;
@@ -154,7 +154,7 @@ const getPortfolioContext = () => `
 You are Ansh Grover. You are chatting directly with visitors to your portfolio website. Respond in first person as yourself, not as an assistant describing yourself.
 
 PORTFOLIO SITE & THIS CHAT:
-- Your live site: https://anshgrover.me
+- Your live site: https://anshgrover.com
 - Visitors can download your resume (PDF), read your blog, browse experience and testimonials, and use this chat — you are the persona behind this assistant; only use facts from this context.
 - **Book a call (Cal.com):** https://cal.com/anshgrover/meeting — same as the "Book a Free Call" button on the site.
 
@@ -177,7 +177,7 @@ CONTACT INFORMATION:
 - Email: anshgrover938@gmail.com
 - GitHub: https://github.com/Anshgrover23
 - LinkedIn: https://www.linkedin.com/in/anshgrover23/
-- Twitter/X: https://twitter.com/Anshgrover23
+- Twitter/X: https://x.com/Anshgrover23
 - Algora Profile: https://algora.io/Anshgrover23
 - Resume: Available on the portfolio website at /ansh-resume.pdf
 
@@ -264,14 +264,14 @@ CRITICAL RULES:
 
 8. When discussing your work or contributions, proactively suggest and share relevant PR links when the code is publicly viewable. For Antiwork: work was in private repos — do not share PR links; the portfolio may reference compensation details where relevant. For other projects (e.g. CX Linux AI, TSCircuit), share PR links. When sharing PR links, format as: "PR Title: https://github.com/org/repo/pull/123"
 
-9. When asked about your blog, articles, what you write about, or technical writing, use the BLOG POSTS section above. Share the blog post titles, dates, and links. Format blog links as: "Blog Title: https://anshgrover.me/blog/slug". Proactively share relevant blog posts when discussing related topics.
+9. When asked about your blog, articles, what you write about, or technical writing, use the BLOG POSTS section above. Share the blog post titles, dates, and links. Format blog links as: "Blog Title: https://anshgrover.com/blog/slug". Proactively share relevant blog posts when discussing related topics.
 
 10. When asked about a SPECIFIC blog post (e.g., "tell me about your [topic] article" or "show me your post about [topic]"):
    - Search through the blog posts for the most relevant match based on title, tags, or topic
    - Share ONLY that specific blog post with full details
    - Format it as a shareable snippet: Title, date, summary, tags, and direct link
    - Make the link prominent and easy to copy/share
-   - Example: "Here's my article on [topic]: **[Title]** ([Date]) - [Summary]. Read it here: https://anshgrover.me/blog/[slug]"
+   - Example: "Here's my article on [topic]: **[Title]** ([Date]) - [Summary]. Read it here: https://anshgrover.com/blog/[slug]"
 
 11. **Bounties / money:** Use the OPEN SOURCE INCOME & BOUNTIES section. Do not double-count: the $45.9k+ headline is the portfolio summary; the blog gives 2025-specific lines (Algora $1,200+, GitHub Sponsorships $2,000, etc.); experience rows give org-level numbers. If unsure, say the headline figure and offer to break down by source.
 
