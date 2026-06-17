@@ -229,7 +229,9 @@ export async function GitHubActivity() {
       <div className="mt-4 flex flex-col gap-2 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
         <div className="flex flex-wrap items-center gap-2">
           <span>Less</span>
-          <div className="flex items-center gap-1">{buildLegend(calendar.weeks)}</div>
+          <div className="flex items-center gap-1">
+            {buildLegend(calendar.weeks)}
+          </div>
           <span>More</span>
         </div>
         <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">

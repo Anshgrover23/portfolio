@@ -2,8 +2,7 @@
 
 import Image from 'next/image';
 
-const DEVICON =
-  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
+const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
 
 const TECH_ICONS = {
   typescript: `${DEVICON}/typescript/typescript-original.svg`,
@@ -44,7 +43,8 @@ const PROOF_POINTS: { idx: string; body: React.ReactNode }[] = [
         Earned more than{' '}
         <span className="font-mono tabular-nums text-foreground">$45,000</span>{' '}
         USD in open source bounties across{' '}
-        <span className="font-mono tabular-nums text-foreground">8+</span> orgs (
+        <span className="font-mono tabular-nums text-foreground">8+</span> orgs
+        (
         <a
           href="https://github.com/antiwork"
           target="_blank"

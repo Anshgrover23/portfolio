@@ -25,7 +25,7 @@ export function PageRail() {
 
   useEffect(() => {
     const elements = SECTIONS.map(s => document.getElementById(s.id)).filter(
-      (el): el is HTMLElement => el !== null,
+      (el): el is HTMLElement => el !== null
     );
     if (elements.length === 0) return;
 
@@ -36,7 +36,7 @@ export function PageRail() {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
         if (visible[0]?.target.id) setActive(visible[0].target.id);
       },
-      { rootMargin: '-20% 0px -60% 0px', threshold: [0, 0.1, 0.3, 0.6] },
+      { rootMargin: '-20% 0px -60% 0px', threshold: [0, 0.1, 0.3, 0.6] }
     );
 
     elements.forEach(el => observer.observe(el));
@@ -100,13 +100,13 @@ export function PageRail() {
                       '-ml-px flex items-baseline gap-3 border-l py-1.5 pl-4 text-sm transition-colors',
                       isActive
                         ? 'border-accent text-foreground'
-                        : 'border-transparent text-muted-foreground hover:text-foreground',
+                        : 'border-transparent text-muted-foreground hover:text-foreground'
                     )}
                   >
                     <span
                       className={cn(
                         'type-numeral text-[11px]',
-                        isActive ? 'text-accent' : 'text-muted-foreground/55',
+                        isActive ? 'text-accent' : 'text-muted-foreground/55'
                       )}
                     >
                       {String(idx + 1).padStart(2, '0')}
@@ -120,7 +120,9 @@ export function PageRail() {
         </nav>
 
         <div className="space-y-3 text-sm">
-          <p className="type-meta normal-case text-muted-foreground/70">Connect with me</p>
+          <p className="type-meta normal-case text-muted-foreground/70">
+            Connect with me
+          </p>
           <ul className="space-y-1.5">
             <li>
               <a

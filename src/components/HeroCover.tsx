@@ -104,7 +104,10 @@ export function HeroCover() {
               >
                 Ansh
               </span>{' '}
-              <span aria-hidden className="font-light not-italic text-foreground/85">
+              <span
+                aria-hidden
+                className="font-light not-italic text-foreground/85"
+              >
                 👋
               </span>
             </h1>

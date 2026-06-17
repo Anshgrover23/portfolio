@@ -19,7 +19,10 @@ export function isFeaturedRole(exp: ExperienceEntry) {
 export function partitionExperiences() {
   const current = experiences.filter(isCurrentRole);
   const recent = experiences.filter(
-    exp => !isCurrentRole(exp) && exp.period.includes('2025') && !exp.period.includes('Contributing')
+    exp =>
+      !isCurrentRole(exp) &&
+      exp.period.includes('2025') &&
+      !exp.period.includes('Contributing')
   );
   const openSource = experiences.filter(
     exp => !isCurrentRole(exp) && !recent.includes(exp)

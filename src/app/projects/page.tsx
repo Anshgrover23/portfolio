@@ -34,8 +34,8 @@ export default function ProjectsIndexPage() {
             Work experience
           </h1>
           <p className="mt-3 max-w-prose text-sm leading-relaxed text-muted-foreground md:text-base">
-            Expand a role for a preview, or open the full page for contributions,
-            PRs, and references.
+            Expand a role for a preview, or open the full page for
+            contributions, PRs, and references.
           </p>
           <p className="mt-4 font-mono text-xs text-muted-foreground">
             <span className="font-medium tabular-nums text-foreground">

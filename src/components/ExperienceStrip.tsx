@@ -22,9 +22,7 @@ function OrgTile({
     <Link
       href={`/projects/${slug}`}
       className={`group flex min-w-[8rem] shrink-0 snap-start flex-col items-center gap-2 rounded-lg border bg-card px-3 py-3 transition-[box-shadow,transform] motion-safe:duration-200 hover:shadow-[0_2px_8px_rgba(47,52,55,0.06)] motion-safe:active:scale-[0.98] md:min-w-[9rem] md:px-4 md:py-4 ${
-        isCurrent
-          ? 'border-accent/30 ring-1 ring-accent/15'
-          : 'border-line'
+        isCurrent ? 'border-accent/30 ring-1 ring-accent/15' : 'border-line'
       }`}
     >
       <ExperienceOrgLogo logo={logo} company={company} size="sm" />
@@ -65,8 +63,8 @@ export function ExperienceStrip() {
           </h2>
           <p className="mt-2 max-w-prose text-sm text-muted-foreground">
             Founding engineer at{' '}
-            <span className="font-medium text-foreground">Screenpipe</span>{' '}
-            (YC S26), plus contract and OSS work.
+            <span className="font-medium text-foreground">Screenpipe</span> (YC
+            S26), plus contract and OSS work.
           </p>
         </div>
         <Link

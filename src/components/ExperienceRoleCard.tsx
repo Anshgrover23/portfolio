@@ -34,7 +34,12 @@ export function ExperienceRoleCard({
           }}
         />
         <div className="relative flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
-          <ExperienceOrgLogo logo={exp.logo} company={exp.company} size="lg" framed />
+          <ExperienceOrgLogo
+            logo={exp.logo}
+            company={exp.company}
+            size="lg"
+            framed
+          />
           <div className="min-w-0 flex-1">
             <div className="mb-3 flex flex-wrap items-center gap-2">
               {isCurrent && (
@@ -51,7 +56,9 @@ export function ExperienceRoleCard({
             <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground underline-offset-4 group-hover:underline md:text-3xl">
               {exp.company}
             </h2>
-            <p className="mt-1.5 text-base font-medium text-accent">{exp.role}</p>
+            <p className="mt-1.5 text-base font-medium text-accent">
+              {exp.role}
+            </p>
             <p className="mt-1 font-mono text-xs text-muted-foreground tabular-nums md:text-sm">
               {exp.period}
             </p>
@@ -106,7 +113,9 @@ export function ExperienceRoleCard({
             </span>
           )}
         </span>
-        <span className="mt-1 block text-sm font-medium text-accent">{exp.role}</span>
+        <span className="mt-1 block text-sm font-medium text-accent">
+          {exp.role}
+        </span>
         <span className="mt-1 block font-mono text-xs text-muted-foreground tabular-nums">
           {exp.period}
         </span>

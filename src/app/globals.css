@@ -106,7 +106,11 @@
     font-family: var(--font-sans), system-ui, sans-serif;
     font-size: 1rem;
     line-height: 1.6;
-    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1;
+    font-feature-settings:
+      'kern' 1,
+      'liga' 1,
+      'calt' 1,
+      'ss01' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -122,12 +126,16 @@
     line-height: 1.06;
     text-wrap: balance;
     /* Fraunces optical-size axis cue — large display glyphs */
-    font-variation-settings: 'opsz' 144, 'SOFT' 50;
+    font-variation-settings:
+      'opsz' 144,
+      'SOFT' 50;
   }
 
   h3,
   h4 {
-    font-variation-settings: 'opsz' 36, 'SOFT' 60;
+    font-variation-settings:
+      'opsz' 36,
+      'SOFT' 60;
     letter-spacing: -0.018em;
   }
 
@@ -150,7 +158,9 @@
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.06;
-    font-variation-settings: 'opsz' 144, 'SOFT' 50;
+    font-variation-settings:
+      'opsz' 144,
+      'SOFT' 50;
   }
 
   /* Editorial italic numerals, à la print magazine section markers */
@@ -158,7 +168,9 @@
     font-family: var(--font-display), ui-serif, Georgia, serif;
     font-style: italic;
     font-weight: 300;
-    font-variation-settings: 'opsz' 36, 'SOFT' 80;
+    font-variation-settings:
+      'opsz' 36,
+      'SOFT' 80;
     letter-spacing: 0;
     line-height: 1;
   }

@@ -82,8 +82,7 @@ export const experiences = [
       },
       {
         title: 'Homebrew release for Screenpipe',
-        description:
-          'Published Screenpipe to Homebrew with CI/CD integration.',
+        description: 'Published Screenpipe to Homebrew with CI/CD integration.',
         bounty: '$50 bounty',
         link: 'https://github.com/mediar-ai/screenpipe/pull/623',
       },
@@ -421,8 +420,7 @@ export const experiences = [
     company: 'Mediar-AI',
     role: 'Open Source Contributor',
     period: 'Mar 2025 - Jun 2025',
-    description:
-      'Built dev tools and automation scripts for Terminator.',
+    description: 'Built dev tools and automation scripts for Terminator.',
     logo: 'mediar-ai.png',
     link: 'https://github.com/mediar-ai',
     totalPRs: '20+',

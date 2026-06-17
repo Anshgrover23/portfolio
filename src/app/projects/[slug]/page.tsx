@@ -49,12 +49,9 @@ export default async function ProjectOrgPage({ params }: Props) {
   const badge = 'badge' in exp ? exp.badge : undefined;
   const highlights = 'highlights' in exp ? exp.highlights : undefined;
   const isCurrent = 'isCurrent' in exp && exp.isCurrent;
-  const mergedPRsRepo =
-    'mergedPRsRepo' in exp ? exp.mergedPRsRepo : undefined;
+  const mergedPRsRepo = 'mergedPRsRepo' in exp ? exp.mergedPRsRepo : undefined;
   const careerMergedPRs =
-    'careerMergedPRs' in exp
-      ? exp.careerMergedPRs
-      : undefined;
+    'careerMergedPRs' in exp ? exp.careerMergedPRs : undefined;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -72,7 +69,10 @@ export default async function ProjectOrgPage({ params }: Props) {
             Home
           </Link>
           <span aria-hidden>/</span>
-          <Link href="/projects" className="transition-colors hover:text-foreground">
+          <Link
+            href="/projects"
+            className="transition-colors hover:text-foreground"
+          >
             Experience
           </Link>
           <span aria-hidden>/</span>
@@ -177,19 +177,19 @@ export default async function ProjectOrgPage({ params }: Props) {
                   What I&apos;ve done
                 </h2>
                 <ul className="space-y-2.5 rounded-lg border border-line bg-canvas-muted/40 p-5">
-                {highlights.map(item => (
-                  <li
-                    key={item}
-                    className="flex gap-2.5 text-sm leading-relaxed text-foreground/90"
-                  >
-                    <span
-                      className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent"
-                      aria-hidden
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+                  {highlights.map(item => (
+                    <li
+                      key={item}
+                      className="flex gap-2.5 text-sm leading-relaxed text-foreground/90"
+                    >
+                      <span
+                        className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent"
+                        aria-hidden
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
 

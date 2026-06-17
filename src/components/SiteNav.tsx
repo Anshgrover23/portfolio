@@ -80,7 +80,7 @@ function NavLink({
         active
           ? 'text-background'
           : 'text-muted-foreground hover:text-foreground',
-        className,
+        className
       )}
     >
       <span className="relative z-[1]">{item.label}</span>
@@ -115,9 +115,9 @@ export function SiteNav() {
       return;
     }
 
-    const sections = HOME_SECTIONS.map(id => document.getElementById(id)).filter(
-      (el): el is HTMLElement => el !== null,
-    );
+    const sections = HOME_SECTIONS.map(id =>
+      document.getElementById(id)
+    ).filter((el): el is HTMLElement => el !== null);
     if (sections.length === 0) return;
 
     const observer = new IntersectionObserver(
@@ -129,7 +129,7 @@ export function SiteNav() {
           setActiveSection(visible[0].target.id);
         }
       },
-      { rootMargin: '-18% 0px -58% 0px', threshold: [0, 0.12, 0.35] },
+      { rootMargin: '-18% 0px -58% 0px', threshold: [0, 0.12, 0.35] }
     );
 
     sections.forEach(el => observer.observe(el));
@@ -154,7 +154,7 @@ export function SiteNav() {
       }
       return false;
     },
-    [pathname, onHome, activeSection],
+    [pathname, onHome, activeSection]
   );
 
   const handleContactClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -172,7 +172,7 @@ export function SiteNav() {
           'group/nav fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow,color] duration-300',
           scrolled
             ? 'border-b border-line/90 bg-background/88 shadow-[0_1px_0_rgba(47,52,55,0.03)] backdrop-blur-md'
-            : 'border-b border-transparent bg-background/70 backdrop-blur-sm',
+            : 'border-b border-transparent bg-background/70 backdrop-blur-sm'
         )}
       >
         <nav

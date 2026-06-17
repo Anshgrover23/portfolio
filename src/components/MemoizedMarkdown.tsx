@@ -8,12 +8,12 @@ import { memo, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import { TweetWrapper } from './TweetWrapper';
+import { TweetLink } from './TweetLink';
 
 const MemoizedMarkdownBlock = memo(
   ({ block }: { block: ParsedBlock }) => {
     if (block.type === 'tweet' && block.tweetId) {
-      return <TweetWrapper id={block.tweetId} />;
+      return <TweetLink id={block.tweetId} />;
     }
 
     return (

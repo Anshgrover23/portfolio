@@ -23,8 +23,7 @@ export function ExperienceOrgLogo({
 }: ExperienceOrgLogoProps) {
   const { box, dim } = sizeMap[size];
   const isRemote = logo.startsWith('http') || logo.startsWith('//');
-  const hasImage =
-    isRemote || LOCAL_IMAGE.test(logo);
+  const hasImage = isRemote || LOCAL_IMAGE.test(logo);
 
   const inner = hasImage ? (
     <Image

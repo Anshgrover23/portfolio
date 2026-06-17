@@ -4,15 +4,10 @@ import { memo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import { TweetWrapper } from './TweetWrapper';
 import type { ParsedBlock } from '@/lib/markdown-parser';
 
 export const MarkdownBlogBlock = memo(
   ({ block }: { block: ParsedBlock }) => {
-    if (block.type === 'tweet' && block.tweetId) {
-      return <TweetWrapper id={block.tweetId} />;
-    }
-
     return (
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
@@ -114,8 +109,7 @@ export const MarkdownBlogBlock = memo(
   },
   (prevProps, nextProps) =>
     prevProps.block.content === nextProps.block.content &&
-    prevProps.block.type === nextProps.block.type &&
-    prevProps.block.tweetId === nextProps.block.tweetId
+    prevProps.block.type === nextProps.block.type
 );
 
 MarkdownBlogBlock.displayName = 'MarkdownBlogBlock';

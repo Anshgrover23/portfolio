@@ -9,6 +9,7 @@ import {
   type ParsedBlock,
 } from '@/lib/markdown-parser';
 import { MarkdownBlogBlock } from '@/components/MarkdownBlogBlock';
+import { TweetEmbed } from '@/components/TweetEmbed';
 import { JsonLd } from '@/components/JsonLd';
 
 import type { Metadata } from 'next';
@@ -135,9 +136,13 @@ export default async function BlogPostPage({
 
         <article className="prose prose-neutral max-w-none prose-lg">
           <div className="space-y-6 leading-relaxed text-muted-foreground">
-            {blocks.map((block: ParsedBlock, index: number) => (
-              <MarkdownBlogBlock block={block} key={`block-${index}`} />
-            ))}
+            {blocks.map((block: ParsedBlock, index: number) =>
+              block.type === 'tweet' && block.tweetId ? (
+                <TweetEmbed id={block.tweetId} key={`block-${index}`} />
+              ) : (
+                <MarkdownBlogBlock block={block} key={`block-${index}`} />
+              )
+            )}
           </div>
           <BlogSocials className="mt-8" />
         </article>

@@ -26,9 +26,24 @@ const EASE_IN_OUT = [0.45, 0, 0.55, 1] as const;
 const QUOTE_CROSSFADE = 0.26;
 const META_CROSSFADE = 0.22;
 const META_DELAY = 0.03;
-const PILL_SPRING = { type: 'spring' as const, stiffness: 580, damping: 34, mass: 0.62 };
-const LAYOUT_SPRING = { type: 'spring' as const, stiffness: 620, damping: 36, mass: 0.58 };
-const NAME_SPRING = { type: 'spring' as const, stiffness: 520, damping: 32, mass: 0.55 };
+const PILL_SPRING = {
+  type: 'spring' as const,
+  stiffness: 580,
+  damping: 34,
+  mass: 0.62,
+};
+const LAYOUT_SPRING = {
+  type: 'spring' as const,
+  stiffness: 620,
+  damping: 36,
+  mass: 0.58,
+};
+const NAME_SPRING = {
+  type: 'spring' as const,
+  stiffness: 520,
+  damping: 32,
+  mass: 0.55,
+};
 
 const quoteVariants: Variants = {
   initial: {
@@ -97,7 +112,7 @@ function dedupeByAuthor(items: TestimonialItem[]): TestimonialItem[] {
 
 function toSlides(items: TestimonialItem[]): QuoteSlide[] {
   return items
-    .map((t) => {
+    .map(t => {
       const quote = (t.quote ?? t.text ?? '').trim();
       if (!quote) return null;
       return {
@@ -133,7 +148,7 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    setActiveIndex((i) =>
+    setActiveIndex(i =>
       slides.length ? Math.min(Math.max(0, i), slides.length - 1) : 0
     );
   }, [slides.length]);
@@ -182,9 +197,7 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
 
       const i = activeIndexRef.current;
       const next =
-        dominant > 0
-          ? Math.min(i + 1, slides.length - 1)
-          : Math.max(i - 1, 0);
+        dominant > 0 ? Math.min(i + 1, slides.length - 1) : Math.max(i - 1, 0);
       if (next === i) return;
 
       const now = performance.now();
@@ -229,7 +242,10 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
                 aria-hidden
                 initial={{ opacity: 0.35, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: QUOTE_CROSSFADE * 0.85, ease: EASE_OUT }}
+                transition={{
+                  duration: QUOTE_CROSSFADE * 0.85,
+                  ease: EASE_OUT,
+                }}
               >
                 &ldquo;
               </motion.span>
@@ -314,117 +330,117 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
                   'sm:gap-4 md:gap-5'
                 )}
               >
-              <LayoutGroup id="testimonial-avatars">
-              {slides.map((t, index) => {
-                const isActive = safeIndex === index;
-                const isHovered = hoveredIndex === index && !isActive;
-                const showName = isActive || isHovered;
+                <LayoutGroup id="testimonial-avatars">
+                  {slides.map((t, index) => {
+                    const isActive = safeIndex === index;
+                    const isHovered = hoveredIndex === index && !isActive;
+                    const showName = isActive || isHovered;
 
-                return (
-                  <motion.button
-                    key={`quote-slide-${index}`}
-                    ref={(node) => {
-                      avatarRefs.current[index] = node;
-                    }}
-                    type="button"
-                    layout
-                    aria-pressed={isActive}
-                    aria-label={`Show testimonial from ${t.author}`}
-                    onMouseDown={(e) => {
-                      if (e.button === 0) e.preventDefault();
-                    }}
-                    onClick={(e) => {
-                      setActiveIndex(index);
-                      e.currentTarget.focus({ preventScroll: true });
-                    }}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    style={{ zIndex: isActive ? 30 : isHovered ? 20 : 10 }}
-                    transition={{ layout: LAYOUT_SPRING }}
-                    className={cn(
-                      'relative isolate flex shrink-0 cursor-pointer touch-manipulation select-none items-center overflow-visible rounded-full border-0 bg-transparent outline-none',
-                      'p-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent/70',
-                      isActive && showName && 'pr-4'
-                    )}
-                  >
-                    {isActive ? (
-                      <motion.div
-                        layoutId="testimonial-active-pill"
-                        className="absolute inset-0 rounded-full bg-foreground shadow-[0_10px_15px_-3px_rgba(47,52,55,0.12),0_4px_6px_-2px_rgba(47,52,55,0.06)]"
-                        transition={PILL_SPRING}
-                      />
-                    ) : null}
-                    {isHovered ? (
-                      <motion.div
-                        className="absolute inset-0 rounded-full bg-muted"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.14, ease: EASE_OUT }}
-                      />
-                    ) : null}
-                  <span
-                    className={cn(
-                      'relative z-10 flex items-center',
-                      showName ? 'w-max' : 'min-w-0'
-                    )}
-                  >
-                    {t.avatar ? (
-                      <div
-                        className="relative shrink-0 overflow-hidden rounded-full"
-                        style={{
-                          width: AVATAR_PX,
-                          height: AVATAR_PX,
-                          boxShadow: isActive
-                            ? '0 0 0 2px rgba(255, 255, 255, 0.35)'
-                            : 'none',
+                    return (
+                      <motion.button
+                        key={`quote-slide-${index}`}
+                        ref={node => {
+                          avatarRefs.current[index] = node;
                         }}
+                        type="button"
+                        layout
+                        aria-pressed={isActive}
+                        aria-label={`Show testimonial from ${t.author}`}
+                        onMouseDown={e => {
+                          if (e.button === 0) e.preventDefault();
+                        }}
+                        onClick={e => {
+                          setActiveIndex(index);
+                          e.currentTarget.focus({ preventScroll: true });
+                        }}
+                        onMouseEnter={() => setHoveredIndex(index)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                        style={{ zIndex: isActive ? 30 : isHovered ? 20 : 10 }}
+                        transition={{ layout: LAYOUT_SPRING }}
+                        className={cn(
+                          'relative isolate flex shrink-0 cursor-pointer touch-manipulation select-none items-center overflow-visible rounded-full border-0 bg-transparent outline-none',
+                          'p-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent/70',
+                          isActive && showName && 'pr-4'
+                        )}
                       >
-                        <Image
-                          src={t.avatar}
-                          alt=""
-                          width={AVATAR}
-                          height={AVATAR}
-                          draggable={false}
-                          className="pointer-events-none rounded-full object-cover"
-                          style={{ width: AVATAR_PX, height: AVATAR_PX }}
-                          sizes={`${AVATAR}px`}
-                        />
-                      </div>
-                    ) : (
-                      <div
-                        className="flex shrink-0 items-center justify-center rounded-full bg-muted text-sm font-medium text-muted-foreground"
-                        style={{ width: AVATAR_PX, height: AVATAR_PX }}
-                        aria-hidden
-                      >
-                        {t.author.slice(0, 1)}
-                      </div>
-                    )}
-                    <motion.span
-                      aria-hidden={!showName}
-                      className={cn(
-                        'block shrink-0 overflow-hidden whitespace-nowrap pl-2.5 pr-0.5 text-left text-base font-medium',
-                        isActive
-                          ? 'text-primary-foreground'
-                          : 'text-foreground'
-                      )}
-                      initial={false}
-                      animate={{
-                        maxWidth: showName ? 280 : 0,
-                        opacity: showName ? 1 : 0,
-                      }}
-                      transition={{
-                        maxWidth: NAME_SPRING,
-                        opacity: { duration: 0.16, ease: EASE_OUT },
-                      }}
-                    >
-                      {t.author}
-                    </motion.span>
-                  </span>
-                  </motion.button>
-                );
-              })}
-              </LayoutGroup>
+                        {isActive ? (
+                          <motion.div
+                            layoutId="testimonial-active-pill"
+                            className="absolute inset-0 rounded-full bg-foreground shadow-[0_10px_15px_-3px_rgba(47,52,55,0.12),0_4px_6px_-2px_rgba(47,52,55,0.06)]"
+                            transition={PILL_SPRING}
+                          />
+                        ) : null}
+                        {isHovered ? (
+                          <motion.div
+                            className="absolute inset-0 rounded-full bg-muted"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.14, ease: EASE_OUT }}
+                          />
+                        ) : null}
+                        <span
+                          className={cn(
+                            'relative z-10 flex items-center',
+                            showName ? 'w-max' : 'min-w-0'
+                          )}
+                        >
+                          {t.avatar ? (
+                            <div
+                              className="relative shrink-0 overflow-hidden rounded-full"
+                              style={{
+                                width: AVATAR_PX,
+                                height: AVATAR_PX,
+                                boxShadow: isActive
+                                  ? '0 0 0 2px rgba(255, 255, 255, 0.35)'
+                                  : 'none',
+                              }}
+                            >
+                              <Image
+                                src={t.avatar}
+                                alt=""
+                                width={AVATAR}
+                                height={AVATAR}
+                                draggable={false}
+                                className="pointer-events-none rounded-full object-cover"
+                                style={{ width: AVATAR_PX, height: AVATAR_PX }}
+                                sizes={`${AVATAR}px`}
+                              />
+                            </div>
+                          ) : (
+                            <div
+                              className="flex shrink-0 items-center justify-center rounded-full bg-muted text-sm font-medium text-muted-foreground"
+                              style={{ width: AVATAR_PX, height: AVATAR_PX }}
+                              aria-hidden
+                            >
+                              {t.author.slice(0, 1)}
+                            </div>
+                          )}
+                          <motion.span
+                            aria-hidden={!showName}
+                            className={cn(
+                              'block shrink-0 overflow-hidden whitespace-nowrap pl-2.5 pr-0.5 text-left text-base font-medium',
+                              isActive
+                                ? 'text-primary-foreground'
+                                : 'text-foreground'
+                            )}
+                            initial={false}
+                            animate={{
+                              maxWidth: showName ? 280 : 0,
+                              opacity: showName ? 1 : 0,
+                            }}
+                            transition={{
+                              maxWidth: NAME_SPRING,
+                              opacity: { duration: 0.16, ease: EASE_OUT },
+                            }}
+                          >
+                            {t.author}
+                          </motion.span>
+                        </span>
+                      </motion.button>
+                    );
+                  })}
+                </LayoutGroup>
               </div>
             </div>
           </div>

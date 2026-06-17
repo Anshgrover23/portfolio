@@ -68,7 +68,10 @@ export function BlogHomeList() {
                   </span>
                 )}
                 <span className="mt-2 inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground tabular-nums">
-                  <Calendar className="h-3.5 w-3.5 shrink-0" strokeWidth={1.5} />
+                  <Calendar
+                    className="h-3.5 w-3.5 shrink-0"
+                    strokeWidth={1.5}
+                  />
                   {new Date(post.date).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',

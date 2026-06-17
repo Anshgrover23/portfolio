@@ -112,7 +112,6 @@ export const Hero = () => {
               anshgrover938@gmail.com
             </a>
           </div>
-
         </div>
 
         <div

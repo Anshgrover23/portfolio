@@ -20,7 +20,9 @@ type ExperienceWorkAccordionProps = {
   items: readonly Experience[];
 };
 
-export function ExperienceWorkAccordion({ items }: ExperienceWorkAccordionProps) {
+export function ExperienceWorkAccordion({
+  items,
+}: ExperienceWorkAccordionProps) {
   return (
     <div className="border-t border-line">
       {items.map(exp => {
