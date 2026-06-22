@@ -1,5 +1,6 @@
 import { Chatbot } from '@/components/Chatbot';
 import { SHOW_FLOATING_CHROME } from '@/lib/featureFlags';
+import { createOgMetadata } from '@/lib/og';
 import { Metadata } from 'next';
 import { SITE_URL } from '@/lib/site';
 
@@ -18,6 +19,13 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-touch-icon.png',
   },
+  ...createOgMetadata({
+    title: 'Blog — Thoughts & Learnings',
+    description:
+      'Thoughts on open source, developer tools, and lessons learned from contributing to projects like TSCircuit and Antiwork.',
+    url: '/blog',
+    imagePath: '/blog/opengraph-image',
+  }),
 };
 
 export default function BlogLayout({

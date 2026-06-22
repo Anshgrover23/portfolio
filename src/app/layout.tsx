@@ -5,16 +5,16 @@ import { PreloadAvatar } from '@/components/PreloadAvatar';
 import { SiteNav } from '@/components/SiteNav';
 import { JsonLd } from '@/components/JsonLd';
 import { fontVariables } from '@/lib/fonts';
+import { createOgMetadata, DEFAULT_OG } from '@/lib/og';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Ansh Grover — founding engineer, YC S26',
+    default: DEFAULT_OG.title,
     template: '%s · Ansh Grover',
   },
-  description:
-    'Founding engineer at Screenpipe (YC S26). 2.5+ years in TypeScript and Rust — product, OSS bounties, and contract work across Antiwork, TSCircuit, and others.',
+  description: DEFAULT_OG.description,
   authors: [{ name: 'Ansh Grover', url: SITE_URL }],
   alternates: {
     canonical: '/',
@@ -38,30 +38,7 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
-  openGraph: {
-    title: 'Ansh Grover — founding engineer, YC S26',
-    description:
-      'Founding engineer at Screenpipe (YC S26). OSS and contract work — 315+ merged PRs in TypeScript, Rust, and platform tooling.',
-    type: 'website',
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    locale: 'en_US',
-    images: [
-      {
-        url: '/avatar.jpeg',
-        width: 800,
-        height: 600,
-        alt: 'Ansh Grover',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Ansh Grover — software engineer & open source',
-    description:
-      'Software engineer and open source contributor. Contracts, bounties, and distro/platform work.',
-    images: ['/avatar.jpeg'],
-  },
+  ...createOgMetadata(),
 };
 
 const structuredData = [

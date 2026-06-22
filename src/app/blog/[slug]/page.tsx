@@ -13,6 +13,7 @@ import { TweetEmbed } from '@/components/TweetEmbed';
 import { JsonLd } from '@/components/JsonLd';
 
 import type { Metadata } from 'next';
+import { createOgMetadata } from '@/lib/og';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 type Props = {
@@ -31,20 +32,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       alternates: {
         canonical: `/blog/${slug}`,
       },
-      openGraph: {
+      ...createOgMetadata({
         title: post.title,
         description: post.excerpt,
+        url: `/blog/${slug}`,
         type: 'article',
         publishedTime: post.date,
         authors: ['Ansh Grover'],
-        url: `/blog/${slug}`,
         tags: post.tags,
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: post.title,
-        description: post.excerpt,
-      },
+        imagePath: `/blog/${slug}/opengraph-image`,
+      }),
     };
   else {
     return {

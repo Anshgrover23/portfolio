@@ -4,6 +4,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/og-image.png',
+        destination: '/opengraph-image',
+        permanent: true,
+      },
+      {
         source: '/:path*',
         has: [{ type: 'host', value: 'anshgrover.me' }],
         destination: 'https://anshgrover.com/:path*',
