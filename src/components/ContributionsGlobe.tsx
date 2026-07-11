@@ -2,21 +2,59 @@
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { useEffect } from 'react';
 import {
   GLOBE_ARC_COLOR,
   GLOBE_INITIAL_PHI,
   globeArcs,
-  globeContributions,
+  globeImageUrls,
   globeMarkers,
+  globePolaroids,
 } from '@/data/globeContributions';
 
-const CobeGlobe = dynamic(() => import('./CobeGlobe'), { ssr: false });
+const CobeGlobe = dynamic(() => import('./CobeGlobe'), {
+  ssr: false,
+  loading: () => (
+    <div
+      className="aspect-square w-full rounded-full bg-canvas-muted/60"
+      aria-hidden
+    />
+  ),
+});
+
+/**
+ * Warm polaroid assets as soon as this island mounts (Experience is
+ * still below the fold on first paint, so we preload here instead of
+ * competing with the hero). Tiny thumbs + SVG logos, not full logos.
+ */
+function usePreloadGlobeImages() {
+  useEffect(() => {
+    const links: HTMLLinkElement[] = [];
+    for (const href of globeImageUrls) {
+      const existing = document.querySelector(
+        `link[rel="preload"][href="${href}"]`
+      );
+      if (existing) continue;
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = href;
+      document.head.appendChild(link);
+      links.push(link);
+    }
+    return () => {
+      for (const link of links) link.remove();
+    };
+  }, []);
+}
 
 /**
  * Experience figure — India-origin arcs to a spread constellation of orgs.
  * Asymmetric editorial split, not a centered demo widget.
  */
 export function ContributionsGlobe() {
+  usePreloadGlobeImages();
+
   return (
     <div
       className="contributions-globe mb-12 md:mb-14"
@@ -41,7 +79,7 @@ export function ContributionsGlobe() {
             initialPhi={GLOBE_INITIAL_PHI}
           />
 
-          {globeContributions.map(pin => (
+          {globePolaroids.map(pin => (
             <div
               key={pin.id}
               className="contribution-polaroid"
@@ -60,6 +98,12 @@ export function ContributionsGlobe() {
                 width={40}
                 height={40}
                 className="contribution-polaroid-img"
+                sizes="40px"
+                quality={70}
+                // Eager: opacity starts at 0 via CSS anchors, so native lazy
+                // would defer until "visible" and polaroids pop in late.
+                loading="eager"
+                decoding="async"
                 unoptimized={pin.image.endsWith('.svg')}
               />
               <span className="contribution-polaroid-caption">

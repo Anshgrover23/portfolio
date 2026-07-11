@@ -5,24 +5,25 @@ export type GlobeContribution = {
   location: [number, number];
   image: string;
   caption: string;
-  href: string;
+  href?: string;
   rotate: number;
   markerSize?: number;
 };
 
-/** Rajasthan — home base for arcs (marker only, no polaroid). */
+/** Rajasthan — home base for arcs (marker + arcs only, no polaroid). */
 export const GLOBE_HOME: [number, number] = [26.9, 75.8];
 
 /**
  * Pin constellation for readable polaroids.
  * Screenpipe alone owns exact SF (primary role). Other orgs are
  * spread across continents so nothing stacks on the Bay Area.
+ * Images are small thumbs (~4–12KB) so first scroll isn’t a 200KB hit.
  */
 export const globeContributions: GlobeContribution[] = [
   {
     id: 'screenpipe',
     location: [37.7749, -122.4194], // exact San Francisco
-    image: '/screenpipe.png',
+    image: '/globe-screenpipe.png',
     caption: 'Screenpipe',
     href: '/projects/screenpipe',
     rotate: -6,
@@ -74,6 +75,12 @@ export const globeContributions: GlobeContribution[] = [
     markerSize: 0.04,
   },
 ];
+
+/** Org polaroids only (no home photo). */
+export const globePolaroids: GlobeContribution[] = globeContributions;
+
+/** URLs to warm in cache before the Experience section is visible. */
+export const globeImageUrls: string[] = globePolaroids.map(p => p.image);
 
 /** Home pin + org pins for the WebGL markers. */
 export const globeMarkers: Marker[] = [
