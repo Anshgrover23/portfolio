@@ -7,7 +7,7 @@ export const OG_IMAGE_SIZE = { width: 1200, height: 630 } as const;
 export const DEFAULT_OG = {
   title: 'Ansh Grover — founding engineer, YC S26',
   description:
-    'Founding engineer at Screenpipe (YC S26). OSS and contract work — 315+ merged PRs in TypeScript, Rust, and platform tooling.',
+    'Founding engineer at Screenpipe (YC S26). OSS and contract work — 463+ merged PRs in TypeScript, Rust, and platform tooling.',
   siteName: SITE_NAME,
   url: SITE_URL,
 } as const;

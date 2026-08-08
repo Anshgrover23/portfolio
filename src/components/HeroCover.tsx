@@ -138,7 +138,7 @@ export function HeroCover() {
                   />
                   <span className="min-w-0 max-w-[34rem] text-pretty">
                     <span className="font-mono text-[0.95em] tabular-nums text-foreground">
-                      2.5
+                      3
                     </span>{' '}
                     years across contract engineering and open source.
                   </span>
@@ -151,7 +151,7 @@ export function HeroCover() {
                   <span className="min-w-0 max-w-[34rem] text-pretty">
                     More than{' '}
                     <span className="font-mono text-[0.95em] tabular-nums text-foreground">
-                      315
+                      463
                     </span>{' '}
                     merged pull requests at{' '}
                     <span className="font-mono text-[0.95em] tabular-nums text-foreground">
@@ -251,7 +251,7 @@ export function HeroCover() {
                 <span aria-hidden className="text-accent">
                   ↗
                 </span>
-                <span className="tabular-nums text-foreground">315+</span>
+                <span className="tabular-nums text-foreground">463+</span>
                 <span>merged PRs</span>
               </li>
               <li className="flex items-baseline gap-2 lg:justify-center">

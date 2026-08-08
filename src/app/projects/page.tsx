@@ -45,8 +45,7 @@ export default function ProjectsIndexPage() {
             <span className="font-medium text-foreground">
               {EXPERIENCE_STATS.bountyTotal}
             </span>{' '}
-            OSS bounties · Screenpipe role: 60+ to{' '}
-            <span className="text-foreground/80">screenpipe/screenpipe</span>
+            OSS bounties
           </p>
         </header>
 

@@ -56,7 +56,7 @@ export function PageRail() {
                 className="status-dot inline-block h-1.5 w-1.5 rounded-full bg-accent"
                 aria-hidden
               />
-              Currently shipping
+              Open to work
             </span>
           </p>
           <p
@@ -66,18 +66,9 @@ export function PageRail() {
               fontVariationSettings: "'opsz' 36, 'SOFT' 60",
             }}
           >
-            <a
-              href="https://screenpi.pe/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold decoration-accent decoration-2 underline-offset-[5px] hover:underline"
-            >
-              Screenpipe
-            </a>{' '}
-            <span className="italic font-light text-muted-foreground">
-              local-first
-            </span>{' '}
-            context for AI agents.
+            <span className="font-semibold">Founding engineer</span>{' '}
+            <span className="italic font-light text-muted-foreground">·</span>{' '}
+            TypeScript &amp; Rust.
           </p>
           <p className="mt-2 font-mono text-[10.5px] uppercase tracking-[0.14em] text-muted-foreground/85">
             YC S26 · IST

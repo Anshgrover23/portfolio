@@ -73,10 +73,10 @@ export const Hero = () => {
               Screenpipe
             </a>
             . Before that,{' '}
-            <span className="font-mono text-[0.95em] tabular-nums">2.5</span>{' '}
+            <span className="font-mono text-[0.95em] tabular-nums">3</span>{' '}
             years of contract and OSS work —{' '}
-            <span className="font-mono text-[0.95em] tabular-nums">315+</span>{' '}
-            merged PRs career-wide (60+ to the Screenpipe product repo), mostly
+            <span className="font-mono text-[0.95em] tabular-nums">463+</span>{' '}
+            merged PRs career-wide (212+ to the Screenpipe product repo), mostly
             TypeScript and Rust.
           </p>
 

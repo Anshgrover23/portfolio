@@ -46,45 +46,350 @@ export const experiences = [
     featured: true,
     logo: 'screenpipe.png',
     link: 'https://screenpi.pe/',
-    totalPRs: '60+',
+    totalPRs: '212+',
     mergedPRsRepo: 'screenpipe/screenpipe',
-    careerMergedPRs: '315+',
+    careerMergedPRs: '463+',
     techStack: [
       { label: 'Rust', icon: '/svg-icons/rust.svg' },
       { label: 'TypeScript', icon: '/svg-icons/typescript.svg' },
+      {
+        label: 'Tauri',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tauri/tauri-original.svg',
+      },
+      { label: 'Next.js', icon: '/svg-icons/nextjs.svg' },
+      { label: 'React', icon: '/svg-icons/reactjs.svg' },
+      {
+        label: 'SQLite',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg',
+      },
+      {
+        label: 'Bun',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg',
+      },
     ] satisfies ExperienceTech[],
     highlights: [
-      'Built the connections platform: generic OAuth plus Slack, Jira, Gmail, Microsoft 365, Notion, Supabase, QuickBooks, and a dozen more — wired into Pi chat and pipes',
-      'Shipped Windows desktop reliability: WebView2 browser, extension pairing, overlay routing, and capture edge cases',
-      'Owned chat and memory UX: unified search across chats and memories, connection suggestions, and core thread/sidebar fixes',
-      'Fixed meetings and capture pipelines: live STT recovery, recording schedules, paused-audio controls, and memories staying in sync',
+      'Built the connections platform: generic OAuth plus Slack, Jira, Gmail, Microsoft 365, Notion, Supabase, QuickBooks, Composio, and more — wired into Pi chat and pipes',
+      'Owned AI gateway and chat reliability: usage limits, provider outages, streaming, drafts, attachments, and presets',
+      'Shipped Windows desktop reliability: WebView2 browser, extension pairing, locked-binary installs, overlay routing, and capture edge cases',
+      'Fixed meetings and capture pipelines: live STT recovery, audio-stall false positives, recording schedules, and vision permissions',
     ],
     contributions: [
       {
-        title: 'Integrations & OAuth',
+        title: 'Built the connections & OAuth platform end-to-end',
         description:
-          'Introduced shared OAuth infrastructure and shipped production connectors (Slack, Jira, Gmail, Microsoft Graph, Notion, Vercel, Cal.com, Google Sheets, and others). Connected accounts feed Pi’s system prompt; onboarding and pipe install guide users through setup.',
+          'Introduced shared OAuth infrastructure and shipped production connectors (Slack, Jira, Gmail, Microsoft 365/Teams, Notion, Supabase, QuickBooks, Google Drive/Docs/Sheets, HubSpot, Cal.com, IMAP, Composio multi-account). Wired connected accounts into Pi’s system prompt; onboarding and pipe install guide users through setup.',
+        badge: 'Platform',
+        pullRequests: [
+          {
+            title:
+              '#2664 · feat(oauth): introduce generic OAuth infrastructure with Notion integration',
+            link: 'https://github.com/screenpipe/screenpipe/pull/2664',
+          },
+          {
+            title:
+              '#2699 · feat: Gmail integration via Google OAuth (read + send)',
+            link: 'https://github.com/screenpipe/screenpipe/pull/2699',
+          },
+          {
+            title:
+              '#3051 · feat(connections): add Microsoft Graph OAuth for Microsoft 365 and Teams',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3051',
+          },
+          {
+            title: '#3118 · feat(connections): migrate Jira to OAuth 2.0 (3LO)',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3118',
+          },
+          {
+            title:
+              '#3015 · feat(connect): add QuickBooks Online and Google Sheets OAuth connectors',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3015',
+          },
+          {
+            title: '#3070 · feat: add Supabase OAuth app integration support',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3070',
+          },
+          {
+            title:
+              '#5362 · feat(connections): add google drive, docs, and sheets via composio',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5362',
+          },
+          {
+            title:
+              '#5399 · feat(connections): multi-account support for composio integrations',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5399',
+          },
+          {
+            title:
+              '#5277 · feat(connections): add email inbox (IMAP) connection',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5277',
+          },
+          {
+            title:
+              "#3254 · feat(connections): wire connected integrations into Pi's system prompt for chat & pipes",
+            link: 'https://github.com/screenpipe/screenpipe/pull/3254',
+          },
+          {
+            title: '#3671 · feat(mcp): add OAuth login for MCP servers',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3671',
+          },
+          {
+            title:
+              '#5762 · fix(connections): route MCP OAuth through HTTPS relay to survive HTTPS-Only browsers',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5762',
+          },
+        ],
       },
       {
-        title: 'Windows desktop & browser',
+        title: 'AI gateway, Pi chat & presets',
         description:
-          'Owned-browser WebView2 startup, session reuse, one-click extension pairing, overlay/timeline behavior, and fixes for capture when recording or using extensions on Windows.',
+          'Hardened AI gateway for usage limits, provider outages, and geo blocks; improved Pi streaming and cloud-token refresh; shipped chat UX (drafts, attachments, filters, always-on-top, connection suggestions) and preset reliability.',
+        badge: 'Chat & AI',
+        pullRequests: [
+          {
+            title:
+              '#5875 · fix(ai): inline upgrade recovery for AI usage limits across all surfaces',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5875',
+          },
+          {
+            title:
+              '#5653 · fix(ai-gateway): classify Anthropic spend-cap 400 as provider outage',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5653',
+          },
+          {
+            title:
+              '#5618 · fix(ai-gateway): recognize Anthropic geo-403 and stop recommending Auto in blocked regions',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5618',
+          },
+          {
+            title:
+              '#3616 · fix(ai-gateway): emit finish_reason before [DONE] for Pi streaming',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3616',
+          },
+          {
+            title:
+              '#3711 · feat(chat): document attachments with unified composer + bubble UI',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3711',
+          },
+          {
+            title:
+              '#3739 · feat(chat): per-conversation composer drafts (no more cross-chat leaks)',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3739',
+          },
+          {
+            title:
+              '#3427 · feat: add smart connection suggestions to chat dashboard',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3427',
+          },
+          {
+            title:
+              '#2826 · feat: add retry, branch in new chat, and rename to chat UI',
+            link: 'https://github.com/screenpipe/screenpipe/pull/2826',
+          },
+          {
+            title: '#5243 · feat(chat): edit saved prompts before running',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5243',
+          },
+          {
+            title: '#5549 · feat(app): add native Business upgrade flow',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5549',
+          },
+        ],
       },
       {
-        title: 'Chat, search & pipes',
+        title: 'Windows desktop, browser & installs',
         description:
-          'Search across chats and memories in one place, smart connection suggestions on the dashboard, chat UI (branch, retry, rename), and pipes discover/offline UX.',
+          'Owned-browser WebView2 startup and session reuse, one-click extension pairing, locked-binary and Bun update unblocks, overlay/timeline routing, and capture filtering on Windows.',
+        badge: 'Desktop',
+        pullRequests: [
+          {
+            title:
+              '#3357 · fix Windows owned browser WebView2 startup and loading',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3357',
+          },
+          {
+            title: '#3351 · feat: add one-click browser extension pairing',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3351',
+          },
+          {
+            title:
+              '#3419 · feat: browser session reuse on windows + smarter extension popup',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3419',
+          },
+          {
+            title:
+              '#5468 · fix(windows): move locked binaries aside so installs never fail',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5468',
+          },
+          {
+            title:
+              '#3650 · fix(windows): unblock app updates when bundled Bun is still running',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3650',
+          },
+          {
+            title:
+              '#3592 · fix(windows): excluded apps are now properly filtered from capture',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3592',
+          },
+          {
+            title:
+              '#2572 · fix: move overlay off root route to prevent cross-window execution',
+            link: 'https://github.com/screenpipe/screenpipe/pull/2572',
+          },
+          {
+            title:
+              '#3286 · fix(connections): Claude Desktop MSIX support + auth key injection on windows',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3286',
+          },
+        ],
       },
       {
-        title: 'Meetings, capture & settings',
+        title: 'Meetings, capture & vision',
         description:
-          'Meeting transcript recovery when live STT fails, recording schedule enforcement, API key and connector settings, and analytics noise reduction for on-call.',
+          'Meeting transcript recovery when live STT fails, audio-stall false positives, recording schedule enforcement, macOS screen-recording permission detection, and notes/attendee UX.',
+        badge: 'Capture',
+        pullRequests: [
+          {
+            title: '#3410 · fix: meeting transcript loss when live STT fails',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3410',
+          },
+          {
+            title:
+              '#5011 · fix(health): stop false audio stall/503 during post-meeting transcription catch-up',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5011',
+          },
+          {
+            title:
+              '#4770 · fix(db): partial index for snapshot compaction to stop false audio-stall notifications',
+            link: 'https://github.com/screenpipe/screenpipe/pull/4770',
+          },
+          {
+            title:
+              '#5393 · fix(vision): detect stale screen-recording permission when macOS enumerates zero displays',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5393',
+          },
+          {
+            title:
+              '#2952 · fix: enforce recording schedule and reset stale pause flag on restart',
+            link: 'https://github.com/screenpipe/screenpipe/pull/2952',
+          },
+          {
+            title:
+              '#5605 · fix(meetings): stop live transcript stall notification firing on silence',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5605',
+          },
+          {
+            title: '#5033 · feat(meeting): pill-based attendee editor',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5033',
+          },
+          {
+            title:
+              '#4332 · fix: Screenpipe Cloud transcription fallback for paid Basic users',
+            link: 'https://github.com/screenpipe/screenpipe/pull/4332',
+          },
+        ],
+      },
+      {
+        title: 'Pipes, notifications & onboarding',
+        description:
+          'Event/cron pipe reliability, /notify boundary enforcement, discover/offline UX, Business upgrade and timeline opt-out onboarding, and first-run fail-open guidance.',
+        badge: 'Pipes',
+        pullRequests: [
+          {
+            title:
+              '#5487 · fix(pipes): run event-triggered pipes once per event',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5487',
+          },
+          {
+            title:
+              '#4540 · fix(pipes): enforce notification toggle at /notify boundary',
+            link: 'https://github.com/screenpipe/screenpipe/pull/4540',
+          },
+          {
+            title:
+              '#4535 · fix(notifications): prevent /notify hangs when panel UI stalls',
+            link: 'https://github.com/screenpipe/screenpipe/pull/4535',
+          },
+          {
+            title:
+              '#3315 · fix(pipes): dropdown lag, stuck skeleton, offline UX, and discover feedback',
+            link: 'https://github.com/screenpipe/screenpipe/pull/3315',
+          },
+          {
+            title:
+              '#5506 · feat(onboarding): offer timeline opt-out only on low-tier devices',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5506',
+          },
+          {
+            title:
+              '#5428 · fix(onboarding): make first-run guide fail open and opt-in',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5428',
+          },
+          {
+            title: '#2949 · feat: add connection step to onboarding',
+            link: 'https://github.com/screenpipe/screenpipe/pull/2949',
+          },
+          {
+            title:
+              '#2599 · feat: inline connection setup modal on pipe install',
+            link: 'https://github.com/screenpipe/screenpipe/pull/2599',
+          },
+        ],
+      },
+      {
+        title: 'App architecture cleanup (hooks & data fetching)',
+        description:
+          'Led a useEffect cleanup pass: shared Tauri/DOM/interval hooks, TanStack Query for installed apps, store-sourced pipe-watch messages, and lint guardrails so effects stay intentional.',
+        badge: 'Architecture',
+        pullRequests: [
+          {
+            title:
+              '#4790 · feat(app): add useEffect cleanup infra — shared hooks, TanStack Query, lint guardrail',
+            link: 'https://github.com/screenpipe/screenpipe/pull/4790',
+          },
+          {
+            title:
+              '#4938 · refactor(app): subscribe to Tauri events via the shared useTauriEvent hook',
+            link: 'https://github.com/screenpipe/screenpipe/pull/4938',
+          },
+          {
+            title:
+              '#4939 · refactor(app): drive periodic re-render tickers with the useInterval hook',
+            link: 'https://github.com/screenpipe/screenpipe/pull/4939',
+          },
+          {
+            title:
+              '#4940 · refactor(app): use the useEventListener hook for window DOM listeners',
+            link: 'https://github.com/screenpipe/screenpipe/pull/4940',
+          },
+          {
+            title:
+              '#4898 · refactor(app): convert useInstalledApps to TanStack Query (useEffect cleanup phase 2)',
+            link: 'https://github.com/screenpipe/screenpipe/pull/4898',
+          },
+          {
+            title:
+              '#4896 · refactor(chat): source pipe-watch messages from store, drop mirror effect',
+            link: 'https://github.com/screenpipe/screenpipe/pull/4896',
+          },
+          {
+            title:
+              '#5021 · refactor(effects): route listeners, pollers & DOM events through custom hooks',
+            link: 'https://github.com/screenpipe/screenpipe/pull/5021',
+          },
+        ],
       },
       {
         title: 'Homebrew release for Screenpipe',
-        description: 'Published Screenpipe to Homebrew with CI/CD integration.',
+        description:
+          'Published Screenpipe to official Homebrew/core with CI/CD integration.',
         bounty: '$50 bounty',
-        link: 'https://github.com/mediar-ai/screenpipe/pull/623',
+        link: 'https://github.com/screenpipe/screenpipe/pull/623',
+        pullRequests: [
+          {
+            title: '#623 · chore: release screenpipe to official Homebrew/core',
+            link: 'https://github.com/screenpipe/screenpipe/pull/623',
+          },
+        ],
       },
     ],
   },

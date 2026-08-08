@@ -1,7 +1,7 @@
 import { experiences } from '@/data/experiences';
 
 export const EXPERIENCE_STATS = {
-  mergedPRs: '315+',
+  mergedPRs: '463+',
   bountyTotal: '$45.9k+',
   orgCount: '8+',
 } as const;

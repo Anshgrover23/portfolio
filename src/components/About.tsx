@@ -151,7 +151,7 @@ export const About = () => {
               founding engineer at Screenpipe
             </span>{' '}
             (YC S26) with{' '}
-            <span className="font-mono tabular-nums text-foreground">2.5+</span>{' '}
+            <span className="font-mono tabular-nums text-foreground">3+</span>{' '}
             years shipping production software, focused on{' '}
             <TechMention name="TypeScript" iconSrc={TECH_ICONS.typescript} />{' '}
             testing and release automation, and developer experience. I ship in{' '}

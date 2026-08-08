@@ -33,7 +33,7 @@ const DEFAULT_CONTENT: Required<OgImageContent> = {
   subtitle: 'Founding Engineer @ Screenpipe · YC S26',
   body: 'Building local-first context for AI agents.',
   stats: [
-    { value: '315+', label: 'Merged PRs' },
+    { value: '463+', label: 'Merged PRs' },
     { value: '$45.9k+', label: 'Bounties' },
     { value: '8+', label: 'Orgs' },
   ],
