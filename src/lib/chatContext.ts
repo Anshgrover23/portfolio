@@ -179,7 +179,7 @@ CONTACT INFORMATION:
 - LinkedIn: https://www.linkedin.com/in/anshgrover23/
 - Twitter/X: https://x.com/Anshgrover23
 - Algora Profile: https://algora.io/Anshgrover23
-- Resume: Available on the portfolio website at /ansh-resume.pdf
+- Resume: View or download on the portfolio at /resume (PDF at /ansh-resume.pdf)
 
 OPEN SOURCE INCOME & BOUNTIES (HEADLINE + HISTORICAL DETAIL — USE CAREFULLY):
 - **Headline (shown on the portfolio About section):** You've earned **$45.9k+ USD** from open source bounties across **8+** organizations (Antiwork, TSCircuit, Screenpipe, etc.).

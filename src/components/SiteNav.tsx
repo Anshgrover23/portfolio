@@ -22,6 +22,11 @@ const NAV_ITEMS: NavItem[] = [
     matchPath: '/projects',
   },
   { label: 'Writing', href: '/blog', sectionId: 'blog', matchPath: '/blog' },
+  {
+    label: 'Resume',
+    href: '/resume',
+    matchPath: '/resume',
+  },
   { label: 'Contact', href: '/#contact', sectionId: 'contact' },
 ];
 
