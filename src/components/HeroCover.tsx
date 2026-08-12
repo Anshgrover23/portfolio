@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { Baby, Target } from 'lucide-react';
+import { Baby } from 'lucide-react';
+import { AskAiAboutMe } from '@/components/AskAiAboutMe';
 
 /**
  * HeroCover — full-bleed magazine-cover first view.
@@ -112,43 +113,46 @@ export function HeroCover() {
               </span>
             </h1>
 
-            <div className="mt-6 max-w-[40rem] border-l-2 border-accent pl-5 md:mt-7">
-              <ul className="space-y-2.5 text-base leading-snug text-foreground/85 sm:text-[1.05rem] sm:leading-[1.6]">
-                <li className="flex gap-3">
+            {/* Proof points — primary scan path under the name. Sized as
+                supporting display, not body copy, so they read as the
+                hero story once the mission card is gone. */}
+            <div className="mt-7 max-w-[42rem] border-l-2 border-accent pl-5 md:mt-8 md:pl-6">
+              <ul className="space-y-3.5 text-[1.125rem] leading-[1.45] text-foreground/90 sm:space-y-4 sm:text-[1.25rem] sm:leading-[1.5] md:text-[1.35rem] md:leading-[1.45]">
+                <li className="flex gap-3.5">
                   <span
                     aria-hidden
-                    className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                    className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
                   />
-                  <span>
+                  <span className="text-pretty">
                     Founding engineer at{' '}
                     <a
                       href="https://screenpi.pe/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-foreground decoration-accent decoration-2 underline-offset-[5px] hover:underline"
+                      className="font-medium text-foreground decoration-accent decoration-2 underline-offset-[6px] hover:underline"
                     >
                       Screenpipe&nbsp;|&nbsp;YC&nbsp;S26
                     </a>
                   </span>
                 </li>
-                <li className="flex gap-3">
+                <li className="flex gap-3.5">
                   <span
                     aria-hidden
-                    className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                    className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
                   />
-                  <span className="min-w-0 max-w-[34rem] text-pretty">
+                  <span className="min-w-0 text-pretty">
                     <span className="font-mono text-[0.95em] tabular-nums text-foreground">
                       3
                     </span>{' '}
                     years across contract engineering and open source.
                   </span>
                 </li>
-                <li className="flex gap-3">
+                <li className="flex gap-3.5">
                   <span
                     aria-hidden
-                    className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                    className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
                   />
-                  <span className="min-w-0 max-w-[34rem] text-pretty">
+                  <span className="min-w-0 text-pretty">
                     More than{' '}
                     <span className="font-mono text-[0.95em] tabular-nums text-foreground">
                       463
@@ -163,32 +167,12 @@ export function HeroCover() {
               </ul>
             </div>
 
-            {/* Mission card — quiet warm pane sitting on the cream paper. */}
-            <div className="mt-8 max-w-[34rem] rounded-xl border border-foreground/10 bg-background/60 p-5 backdrop-blur-sm md:p-6">
-              <p className="type-meta text-accent">
-                <span className="inline-flex items-center gap-2 align-middle">
-                  <Target
-                    aria-hidden
-                    className="h-3.5 w-3.5 shrink-0 text-accent"
-                    strokeWidth={1.5}
-                  />
-                  <span>My mission</span>
-                </span>
-              </p>
-              <p className="mt-3 text-[0.95rem] leading-[1.55] text-foreground/85 sm:text-base">
-                Local-first software is the next interface. Building Screenpipe
-                so AI agents finally have real context — without the
-                surveillance trade-off.
-              </p>
-              <p
-                className="font-display mt-3 text-[1.05rem] italic leading-snug text-foreground/75 sm:text-[1.125rem]"
-                style={{ fontVariationSettings: "'opsz' 60, 'SOFT' 100" }}
-              >
-                &ldquo;Keep moving, don&apos;t settle.&rdquo;
-              </p>
-            </div>
+            <AskAiAboutMe className="mt-9 max-w-[34rem]" />
 
-            <p className="type-meta mt-10 hidden text-muted-foreground lg:block">
+            {/* Spacer only — keeps bullets / Ask AI where they are, restores
+                the lower scroll cue position the mission card used to create.
+                Visible on mobile too so the cover still signals continuation. */}
+            <p className="type-meta mt-16 text-muted-foreground sm:mt-20 lg:mt-24">
               <span aria-hidden className="text-accent">
                 ↓
               </span>
