@@ -37,7 +37,7 @@ export function ProjectsHome() {
                 href={product.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-[16/10] overflow-hidden rounded-sm border border-foreground/10 bg-muted shadow-[0_10px_30px_-12px_rgba(20,16,12,0.18)]"
+                className="group relative aspect-[16/9] overflow-hidden rounded-sm border border-foreground/10 bg-muted shadow-[0_10px_30px_-12px_rgba(20,16,12,0.18)]"
                 aria-label={`Open ${product.name} live site`}
               >
                 <Image
@@ -45,7 +45,7 @@ export function ProjectsHome() {
                   alt={`${product.name} product screenshot`}
                   fill
                   sizes="(max-width: 768px) 100vw, 55vw"
-                  className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+                  className="object-cover object-center transition-transform duration-300 group-hover:scale-[1.02]"
                 />
               </a>
 

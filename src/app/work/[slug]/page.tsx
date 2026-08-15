@@ -132,7 +132,7 @@ export default async function WorkCaseStudyPage({ params }: Props) {
             href={product.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative mb-10 block aspect-[16/10] overflow-hidden rounded-sm border border-foreground/10 bg-muted shadow-[0_10px_30px_-12px_rgba(20,16,12,0.18)] transition-opacity hover:opacity-95"
+            className="relative mb-10 block aspect-[16/9] overflow-hidden rounded-sm border border-foreground/10 bg-muted shadow-[0_10px_30px_-12px_rgba(20,16,12,0.18)] transition-opacity hover:opacity-95"
             aria-label={`Open ${product.name} live site`}
           >
             <Image
@@ -141,7 +141,7 @@ export default async function WorkCaseStudyPage({ params }: Props) {
               fill
               priority
               sizes="(max-width: 768px) 100vw, 768px"
-              className="object-cover object-top"
+              className="object-cover object-center"
             />
           </a>
 
