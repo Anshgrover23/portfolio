@@ -1,11 +1,13 @@
 import type { MetadataRoute } from 'next';
 import { getBlogPosts } from '@/data/blogPosts';
+import { getProductSlugs } from '@/data/products';
 import { getExperienceSlugs } from '@/lib/experienceSlug';
 import { SITE_LAST_UPDATED, SITE_URL } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogPosts = getBlogPosts();
   const experienceSlugs = getExperienceSlugs();
+  const productSlugs = getProductSlugs();
   const siteLastModified = new Date(SITE_LAST_UPDATED);
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -42,12 +44,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const projectRoutes: MetadataRoute.Sitemap = experienceSlugs.map(slug => ({
+  const experienceRoutes: MetadataRoute.Sitemap = experienceSlugs.map(slug => ({
     url: `${SITE_URL}/projects/${slug}`,
     lastModified: siteLastModified,
     changeFrequency: 'monthly',
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...blogRoutes, ...projectRoutes];
+  const workRoutes: MetadataRoute.Sitemap = productSlugs.map(slug => ({
+    url: `${SITE_URL}/work/${slug}`,
+    lastModified: siteLastModified,
+    changeFrequency: 'monthly',
+    priority: 0.75,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...experienceRoutes, ...workRoutes];
 }

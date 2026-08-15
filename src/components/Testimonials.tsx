@@ -25,7 +25,7 @@ export const Testimonials = ({ testimonials = [] }: TestimonialsProps) => {
     >
       <div className="mb-10 flex items-baseline gap-4">
         <span className="type-numeral shrink-0 text-[1.6rem] text-accent">
-          03
+          04
         </span>
         <div className="min-w-0 flex-1">
           <h2

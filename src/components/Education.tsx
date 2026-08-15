@@ -3,7 +3,7 @@ export const Education = () => {
     <section className="mb-16 md:mb-20" aria-labelledby="education-heading">
       <div className="mb-10 flex items-baseline gap-4">
         <span className="type-numeral shrink-0 text-[1.6rem] text-accent">
-          05
+          06
         </span>
         <h2
           id="education-heading"

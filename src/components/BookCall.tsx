@@ -26,7 +26,7 @@ export const BookCall = () => {
     <section className="mb-16" aria-labelledby="contact-heading">
       <div className="mb-6 flex items-baseline gap-4">
         <span className="type-numeral shrink-0 text-[1.6rem] text-accent">
-          07
+          08
         </span>
         <h2
           id="contact-heading"

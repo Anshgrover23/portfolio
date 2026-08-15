@@ -58,6 +58,14 @@ llms: https://anshgrover.com/llms.txt
 - Algora.io (https://algora.io/Anshgrover23) — Open Source Contributor, since 2024
   33+ PRs, $1099+ in Algora bounties across organizations.
 
+## projects
+- Vouch (2026, Live) — The anti-Splitwise
+  Site: https://vouch.anshgrover.com/
+  GitHub: https://github.com/Anshgrover23/vouch
+  Case study: https://anshgrover.com/work/vouch
+  Roommate and trip splits that cite the paper. Snap a receipt (Interfaze OCR) or type lines; housemates tap what they owe; groups keep who owes whom.
+  Stack: Next.js, Postgres, Interfaze, Supabase, Vercel, Drizzle, Playwright
+
 ## education
 - Birla Institute of Technology, Mesra — B.Tech Artificial Intelligence, Aug 2023–May 2027 (expected)
 

@@ -21,6 +21,12 @@ const NAV_ITEMS: NavItem[] = [
     sectionId: 'experience',
     matchPath: '/projects',
   },
+  {
+    label: 'Projects',
+    href: '/#projects',
+    sectionId: 'projects',
+    matchPath: '/work',
+  },
   { label: 'Writing', href: '/blog', sectionId: 'blog', matchPath: '/blog' },
   {
     label: 'Resume',
@@ -30,7 +36,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Contact', href: '/#contact', sectionId: 'contact' },
 ];
 
-const HOME_SECTIONS = ['experience', 'blog', 'contact'] as const;
+const HOME_SECTIONS = ['experience', 'projects', 'blog', 'contact'] as const;
 
 function isHome(pathname: string) {
   return pathname === '/';

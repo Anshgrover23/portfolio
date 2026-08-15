@@ -1,6 +1,7 @@
 import { HeroCover } from '@/components/HeroCover';
 import { About } from '@/components/About';
 import { ExperienceHomeList } from '@/components/ExperienceHomeList';
+import { ProjectsHome } from '@/components/ProjectsHome';
 import { BlogHomeList } from '@/components/BlogHomeList';
 import { Education } from '@/components/Education';
 import { Skills } from '@/components/Skills';
@@ -48,6 +49,9 @@ function Index() {
             </div>
             <div id="experience" className="scroll-mt-6 md:scroll-mt-8">
               <ExperienceHomeList />
+            </div>
+            <div id="projects" className="scroll-mt-6 md:scroll-mt-8">
+              <ProjectsHome />
             </div>
             <div id="testimonials" className="scroll-mt-6 md:scroll-mt-8">
               <Testimonials testimonials={testimonials} />

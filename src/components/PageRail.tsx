@@ -9,6 +9,7 @@ type RailLink = { id: string; label: string };
 const SECTIONS: RailLink[] = [
   { id: 'about', label: 'History' },
   { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
   { id: 'testimonials', label: 'Testimonials' },
   { id: 'blog', label: 'Writing' },
   { id: 'education', label: 'Education' },

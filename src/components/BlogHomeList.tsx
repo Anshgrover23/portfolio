@@ -18,7 +18,7 @@ export function BlogHomeList() {
       <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex items-baseline gap-4">
           <span className="type-numeral shrink-0 text-[1.6rem] text-accent">
-            04
+            05
           </span>
           <div className="min-w-0">
             <h2
