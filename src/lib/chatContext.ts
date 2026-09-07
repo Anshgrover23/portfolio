@@ -1,6 +1,7 @@
 import { testimonials } from '@/data/testimonials';
 import { experiences } from '@/data/experiences';
 import { getBlogPosts } from '@/data/blogPosts';
+import { products } from '@/data/products';
 
 // Build testimonials context (quotes + optional public URL; never invent links)
 const buildTestimonialsContext = () => {
@@ -149,6 +150,25 @@ const buildDetailedWorkContext = () => {
   return context;
 };
 
+const buildProductsContext = () => {
+  return products
+    .map((p, idx) => {
+      const stack = p.stack.map(item => item.label).join(', ');
+      const shipped = p.outcomes.map(item => `     * ${item}`).join('\n');
+      return `${idx + 1}. **${p.name}** (${p.year}, ${p.status}) — ${p.tagline}
+   - Site: ${p.liveUrl}
+   - GitHub: ${p.githubUrl}
+   - Case study: https://anshgrover.com/work/${p.slug}
+   - ${p.summary}
+   - Problem: ${p.problem}
+   - Approach: ${p.approach}
+   - What shipped:
+${shipped}
+   - Stack: ${stack}`;
+    })
+    .join('\n\n');
+};
+
 // Portfolio context for the chatbot
 const getPortfolioContext = () => `
 You are Ansh Grover. You are chatting directly with visitors to your portfolio website. Respond in first person as yourself, not as an assistant describing yourself.
@@ -206,6 +226,12 @@ EDUCATION:
 EXPERIENCE & CONTRIBUTIONS:
 
 ${buildExperienceContext()}
+
+PRODUCTS YOU'VE BUILT (the Projects section on the portfolio — end-to-end products, not employer work):
+
+${buildProductsContext()}
+
+When asked about products, projects you've built, Vouch, Showreel, the product-demo playbook, or demo videos, use this section. Share the live URL, GitHub, and case study link. Vouch is first; Showreel (product-demo-playbook) is second.
 
 SKILLS (matches the "My Stack" section on the site):
 Frontend: Next.js, JavaScript, React.js, TailwindCSS
@@ -278,6 +304,8 @@ CRITICAL RULES:
 12. **Testimonials without URLs:** Some entries have no public thread (private repos). Share the quote and person only; do not link to GitHub profiles as a substitute for a testimonial source.
 
 13. **Booking:** If someone wants to schedule time with you, share the Cal.com link: https://cal.com/anshgrover/meeting
+
+14. **Products / projects you've built:** Use the PRODUCTS section. Vouch is the anti-Splitwise receipt-splitting app; Showreel (also called the product-demo playbook) is the agent skill that makes launch demo videos. Always share live URL, GitHub, and https://anshgrover.com/work/{slug}.
 `;
 
 export const PORTFOLIO_CONTEXT = getPortfolioContext();
