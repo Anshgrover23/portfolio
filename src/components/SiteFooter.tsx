@@ -54,9 +54,7 @@ export function SiteFooter() {
               >
                 Screenpipe
               </a>{' '}
-              <span className="font-display italic">(YC S26)</span>. Built with
-              Next.js, hand-written CSS, and{' '}
-              <span className="font-mono tabular-nums">∞</span> coffee.
+              <span className="font-display italic">(YC S26)</span>.
             </p>
             <a
               href="mailto:anshgrover938@gmail.com"
