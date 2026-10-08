@@ -88,7 +88,7 @@ export const products: Product[] = [
       "Repo in. Film out. Your agent scripts, records, captions, and mixes a launch film from the product's own components — not a screen capture, not a slideshow of screenshots.",
     year: '2026',
     status: 'Live',
-    liveUrl: 'https://anshgrover23.github.io/product-demo-playbook/',
+    liveUrl: 'https://showreel.anshgrover.com/',
     githubUrl: 'https://github.com/Anshgrover23/product-demo-playbook',
     coverImage: '/projects/showreel-cover.jpg',
     liveCta: 'Open live site',
@@ -123,7 +123,7 @@ export const products: Product[] = [
     approach:
       "Showreel is an agent skill plus the full manual. One install (`npx skills add`) and a single prompt: the agent runs an eight-step pipeline — script, standalone UI, composition, frame-by-frame record, captions, sound, music, assemble — and only stops for script approval, voiceover audio, and the music file. Films are recorded from the product's own components, tokens, and assets.",
     outcomes: [
-      'Live playbook at anshgrover23.github.io/product-demo-playbook — skill, templates, and the full manual',
+      'Live playbook at showreel.anshgrover.com — skill, templates, and the full manual',
       'Install once for Claude Code, Cursor, Codex, Gemini CLI, Copilot, Windsurf, OpenCode, and Goose',
       'Four reference films from one pipeline: Vouch, Excalidraw, Asakiri Studio, Colosseum',
       'Deterministic record rig: Node + Playwright + ffmpeg — never a live screen capture',
