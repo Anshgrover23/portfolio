@@ -1,41 +1,6 @@
-'use client';
+import type { ReactNode } from 'react';
 
-import Image from 'next/image';
-
-const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
-
-const TECH_ICONS = {
-  typescript: `${DEVICON}/typescript/typescript-original.svg`,
-  nextjs: `${DEVICON}/nextjs/nextjs-original.svg`,
-  rust: `${DEVICON}/rust/rust-original.svg`,
-  ruby: `${DEVICON}/ruby/ruby-original.svg`,
-} as const;
-
-function TechMention({
-  name,
-  iconSrc,
-  invert = false,
-}: {
-  name: string;
-  iconSrc: string;
-  invert?: boolean;
-}) {
-  return (
-    <span className="inline-flex items-center gap-1 align-baseline font-medium text-foreground">
-      <Image
-        src={iconSrc}
-        alt=""
-        width={18}
-        height={18}
-        className={`h-[1.05em] w-[1.05em] shrink-0 ${invert ? 'invert' : ''}`}
-        aria-hidden
-      />
-      <span>{name}</span>
-    </span>
-  );
-}
-
-const PROOF_POINTS: { idx: string; body: React.ReactNode }[] = [
+const PROOF_POINTS: { idx: string; body: ReactNode }[] = [
   {
     idx: '01',
     body: (
@@ -79,7 +44,7 @@ const PROOF_POINTS: { idx: string; body: React.ReactNode }[] = [
     idx: '02',
     body: (
       <>
-        Won the{' '}
+        Placed in the Top 20 at the{' '}
         <a
           href="https://drive.google.com/file/d/1idAPCUDdt-lrYPx-Imf3_VaA9164ev6R/view"
           target="_blank"
@@ -88,9 +53,9 @@ const PROOF_POINTS: { idx: string; body: React.ReactNode }[] = [
         >
           Automate me if u can
         </a>{' '}
-        hackathon —{' '}
+        hackathon in the PR category. The event had a{' '}
         <span className="font-mono tabular-nums text-foreground">$3,000</span>{' '}
-        prize pool in the PR category.
+        prize pool.
       </>
     ),
   },
@@ -138,7 +103,7 @@ export const About = () => {
           className="font-display flex items-baseline gap-3 text-[1.875rem] font-bold tracking-tight text-foreground md:text-[2.5rem]"
           style={{ letterSpacing: '-0.03em' }}
         >
-          History
+          About
           <span className="block h-px flex-1 self-center bg-foreground/15" />
         </h2>
       </div>
@@ -146,27 +111,24 @@ export const About = () => {
       <div className="grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-12 lg:gap-14">
         <div className="min-w-0 space-y-4 text-base leading-relaxed text-muted-foreground">
           <p className="text-pretty">
-            I am a{' '}
+            I&apos;m a{' '}
             <span className="font-medium text-foreground">
-              founding engineer at Screenpipe
+              software engineer at River AI
             </span>{' '}
-            (YC S26) with{' '}
-            <span className="font-mono tabular-nums text-foreground">3+</span>{' '}
-            years shipping production software, focused on{' '}
-            <TechMention name="TypeScript" iconSrc={TECH_ICONS.typescript} />{' '}
-            testing and release automation, and developer experience. I ship in{' '}
-            <TechMention name="Next.js" iconSrc={TECH_ICONS.nextjs} invert />{' '}
-            <TechMention name="Rust" iconSrc={TECH_ICONS.rust} /> and{' '}
-            <TechMention name="Ruby" iconSrc={TECH_ICONS.ruby} /> across product
-            teams and bounty programs.
+            (YC F26), building the AI computer. Previously, I was a founding
+            engineer at Screenpipe (YC S26), working on personal context and
+            memory.
           </p>
           <p className="text-pretty">
-            Alongside Screenpipe, my public track record includes{' '}
-            <span className="font-medium text-foreground">
-              open source and contract work
-            </span>
-            : dense merges, packaging and distro work, and features defined by
-            what ships in version control.
+            My work connects AI to real apps through{' '}
+            <span className="font-medium text-foreground">MCP and OAuth</span>.
+            I build chat and file workflows, keep state consistent across
+            windows, and make failures recoverable.
+          </p>
+          <p className="text-pretty">
+            Over <span className="tabular-nums text-foreground">3 years</span>{' '}
+            across 3 remote startups, I&apos;ve taken features from the first
+            interface through backend integration, testing, and release.
           </p>
         </div>
 

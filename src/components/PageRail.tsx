@@ -1,15 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { useActiveSection } from '@/hooks/useActiveSection';
 
 type RailLink = { id: string; label: string };
 
 const SECTIONS: RailLink[] = [
-  { id: 'about', label: 'History' },
+  { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
-  { id: 'projects', label: 'Projects' },
+  { id: 'projects', label: 'Selected work' },
   { id: 'testimonials', label: 'Testimonials' },
   { id: 'blog', label: 'Writing' },
   { id: 'education', label: 'Education' },
@@ -19,60 +20,48 @@ const SECTIONS: RailLink[] = [
 
 /**
  * Desktop-only left rail with sticky metadata + a contents table.
- * On <lg screens it is hidden — the SiteNav already covers small viewports.
+ * Smaller screens use the page's linear reading order and inline hero links.
  */
 export function PageRail() {
-  const [active, setActive] = useState<string>('about');
-
-  useEffect(() => {
-    const elements = SECTIONS.map(s => document.getElementById(s.id)).filter(
-      (el): el is HTMLElement => el !== null
-    );
-    if (elements.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      entries => {
-        const visible = entries
-          .filter(e => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]?.target.id) setActive(visible[0].target.id);
-      },
-      { rootMargin: '-20% 0px -60% 0px', threshold: [0, 0.1, 0.3, 0.6] }
-    );
-
-    elements.forEach(el => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const active = useActiveSection();
 
   return (
     <aside className="relative hidden lg:block" aria-label="Section index">
-      <div className="sticky top-20 flex flex-col gap-9">
+      <div className="sticky top-24 flex flex-col gap-9">
         {/* Status header — no name repeat. The SiteNav and hero already
             carry identity; the rail's job is "where you are + what's
             current", not another nameplate. */}
         <div>
-          <p className="type-meta text-accent">
-            <span className="inline-flex items-center gap-2 align-middle">
-              <span
-                className="status-dot inline-block h-1.5 w-1.5 rounded-full bg-accent"
-                aria-hidden
-              />
-              Open to work
-            </span>
+          <p className="mb-4 text-xs font-medium text-muted-foreground">
+            Currently at
           </p>
-          <p
-            className="font-display mt-3 text-[1.0625rem] leading-snug text-foreground/85"
-            style={{
-              letterSpacing: '-0.01em',
-              fontVariationSettings: "'opsz' 36, 'SOFT' 60",
-            }}
+          <a
+            href="https://meetriver.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 rounded-sm"
           >
-            <span className="font-semibold">Founding engineer</span>{' '}
-            <span className="italic font-light text-muted-foreground">·</span>{' '}
-            TypeScript &amp; Rust.
+            <Image
+              src="/river.png"
+              alt=""
+              width={36}
+              height={36}
+              className="rounded-lg"
+            />
+            <span>
+              <span className="block text-base font-semibold tracking-tight text-foreground group-hover:underline underline-offset-4">
+                River AI
+              </span>
+              <span className="block text-xs text-muted-foreground">
+                Software engineer · YC F26
+              </span>
+            </span>
+          </a>
+          <p className="mt-4 text-sm leading-relaxed text-foreground/85">
+            Building the AI computer.
           </p>
-          <p className="mt-2 font-mono text-[10.5px] uppercase tracking-[0.14em] text-muted-foreground/85">
-            YC S26 · IST
+          <p className="mt-1 text-xs text-muted-foreground">
+            Remote from India · IST
           </p>
         </div>
 
@@ -116,6 +105,21 @@ export function PageRail() {
             Connect with me
           </p>
           <ul className="space-y-1.5">
+            <li>
+              <a
+                href="/resume"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <span className="font-mono text-[11px] uppercase tracking-wide">
+                  Resume
+                </span>
+                <span aria-hidden className="text-muted-foreground/50">
+                  ↗
+                </span>
+              </a>
+            </li>
             <li>
               <a
                 href="https://github.com/Anshgrover23"

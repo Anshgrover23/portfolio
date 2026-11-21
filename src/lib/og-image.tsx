@@ -27,15 +27,15 @@ export type OgImageContent = {
 };
 
 const DEFAULT_CONTENT: Required<OgImageContent> = {
-  eyebrow: 'Founding engineer · YC S26',
+  eyebrow: '2x YC engineer · 3x remote startup',
   title: 'Ansh',
   titleItalic: 'Grover',
-  subtitle: 'Founding Engineer @ Screenpipe · YC S26',
-  body: 'Building local-first context for AI agents.',
+  subtitle: 'Software Engineer @ River AI · YC F26',
+  body: 'Building the AI computer.',
   stats: [
-    { value: '463+', label: 'Merged PRs' },
+    { value: '750+', label: 'Merged PRs' },
     { value: '$45.9k+', label: 'Bounties' },
-    { value: '8+', label: 'Orgs' },
+    { value: '9', label: 'Orgs' },
   ],
   footer: 'anshgrover.com',
   showPortrait: true,

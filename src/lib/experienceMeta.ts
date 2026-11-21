@@ -1,9 +1,9 @@
 import { experiences } from '@/data/experiences';
 
 export const EXPERIENCE_STATS = {
-  mergedPRs: '463+',
+  mergedPRs: '750+',
   bountyTotal: '$45.9k+',
-  orgCount: '8+',
+  orgCount: '9',
 } as const;
 
 export type ExperienceEntry = (typeof experiences)[number];

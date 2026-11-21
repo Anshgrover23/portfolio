@@ -4,11 +4,14 @@
 
 ## identity
 name: Ansh Grover
-role: Founding Engineer
-location: Rajasthan, India
+role: Software Engineer
+location: India
+timezone: IST (UTC+05:30)
 email: anshgrover938@gmail.com
 age: 21
-status: Founding Engineer at Screenpipe (YC S26). Building local-first AI memory so agents have real context without the surveillance trade-off. Not broadly "open to work" — full-time at Screenpipe.
+status: Software Engineer at River AI (YC F26) since October 2026, building the AI computer. Previously Founding Engineer at Screenpipe (YC S26) through September 2026.
+headline: 2x YC engineer · 3x remote startup
+experience: 3 years
 
 ## links
 site: https://anshgrover.com
@@ -21,13 +24,17 @@ resume: https://anshgrover.com/resume
 llms: https://anshgrover.com/llms.txt
 
 ## current
-- Screenpipe (https://screenpi.pe/) — Founding Engineer, 2026–present, YC S26
-  Screenpipe and Mediar AI are separate companies with the same founders. Employment is Screenpipe; Mediar AI is a GitHub org for some prior OSS.
-  212+ merged PRs to github.com/screenpipe/screenpipe; 463+ career merged PRs across all orgs.
+- River AI (https://meetriver.com/) — Software Engineer, Oct 2026–present, YC F26
+  Building the AI computer: a shared workspace for people and AI across documents, spreadsheets, presentations, and a browser.
+  YC profile: https://www.ycombinator.com/companies/rivereditor
+
+## experience
+- Screenpipe (https://screenpi.pe/) — Founding Engineer, Apr–Sep 2026, YC S26
+  Screenpipe and Mediar AI are separate companies with the same founders. Past employment was Screenpipe; Mediar AI is a GitHub org for some prior OSS.
+  212+ merged PRs to github.com/screenpipe/screenpipe; 750+ career merged PRs across all orgs.
   Work: connections/OAuth platform (Slack, Jira, Gmail, Microsoft 365/Teams, Notion, Supabase, QuickBooks, Composio, and more); AI gateway & Pi chat reliability; Windows desktop & browser (WebView2); meetings/capture pipelines; pipes & onboarding.
   Stack: Rust, TypeScript, Tauri, Next.js, React, SQLite, Bun
 
-## experience
 - CX Linux AI (https://github.com/Anshgrover23?org=cxlinux-ai&year_list=1) — Software Engineer / Maintainer, Dec 2025–Feb 2026
   Created/initialized cx-distro (CX Linux ISO Builder): AI-native Linux on Ubuntu/Debian with embedded LLM. Hybrid ISO (live + installer), packaging, CI.
   28+ PRs. Stack: Shell, Rust, Python
@@ -78,20 +85,28 @@ llms: https://anshgrover.com/llms.txt
 
 ## achievements
 - $45.9k+ USD earned from open source bounties across 8+ organizations (Antiwork, TSCircuit, Screenpipe, Algora, etc.)
-- 463+ merged PRs career-wide; 212+ to screenpipe/screenpipe
+- More than 750 merged pull requests at 9 organizations across contract engineering and open source; 212+ to screenpipe/screenpipe
 - Top 20 (PR category) at Automate Me If You Can Hackathon ($3000 prize pool) — certificate: https://drive.google.com/file/d/1idAPCUDdt-lrYPx-Imf3_VaA9164ev6R/view
 - European Summer of Code 2026 — contributions to conda/rattler (https://github.com/conda/rattler)
 - YC Startup School India 2026 invitee (~$25k credits across AI tools)
 - Built pricing page for binary.so (https://binary.so)
 
 ## skills
-Frontend: Next.js, JavaScript, React.js, TailwindCSS
-Backend: TypeScript, Ruby, Rust, Go, Python, Node.js, Express.js, tRPC, Zod, REST APIs, GraphQL
-Databases: PostgreSQL, MongoDB, Drizzle ORM, Prisma ORM
-Testing & DevOps: Playwright, E2E Testing, Docker, GitHub Actions, Homebrew
-Systems: Shell, Linux, Debian, Make
+Frontend & desktop: Next.js, JavaScript, React.js, TailwindCSS, Tauri, Electron, Chromium.
+Backend: TypeScript, Ruby, Rust, Python, Node.js, Express.js, tRPC, Zod, REST APIs, GraphQL.
+Databases & ORMs: PostgreSQL, MongoDB, Drizzle ORM, Prisma, SQLite.
+Testing & DevOps: Playwright, E2E Testing, Docker, GitHub Actions, Homebrew.
+Infrastructure: Shell, Linux, Debian, Make.
+AI & integrations: MCP, OAuth, AI agents, E2B, computer use.
+
+## testimonials
+- Chandler Supple — Co-founder & CEO of River AI (YC F26)
+  Quote: "This is great -- thanks Ansh!"
+  Quote source: message screenshot supplied by Ansh; no public message URL. Share the quote and attribution without inventing a source link.
+  Role and portrait reference (not the quote source): https://www.ycombinator.com/companies/rivereditor
 
 ## personal
-- Mission: local-first software as the next interface; AI agents with real context without surveillance trade-offs
+- Current focus: building the AI computer at River; a shared workspace for people and AI
 - Motto: "Keep moving, don't settle."
-- Focus: TypeScript, testing/release automation, developer experience; ships in Next.js, Rust, Ruby
+- Reading interests: orchestration of AI agents and distributed systems
+- Focus: personal context and memory, AI tool integrations, desktop/browser workflows, and production reliability

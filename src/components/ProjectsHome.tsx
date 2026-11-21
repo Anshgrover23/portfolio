@@ -12,45 +12,42 @@ export function ProjectsHome() {
         <span className="type-numeral shrink-0 text-[1.6rem] text-accent">
           03
         </span>
-        <div className="min-w-0">
+        <div className="flex min-w-0 flex-1 flex-col">
           <h2
             id="projects-heading"
             className="font-display text-[1.875rem] font-bold tracking-tight text-foreground md:text-[2.5rem]"
             style={{ letterSpacing: '-0.03em' }}
           >
-            Projects
+            Selected work
           </h2>
           <p className="mt-3 max-w-prose text-sm text-muted-foreground">
-            Products I&apos;ve built end-to-end.
+            Products I built and shipped, from the first idea to the live app.
           </p>
         </div>
       </div>
 
-      <ul className="list-none border-t border-line/80">
+      <ul className="grid list-none gap-10 border-b border-line/80 pb-9 md:grid-cols-2 md:gap-8">
         {products.map(product => (
-          <li
-            key={product.slug}
-            className="border-b border-line/80 py-8 md:py-10"
-          >
-            <article className="grid gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:items-center md:gap-10 lg:gap-12">
+          <li key={product.slug} className="min-w-0">
+            <article className="flex h-full flex-col gap-6">
               <a
                 href={product.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-[16/9] overflow-hidden rounded-sm border border-foreground/10 bg-muted shadow-[0_10px_30px_-12px_rgba(20,16,12,0.18)]"
+                className="group relative block aspect-[16/9] overflow-hidden rounded-lg border border-foreground/10 bg-muted"
                 aria-label={`Open ${product.name} live site`}
               >
                 <Image
                   src={product.coverImage}
                   alt={`${product.name} product screenshot`}
                   fill
-                  sizes="(max-width: 768px) 100vw, 55vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 400px"
                   className="object-cover object-center transition-transform duration-300 group-hover:scale-[1.02]"
                 />
               </a>
 
-              <div className="min-w-0">
-                <p className="type-meta text-muted-foreground">
+              <div className="flex min-w-0 flex-1 flex-col">
+                <p className="text-xs font-medium text-muted-foreground">
                   <span className="text-accent">{product.status}</span>
                   <span className="text-muted-foreground/50" aria-hidden>
                     {' '}
@@ -59,7 +56,7 @@ export function ProjectsHome() {
                   <span className="tabular-nums">{product.year}</span>
                 </p>
 
-                <h3 className="font-display mt-3 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+                <h3 className="font-display mt-2 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
                   <Link
                     href={`/work/${product.slug}`}
                     className="underline-offset-4 hover:underline"
@@ -69,7 +66,7 @@ export function ProjectsHome() {
                 </h3>
 
                 <p
-                  className="font-display mt-1.5 text-base italic font-light text-accent md:text-lg"
+                  className="mt-1.5 text-sm font-medium text-foreground/80"
                   style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 100" }}
                 >
                   {product.tagline}
@@ -83,7 +80,7 @@ export function ProjectsHome() {
                   {product.stack.slice(0, 5).map(item => (
                     <li
                       key={item.label}
-                      className="inline-flex items-center gap-1.5 rounded-md border border-line/80 bg-card px-2.5 py-1 font-mono text-[11px] font-medium uppercase tracking-wide text-foreground/85"
+                      className="inline-flex items-center gap-1.5 rounded-md bg-muted/60 px-2 py-1 text-xs text-muted-foreground"
                     >
                       {item.icon && (
                         <Image
@@ -100,12 +97,12 @@ export function ProjectsHome() {
                   ))}
                 </ul>
 
-                <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+                <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-5">
                   <Link
                     href={`/work/${product.slug}`}
-                    className="group inline-flex items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-foreground transition-colors hover:text-accent"
+                    className="group inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-foreground underline-offset-4 hover:underline"
                   >
-                    Case study
+                    Read case study
                     <ArrowRight
                       className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5"
                       strokeWidth={1.5}
@@ -115,9 +112,9 @@ export function ProjectsHome() {
                     href={product.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
+                    className="inline-flex min-h-10 items-center gap-1 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
                   >
-                    Live
+                    Try {product.name}
                     <ExternalLink
                       className="h-3 w-3 shrink-0"
                       strokeWidth={1.5}
@@ -127,9 +124,9 @@ export function ProjectsHome() {
                     href={product.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
+                    className="inline-flex min-h-10 items-center gap-1 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
                   >
-                    GitHub
+                    Code
                     <ExternalLink
                       className="h-3 w-3 shrink-0"
                       strokeWidth={1.5}

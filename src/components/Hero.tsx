@@ -35,7 +35,7 @@ export const Hero = () => {
                 className="status-dot inline-block h-1.5 w-1.5 rounded-full bg-accent"
                 aria-hidden
               />
-              Founding engineer · YC S26 · Available
+              2x YC engineer · 3x remote startup
             </span>
           </p>
 
@@ -63,21 +63,20 @@ export const Hero = () => {
             className="type-body-lg mt-6 max-w-[40rem] border-l-2 border-accent pl-5 text-pretty font-normal text-foreground/85 sm:text-[1.125rem] md:mt-7"
             style={{ ['--i' as never]: 2 } as React.CSSProperties}
           >
-            Founding engineer at{' '}
+            Software engineer at{' '}
             <a
-              href="https://screenpi.pe/"
+              href="https://meetriver.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-foreground decoration-accent decoration-2 underline-offset-[6px] hover:underline"
             >
-              Screenpipe
+              River AI (YC F26)
             </a>
-            . Before that,{' '}
+            . Building the AI computer.{' '}
             <span className="font-mono text-[0.95em] tabular-nums">3</span>{' '}
             years of contract and OSS work —{' '}
-            <span className="font-mono text-[0.95em] tabular-nums">463+</span>{' '}
-            merged PRs career-wide (212+ to the Screenpipe product repo), mostly
-            TypeScript and Rust.
+            <span className="font-mono text-[0.95em] tabular-nums">750+</span>{' '}
+            merged PRs career-wide, mostly TypeScript and Rust.
           </p>
 
           <div

@@ -1,10 +1,10 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutGroup, motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { useActiveSection } from '@/hooks/useActiveSection';
 
 type NavItem = {
   label: string;
@@ -13,7 +13,7 @@ type NavItem = {
   matchPath?: string;
 };
 
-/** Founder-style nav: few links, writing not "blog", experience as primary proof */
+/** Lead with experience and keep Writing directly accessible. */
 const NAV_ITEMS: NavItem[] = [
   {
     label: 'Experience',
@@ -22,12 +22,12 @@ const NAV_ITEMS: NavItem[] = [
     matchPath: '/projects',
   },
   {
-    label: 'Projects',
+    label: 'Work',
     href: '/#projects',
     sectionId: 'projects',
     matchPath: '/work',
   },
-  { label: 'Writing', href: '/blog', sectionId: 'blog', matchPath: '/blog' },
+  { label: 'Writing', href: '/blog', matchPath: '/blog' },
   {
     label: 'Resume',
     href: '/resume',
@@ -35,8 +35,6 @@ const NAV_ITEMS: NavItem[] = [
   },
   { label: 'Contact', href: '/#contact', sectionId: 'contact' },
 ];
-
-const HOME_SECTIONS = ['experience', 'projects', 'blog', 'contact'] as const;
 
 function isHome(pathname: string) {
   return pathname === '/';
@@ -51,7 +49,9 @@ function matchesRoute(pathname: string, item: NavItem) {
 
 function scrollToSection(sectionId: string) {
   document.getElementById(sectionId)?.scrollIntoView({
-    behavior: 'smooth',
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 'instant'
+      : 'smooth',
     block: 'start',
   });
 }
@@ -85,22 +85,22 @@ function NavLink({
     <Link
       href={item.href}
       onClick={handleClick}
-      className={cn(
-        'relative rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors duration-200',
+      aria-current={
         active
-          ? 'text-background'
+          ? item.sectionId && isHome(pathname)
+            ? 'location'
+            : 'page'
+          : undefined
+      }
+      className={cn(
+        'relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-200',
+        active
+          ? 'text-foreground bg-foreground/[0.07]'
           : 'text-muted-foreground hover:text-foreground',
         className
       )}
     >
       <span className="relative z-[1]">{item.label}</span>
-      {active && (
-        <motion.span
-          layoutId="nav-pill"
-          className="absolute inset-0 rounded-full bg-foreground"
-          transition={{ type: 'spring', stiffness: 400, damping: 34 }}
-        />
-      )}
       {active && <span className="sr-only"> (current)</span>}
     </Link>
   );
@@ -110,7 +110,35 @@ export function SiteNav() {
   const pathname = usePathname();
   const onHome = isHome(pathname);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const activeSection = useActiveSection(onHome);
+  const mobileMenu = useRef<HTMLDetailsElement>(null);
+
+  const closeMobileMenu = () => {
+    if (mobileMenu.current) mobileMenu.current.open = false;
+  };
+
+  useEffect(() => {
+    closeMobileMenu();
+  }, [pathname]);
+
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent) => {
+      if (!mobileMenu.current?.contains(event.target as Node))
+        closeMobileMenu();
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && mobileMenu.current?.open) {
+        closeMobileMenu();
+        mobileMenu.current.querySelector('summary')?.focus();
+      }
+    };
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -118,33 +146,6 @@ export function SiteNav() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  useEffect(() => {
-    if (!onHome) {
-      setActiveSection(null);
-      return;
-    }
-
-    const sections = HOME_SECTIONS.map(id =>
-      document.getElementById(id)
-    ).filter((el): el is HTMLElement => el !== null);
-    if (sections.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      entries => {
-        const visible = entries
-          .filter(e => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]?.target.id) {
-          setActiveSection(visible[0].target.id);
-        }
-      },
-      { rootMargin: '-18% 0px -58% 0px', threshold: [0, 0.12, 0.35] }
-    );
-
-    sections.forEach(el => observer.observe(el));
-    return () => observer.disconnect();
-  }, [onHome, pathname]);
 
   useEffect(() => {
     if (!onHome) return;
@@ -179,19 +180,19 @@ export function SiteNav() {
     <>
       <header
         className={cn(
-          'group/nav fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow,color] duration-300',
-          scrolled
-            ? 'border-b border-line/90 bg-background/88 shadow-[0_1px_0_rgba(47,52,55,0.03)] backdrop-blur-md'
-            : 'border-b border-transparent bg-background/70 backdrop-blur-sm'
+          'group/nav fixed inset-x-0 top-0 z-50 hidden md:block transition-[background-color,border-color,box-shadow,color] duration-300',
+          scrolled || !onHome
+            ? 'border-b border-line/80 bg-background/95 backdrop-blur-md'
+            : 'border-b border-transparent bg-transparent'
         )}
       >
         <nav
-          className="mx-auto flex h-[3.25rem] max-w-[1200px] items-center justify-between gap-3 px-6 sm:h-14 md:px-10 lg:px-12"
+          className="mx-auto flex h-20 max-w-[1200px] items-center justify-between gap-4 px-6 md:px-10 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-6 lg:px-12"
           aria-label="Main"
         >
           <Link
             href="/"
-            className="group min-w-0 shrink-0 transition-opacity hover:opacity-80"
+            className="group min-w-0 shrink-0 justify-self-start transition-opacity hover:opacity-80"
           >
             <span
               className="font-display block text-[1.1rem] font-extrabold leading-none text-foreground sm:text-[1.2rem]"
@@ -208,34 +209,29 @@ export function SiteNav() {
                 Grover
               </span>
             </span>
-            <span className="type-meta mt-1 hidden text-muted-foreground normal-case sm:block">
-              Founding engineer{' '}
+            <span className="mt-1.5 block text-[11px] leading-none text-muted-foreground">
+              River AI{' '}
               <span className="font-display italic text-muted-foreground/80">
                 ·
               </span>{' '}
-              YC S26
+              YC F26
             </span>
           </Link>
 
-          {/* Desktop: editorial segmented control — pill outlined with a
-              warm hairline so it sits inside the page palette, not a generic
-              shadcn segmented control */}
-          <div className="hidden items-center gap-0.5 rounded-full border border-foreground/12 bg-background/70 px-1 py-1 backdrop-blur-sm md:flex">
-            <LayoutGroup id={pathname}>
-              {NAV_ITEMS.map(item => (
-                <NavLink
-                  key={item.label}
-                  item={item}
-                  active={isItemActive(item)}
-                  pathname={pathname}
-                />
-              ))}
-            </LayoutGroup>
+          <div className="hidden items-center rounded-full border border-foreground/10 bg-background/55 p-1 lg:flex">
+            {NAV_ITEMS.filter(item => item.label !== 'Contact').map(item => (
+              <NavLink
+                key={item.label}
+                item={item}
+                active={isItemActive(item)}
+                pathname={pathname}
+              />
+            ))}
           </div>
 
-          <div className="flex shrink-0 items-center gap-0.5 sm:gap-1">
+          <div className="flex shrink-0 items-center justify-self-end gap-3">
             <div
-              className="flex items-center gap-0.5"
+              className="hidden items-center gap-0.5 xl:flex"
               aria-label="Social links"
             >
               <a
@@ -288,10 +284,9 @@ export function SiteNav() {
             <Link
               href="/#contact"
               onClick={handleContactClick}
-              className="group inline-flex items-center justify-center gap-1 rounded-full border border-foreground/15 bg-foreground px-3 py-1.5 text-xs font-semibold text-background transition-[transform,background-color,color,border-color] hover:-translate-y-px hover:border-foreground hover:bg-background hover:text-foreground active:translate-y-0 active:scale-[0.98] sm:gap-1.5 sm:px-4 sm:text-sm"
+              className="group hidden min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-foreground/85 sm:inline-flex"
             >
-              <span className="sm:hidden">Call</span>
-              <span className="hidden sm:inline">Schedule call</span>
+              Book a call
               <span
                 aria-hidden
                 className="transition-transform group-hover:translate-x-0.5"
@@ -299,11 +294,51 @@ export function SiteNav() {
                 →
               </span>
             </Link>
+
+            <Link
+              href="/blog"
+              className="inline-flex min-h-11 items-center px-3 text-sm font-medium text-foreground underline-offset-4 hover:underline lg:hidden"
+            >
+              Writing
+            </Link>
+            <details ref={mobileMenu} className="relative lg:hidden">
+              <summary
+                aria-label="Navigation menu"
+                className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-md text-foreground hover:bg-canvas-muted [&::-webkit-details-marker]:hidden"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 6H16M4 10H16M4 14H16"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </summary>
+              <div className="absolute right-0 top-full mt-2 w-56 rounded-lg border border-line bg-background p-2 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+                {NAV_ITEMS.map(item => (
+                  <NavLink
+                    key={item.label}
+                    item={item}
+                    active={isItemActive(item)}
+                    pathname={pathname}
+                    onNavigate={closeMobileMenu}
+                    className="block px-4 py-3"
+                  />
+                ))}
+              </div>
+            </details>
           </div>
         </nav>
       </header>
 
-      <div aria-hidden className="h-[3.25rem] shrink-0 sm:h-14" />
+      <div aria-hidden className="hidden h-20 shrink-0 md:block" />
     </>
   );
 }

@@ -29,12 +29,12 @@ function AnthropicMark({ className }: { className?: string }) {
 const LINKS = [
   {
     href: getChatGptAskUrl(),
-    label: 'talk to chatgpt about me',
+    label: 'ChatGPT',
     Icon: OpenAiMark,
   },
   {
     href: getClaudeAskUrl(),
-    label: 'talk to claude about me',
+    label: 'Claude',
     Icon: AnthropicMark,
   },
 ] as const;
@@ -56,32 +56,24 @@ export function AskAiAboutMe({
   const centered = align === 'center';
 
   return (
-    <div className={className}>
-      <p
-        className={`type-meta mb-3 text-muted-foreground/80 ${centered ? 'text-center' : ''}`}
-      >
-        Or ask an assistant
-      </p>
-      <div
-        className={`flex flex-wrap gap-2.5 sm:gap-3 ${centered ? 'justify-center' : ''}`}
-      >
+    <div
+      className={`flex flex-wrap items-center gap-x-3 gap-y-2 ${centered ? 'justify-center' : ''} ${className}`}
+    >
+      <p className="text-xs text-muted-foreground">Ask about me</p>
+      <div className="flex items-center gap-1">
         {LINKS.map(({ href, label, Icon }) => (
           <a
             key={label}
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2.5 rounded-full border border-foreground/15 bg-background/50 px-4 py-2.5 text-sm text-foreground/85 backdrop-blur-sm transition-colors hover:border-foreground/30 hover:bg-background/80 hover:text-foreground active:scale-[0.98]"
+            aria-label={`Ask ${label} about Ansh`}
+            className="group inline-flex min-h-10 items-center gap-2 rounded-md px-2.5 text-xs font-medium text-foreground/80 transition-colors hover:bg-background/80 hover:text-foreground"
           >
-            <Icon className="h-4 w-4 shrink-0 text-foreground/70 transition-colors group-hover:text-foreground" />
-            <span className="lowercase tracking-tight">
-              {label}{' '}
-              <span
-                aria-hidden
-                className="inline-block transition-transform group-hover:translate-x-0.5"
-              >
-                →
-              </span>
+            <Icon className="h-3.5 w-3.5 shrink-0" />
+            {label}
+            <span aria-hidden className="text-muted-foreground">
+              ↗
             </span>
           </a>
         ))}

@@ -47,18 +47,18 @@ const structuredData = [
     '@type': 'WebSite',
     name: SITE_NAME,
     url: SITE_URL,
-    description:
-      'Founding engineer at Screenpipe (YC S26). Software engineer and open source contributor.',
+    description: DEFAULT_OG.description,
   },
   {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: SITE_NAME,
     url: SITE_URL,
-    jobTitle: 'Founding Engineer',
+    jobTitle: 'Software Engineer',
     worksFor: {
       '@type': 'Organization',
-      name: 'Screenpipe',
+      name: 'River AI',
+      url: 'https://meetriver.com/',
     },
     sameAs: [
       'https://github.com/Anshgrover23',

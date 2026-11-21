@@ -248,7 +248,7 @@ export default function CobeGlobe({
       ref={canvasRef}
       className={
         className ??
-        'h-full w-full cursor-grab touch-none active:cursor-grabbing'
+        'h-full w-full cursor-grab [touch-action:pan-y_pinch-zoom] active:cursor-grabbing md:touch-none'
       }
       style={{ contain: 'layout paint size' }}
       onPointerDown={handlePointerDown}

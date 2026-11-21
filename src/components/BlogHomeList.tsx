@@ -29,7 +29,8 @@ export function BlogHomeList() {
               Writing
             </h2>
             <p className="mt-3 max-w-prose text-sm text-muted-foreground">
-              Things I&apos;ve read before starting open source contributions.
+              Notes on building software, open source, and lessons from the
+              work.
             </p>
           </div>
         </div>

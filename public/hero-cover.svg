@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" fill="none">
+  <defs>
+    <radialGradient id="paper" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1160 420) rotate(160) scale(1400 1100)">
+      <stop stop-color="#fbefd9"/>
+      <stop offset=".6" stop-color="#f8e8cc"/>
+      <stop offset="1" stop-color="#ebd3b3"/>
+    </radialGradient>
+    <radialGradient id="copper" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-40 125) rotate(35) scale(820 500)">
+      <stop stop-color="#d56843" stop-opacity=".95"/>
+      <stop offset=".28" stop-color="#e68f55" stop-opacity=".8"/>
+      <stop offset=".64" stop-color="#f3bf7f" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#f7dbab" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="amber" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 500) rotate(40) scale(520 310)">
+      <stop stop-color="#f0b775" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#f5d4a0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="light">
+      <stop stop-color="#fff5d8" stop-opacity=".95"/>
+      <stop offset=".4" stop-color="#fff0cd" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#fff0cd" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shade">
+      <stop stop-color="#c4a789" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#d7bba0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h1536v1024H0z"/>
+  <path fill="url(#copper)" d="M0 0h1536v1024H0z"/>
+  <path fill="url(#amber)" d="M0 0h1536v1024H0z"/>
+  <ellipse cx="275" cy="240" rx="620" ry="86" transform="rotate(45 275 240)" fill="url(#light)"/>
+  <ellipse cx="90" cy="510" rx="530" ry="75" transform="rotate(44 90 510)" fill="url(#light)" opacity=".65"/>
+  <ellipse cx="60" cy="895" rx="360" ry="140" transform="rotate(28 60 895)" fill="url(#shade)"/>
+</svg>

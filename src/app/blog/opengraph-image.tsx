@@ -17,8 +17,8 @@ export default function BlogOpenGraphImage() {
     subtitle: 'Open source, developer tools, and lessons from the field.',
     body: 'Essays and notes from Screenpipe, TSCircuit, Antiwork, and beyond.',
     stats: [
-      { value: '463+', label: 'Merged PRs' },
-      { value: '8+', label: 'Orgs' },
+      { value: '750+', label: 'Merged PRs' },
+      { value: '9', label: 'Orgs' },
       { value: '3y', label: 'Shipping' },
     ],
     showPortrait: false,

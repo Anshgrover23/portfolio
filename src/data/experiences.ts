@@ -19,7 +19,7 @@ export type Experience = {
   description?: string;
   logo: string;
   link: string;
-  totalPRs: string;
+  totalPRs?: string;
   totalBounties?: string;
   techStack: ExperienceTech[];
   contributions: ExperienceContribution[];
@@ -38,17 +38,34 @@ export type Experience = {
 
 export const experiences = [
   {
+    company: 'River AI',
+    role: 'Software Engineer',
+    period: 'Oct 2026 - Present',
+    description:
+      'Working on River, an AI computer that brings documents, spreadsheets, presentations, and a browser into one workspace for people and AI to work together.',
+    badge: 'YC F26',
+    isCurrent: true,
+    featured: true,
+    location: 'Remote',
+    logo: 'river.png',
+    link: 'https://meetriver.com/',
+    techStack: [],
+    contributions: [],
+  },
+  {
     company: 'Screenpipe',
     role: 'Founding Engineer',
-    period: '2026 — Present',
+    period: 'Apr 2026 - Sep 2026',
+    description:
+      'Built the connections and OAuth platform, owned AI chat reliability, and shipped Windows desktop features. 212+ merged PRs.',
     badge: 'YC S26',
-    isCurrent: true,
+    isCurrent: false,
     featured: true,
     logo: 'screenpipe.png',
     link: 'https://screenpi.pe/',
     totalPRs: '212+',
     mergedPRsRepo: 'screenpipe/screenpipe',
-    careerMergedPRs: '463+',
+    careerMergedPRs: '750+',
     techStack: [
       { label: 'Rust', icon: '/svg-icons/rust.svg' },
       { label: 'TypeScript', icon: '/svg-icons/typescript.svg' },
@@ -474,7 +491,7 @@ export const experiences = [
     role: 'Contract Software Engineer',
     period: 'Jul 2025 - Oct 2025',
     description:
-      'Shipped major features end-to-end. Contract work in private repos; compensation details below.',
+      'Built equity management for Flexile, migrated tRPC modules to Rails, and improved Helper’s testing and architecture.',
     logo: 'antiwork.svg',
     link: 'https://flexile.com',
     totalPRs: '55+',

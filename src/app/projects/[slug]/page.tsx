@@ -193,62 +193,66 @@ export default async function ProjectOrgPage({ params }: Props) {
               </div>
             )}
 
-            <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
-              {careerMergedPRs && mergedPRsRepo ? (
-                <>
+            {(exp.totalPRs || exp.totalBounties) && (
+              <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+                {careerMergedPRs && mergedPRsRepo ? (
+                  <>
+                    <div>
+                      <dt className="font-mono text-xs uppercase tracking-wide text-muted-foreground">
+                        PRs merged ({mergedPRsRepo})
+                      </dt>
+                      <dd className="mt-0.5 font-mono font-medium tabular-nums text-foreground">
+                        {exp.totalPRs}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="font-mono text-xs uppercase tracking-wide text-muted-foreground">
+                        Career total (all orgs)
+                      </dt>
+                      <dd className="mt-0.5 font-mono font-medium tabular-nums text-foreground">
+                        {careerMergedPRs ?? EXPERIENCE_STATS.mergedPRs}
+                      </dd>
+                    </div>
+                  </>
+                ) : exp.totalPRs ? (
                   <div>
                     <dt className="font-mono text-xs uppercase tracking-wide text-muted-foreground">
-                      PRs merged ({mergedPRsRepo})
+                      PRs merged
                     </dt>
                     <dd className="mt-0.5 font-mono font-medium tabular-nums text-foreground">
                       {exp.totalPRs}
                     </dd>
                   </div>
+                ) : null}
+                {exp.totalBounties && (
                   <div>
                     <dt className="font-mono text-xs uppercase tracking-wide text-muted-foreground">
-                      Career total (all orgs)
+                      Bounties
                     </dt>
                     <dd className="mt-0.5 font-mono font-medium tabular-nums text-foreground">
-                      {careerMergedPRs ?? EXPERIENCE_STATS.mergedPRs}
+                      {exp.totalBounties}
                     </dd>
                   </div>
-                </>
-              ) : (
-                <div>
-                  <dt className="font-mono text-xs uppercase tracking-wide text-muted-foreground">
-                    PRs merged
-                  </dt>
-                  <dd className="mt-0.5 font-mono font-medium tabular-nums text-foreground">
-                    {exp.totalPRs}
-                  </dd>
-                </div>
-              )}
-              {exp.totalBounties && (
-                <div>
-                  <dt className="font-mono text-xs uppercase tracking-wide text-muted-foreground">
-                    Bounties
-                  </dt>
-                  <dd className="mt-0.5 font-mono font-medium tabular-nums text-foreground">
-                    {exp.totalBounties}
-                  </dd>
-                </div>
-              )}
-            </dl>
+                )}
+              </dl>
+            )}
           </header>
 
-          <section aria-labelledby="contrib-heading">
-            <h2
-              id="contrib-heading"
-              className="mb-5 font-display text-xl font-semibold tracking-tight text-foreground"
-            >
-              Featured contributions
-            </h2>
-            <ExperienceOrgContributions
-              contributions={exp.contributions}
-              reposPrivate={exp.reposPrivate}
-              compensationDetailsImage={exp.compensationDetailsImage}
-            />
-          </section>
+          {exp.contributions.length > 0 && (
+            <section aria-labelledby="contrib-heading">
+              <h2
+                id="contrib-heading"
+                className="mb-5 font-display text-xl font-semibold tracking-tight text-foreground"
+              >
+                Featured contributions
+              </h2>
+              <ExperienceOrgContributions
+                contributions={exp.contributions}
+                reposPrivate={exp.reposPrivate}
+                compensationDetailsImage={exp.compensationDetailsImage}
+              />
+            </section>
+          )}
         </article>
       </main>
     </div>

@@ -125,7 +125,9 @@ export function ExperienceWorkAccordion({
               {bullets.length > 0 && (
                 <div className="mb-5">
                   <h3 className="mb-2.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                    What I&apos;ve done
+                    {exp.highlights?.length || exp.contributions.length
+                      ? 'What I\u2019ve done'
+                      : 'About the role'}
                   </h3>
                   <ul className="space-y-2 text-sm leading-relaxed text-muted-foreground">
                     {bullets.map(item => (
@@ -146,7 +148,9 @@ export function ExperienceWorkAccordion({
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground underline-offset-4 hover:underline"
                 onClick={e => e.stopPropagation()}
               >
-                Full page — contributions & PRs
+                {exp.contributions.length
+                  ? 'Full page — contributions & PRs'
+                  : 'View role details'}
                 <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
               </Link>
             </div>

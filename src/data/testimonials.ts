@@ -1,6 +1,16 @@
-import { TestimonialItem } from '@/components/Testimonials';
+import type { TestimonialItem } from '@/components/Testimonials';
 
 export const testimonials: TestimonialItem[] = [
+  // Quote from Ansh's message screenshot; no public message URL.
+  // Portrait and role: https://www.ycombinator.com/companies/rivereditor
+  {
+    quote: 'This is great -- thanks Ansh!',
+    name: 'Chandler Supple',
+    username: 'chandlersupple',
+    title: 'Co-founder & CEO of River AI (YC F26)',
+    image: '/testimonials/chandler-supple.jpg',
+    source: 'other',
+  },
   // TSCircuit testimonials
   {
     quote: 'great work!',

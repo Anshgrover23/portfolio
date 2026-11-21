@@ -45,7 +45,7 @@ export default function ProjectsIndexPage() {
             <span className="font-medium text-foreground">
               {EXPERIENCE_STATS.bountyTotal}
             </span>{' '}
-            OSS bounties
+            OSS bounties · 2x YC engineer · 3x remote startup
           </p>
         </header>
 

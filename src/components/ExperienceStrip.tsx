@@ -62,9 +62,9 @@ export function ExperienceStrip() {
             Experience
           </h2>
           <p className="mt-2 max-w-prose text-sm text-muted-foreground">
-            Founding engineer at{' '}
-            <span className="font-medium text-foreground">Screenpipe</span> (YC
-            S26), plus contract and OSS work.
+            Software engineer at{' '}
+            <span className="font-medium text-foreground">River AI</span> (YC
+            F26), previously Screenpipe (YC S26), plus contract and OSS work.
           </p>
         </div>
         <Link

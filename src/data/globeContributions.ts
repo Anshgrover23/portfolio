@@ -15,17 +15,17 @@ export const GLOBE_HOME: [number, number] = [26.9, 75.8];
 
 /**
  * Pin constellation for readable polaroids.
- * Screenpipe alone owns exact SF (primary role). Other orgs are
+ * River owns exact SF (current role). Other orgs are
  * spread across continents so nothing stacks on the Bay Area.
  * Images are small thumbs (~4–12KB) so first scroll isn’t a 200KB hit.
  */
 export const globeContributions: GlobeContribution[] = [
   {
-    id: 'screenpipe',
+    id: 'river',
     location: [37.7749, -122.4194], // exact San Francisco
-    image: '/globe-screenpipe.png',
-    caption: 'Screenpipe',
-    href: '/projects/screenpipe',
+    image: '/river.png',
+    caption: 'River AI',
+    href: '/projects/river-ai',
     rotate: -6,
     markerSize: 0.065,
   },

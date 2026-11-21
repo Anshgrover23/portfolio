@@ -18,7 +18,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { TestimonialItem } from '@/components/Testimonials';
 import { cn } from '@/lib/utils';
 
-const DEFAULT_USERNAME = 'louis030195';
+const DEFAULT_USERNAME = 'chandlersupple';
 
 /** Snappy editorial motion — ~250ms quote, spring pill ~320ms settle */
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
@@ -324,7 +324,7 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
             <div className="relative z-20 w-full pb-1 pt-1">
               <div
                 className={cn(
-                  'relative z-20 flex w-full max-w-full flex-nowrap items-center justify-center gap-3 overflow-x-auto overscroll-x-contain py-2',
+                  'relative z-20 flex w-full max-w-full flex-nowrap items-center justify-start gap-3 overflow-x-auto overscroll-x-contain py-2',
                   'scroll-px-6 px-6 sm:scroll-px-8 sm:px-8',
                   '[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden',
                   'sm:gap-4 md:gap-5'
@@ -359,7 +359,7 @@ export function QuoteTestimonial({ items }: { items: TestimonialItem[] }) {
                         transition={{ layout: LAYOUT_SPRING }}
                         className={cn(
                           'relative isolate flex shrink-0 cursor-pointer touch-manipulation select-none items-center overflow-visible rounded-full border-0 bg-transparent outline-none',
-                          'p-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent/70',
+                          'p-2.5 first:ml-auto last:mr-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent/70',
                           isActive && showName && 'pr-4'
                         )}
                       >

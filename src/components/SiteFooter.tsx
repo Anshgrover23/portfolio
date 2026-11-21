@@ -45,16 +45,17 @@ export function SiteFooter() {
               </span>
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Founding engineer at{' '}
+              Software engineer at{' '}
               <a
-                href="https://screenpi.pe/"
+                href="https://meetriver.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium text-foreground decoration-accent decoration-2 underline-offset-[5px] hover:underline"
               >
-                Screenpipe
+                River AI
               </a>{' '}
-              <span className="font-display italic">(YC S26)</span>.
+              <span className="font-display italic">(YC F26)</span>. Previously
+              Screenpipe (YC S26).
             </p>
             <a
               href="mailto:anshgrover938@gmail.com"
@@ -108,14 +109,14 @@ export function SiteFooter() {
                     Shipping
                   </span>
                   <br />
-                  Integrations · desktop
+                  River · the AI computer
                 </li>
                 <li>
                   <span className="font-mono text-xs uppercase tracking-wide text-foreground">
                     Reading
                   </span>
                   <br />
-                  System architectural designs
+                  Orchestration of AI Agents · Distributed systems
                 </li>
               </ul>
             </div>

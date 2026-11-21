@@ -58,7 +58,7 @@ export function ContributionsGlobe() {
   return (
     <div
       className="contributions-globe mb-12 md:mb-14"
-      aria-label="Where open source work shipped from home"
+      aria-label="Remote startup and open source experience from India"
     >
       <div className="grid items-center gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-10 lg:gap-12">
         <div className="flex min-w-0 items-center md:pr-4">
@@ -66,8 +66,8 @@ export function ContributionsGlobe() {
             className="font-display max-w-[15rem] text-[1.35rem] italic leading-[1.35] tracking-tight text-foreground/80 sm:max-w-[16.5rem] sm:text-[1.5rem] md:text-[1.625rem]"
             style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100" }}
           >
-            From India to working with global companies across the U.S. Founding
-            engineer. Remote. Open source.
+            From India to three remote startups. Two YC companies. Building with
+            teams around the world.
           </p>
         </div>
 

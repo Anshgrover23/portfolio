@@ -5,7 +5,7 @@ import { SHOW_FLOATING_CHROME } from '@/lib/featureFlags';
 export const metadata: Metadata = {
   title: 'Experience',
   description:
-    'Founding engineer at Screenpipe (YC S26), plus contract and open source work: CX Linux, Antiwork, TSCircuit, and others.',
+    'Software engineer at River AI (YC F26), previously founding engineer at Screenpipe (YC S26), plus contract and open source work at CX Linux, Antiwork, TSCircuit, and others.',
 };
 
 export default function ProjectsLayout({

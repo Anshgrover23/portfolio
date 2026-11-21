@@ -6,7 +6,7 @@ import {
 
 export const runtime = 'nodejs';
 export const alt =
-  'Ansh Grover — Founding Engineer at Screenpipe (YC S26). 463+ merged PRs, $45.9k+ open source bounties.';
+  'Ansh Grover — 2x YC engineer · 3x remote startup. Software Engineer at River AI (YC F26), previously Screenpipe (YC S26).';
 export const size = ogImageSize;
 export const contentType = ogImageContentType;
 

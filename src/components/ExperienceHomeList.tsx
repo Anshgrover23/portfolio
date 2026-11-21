@@ -30,10 +30,6 @@ export function ExperienceHomeList() {
             >
               Experience
             </h2>
-            <p className="mt-3 max-w-prose text-sm text-muted-foreground">
-              Founding, contract, and open-source work — what shipped at each
-              stop.
-            </p>
           </div>
         </div>
         {hasMore && (
@@ -46,8 +42,6 @@ export function ExperienceHomeList() {
           </Link>
         )}
       </div>
-
-      <ContributionsGlobe />
 
       <div className="border-t border-line/80">
         {preview.map(exp => (
@@ -65,6 +59,9 @@ export function ExperienceHomeList() {
           </Link>
         </div>
       )}
+      <div className="mt-12">
+        <ContributionsGlobe />
+      </div>
     </section>
   );
 }

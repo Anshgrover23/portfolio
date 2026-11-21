@@ -142,8 +142,8 @@ export const Chatbot = () => {
                   Ask about my work
                 </p>
                 <p className="text-xs text-gray-600 mb-3">
-                  Screenpipe, OSS, contracts — answers from this site, not a
-                  sales script.
+                  River, Screenpipe, OSS — answers from this site, not a sales
+                  script.
                 </p>
                 <button
                   onClick={handleOpenChat}

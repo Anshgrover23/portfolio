@@ -88,7 +88,11 @@
 @layer base {
   html {
     font-size: 100%;
-    scroll-padding-top: 4rem;
+    scroll-padding-top: 1.5rem;
+
+    @media (min-width: 768px) {
+      scroll-padding-top: 5rem;
+    }
   }
 
   @media (min-width: 1024px) {
@@ -99,6 +103,11 @@
 
   * {
     @apply border-border;
+  }
+
+  :where(a, button, summary, input, textarea, select):focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 4px;
   }
 
   body {
@@ -285,6 +294,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
   .section-rise,
   .section-rise-delayed,
   .hero-stagger > *,

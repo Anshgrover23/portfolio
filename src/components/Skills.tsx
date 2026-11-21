@@ -1,23 +1,23 @@
-'use client';
-
 import Image from 'next/image';
 import {
+  Cable,
   Database,
+  KeyRound,
+  MousePointer2,
+  Bot,
   FlaskConical,
   Link,
   MonitorSmartphone,
   RefreshCw,
-  Route,
   ServerCog,
-  Shield,
   Terminal,
   Wrench,
   type LucideIcon,
 } from 'lucide-react';
 
 type SkillIcon =
-  | { type: 'svg'; src: string }
-  | { type: 'lucide'; icon: LucideIcon };
+  | { type: 'image'; src: string }
+  | { type: 'lucide'; icon: LucideIcon; className?: string };
 
 type Skill = {
   name: string;
@@ -32,35 +32,57 @@ type SkillCategory = {
 
 const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    title: 'Frontend',
+    title: 'Frontend & desktop',
     icon: MonitorSmartphone,
     skills: [
       {
         name: 'Next.js',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg',
         },
       },
       {
         name: 'JavaScript',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
         },
       },
       {
         name: 'React.js',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
         },
       },
       {
         name: 'TailwindCSS',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
+        },
+      },
+      {
+        name: 'Tauri',
+        icon: {
+          type: 'image',
+          src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tauri/tauri-original.svg',
+        },
+      },
+      {
+        name: 'Electron',
+        icon: {
+          type: 'image',
+          src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/electron/electron-original.svg',
+        },
+      },
+      {
+        name: 'Chromium',
+        icon: {
+          type: 'image',
+          // Original asset from https://www.chromium.org/_assets/icon-chromium-96.png
+          src: '/icons/chromium.png',
         },
       },
     ],
@@ -72,59 +94,66 @@ const SKILL_CATEGORIES: SkillCategory[] = [
       {
         name: 'TypeScript',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
         },
       },
       {
         name: 'Ruby',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ruby/ruby-original.svg',
         },
       },
       {
         name: 'Rust',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg',
-        },
-      },
-      {
-        name: 'Go',
-        icon: {
-          type: 'svg',
-          src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg',
         },
       },
       {
         name: 'Python',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
         },
       },
       {
         name: 'Node.js',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
         },
       },
-      { name: 'Express.js', icon: { type: 'lucide', icon: Route } },
+      {
+        name: 'Express.js',
+        icon: {
+          type: 'image',
+          // Original brand asset: https://github.com/expressjs/expressjs.com/blob/HEAD/public/favicon.svg
+          src: '/icons/express.svg',
+        },
+      },
       {
         name: 'tRPC',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trpc/trpc-original.svg',
         },
       },
-      { name: 'Zod', icon: { type: 'lucide', icon: Shield } },
+      {
+        name: 'Zod',
+        icon: {
+          type: 'image',
+          // Original brand asset: https://github.com/colinhacks/zod/blob/HEAD/packages/docs/public/logo/logo.svg
+          src: '/icons/zod.svg',
+        },
+      },
       { name: 'REST APIs', icon: { type: 'lucide', icon: Link } },
       {
         name: 'GraphQL',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg',
         },
       },
@@ -137,23 +166,37 @@ const SKILL_CATEGORIES: SkillCategory[] = [
       {
         name: 'PostgreSQL',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
         },
       },
       {
         name: 'MongoDB',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg',
         },
       },
-      { name: 'Drizzle ORM', icon: { type: 'lucide', icon: Database } },
+      {
+        name: 'Drizzle ORM',
+        icon: {
+          type: 'image',
+          // Original brand asset: https://github.com/drizzle-team/drizzle-orm-docs/blob/HEAD/public/svg/drizzle-dark.svg
+          src: '/icons/drizzle.svg',
+        },
+      },
       {
         name: 'Prisma',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg',
+        },
+      },
+      {
+        name: 'SQLite',
+        icon: {
+          type: 'image',
+          src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg',
         },
       },
     ],
@@ -165,7 +208,7 @@ const SKILL_CATEGORIES: SkillCategory[] = [
       {
         name: 'Playwright',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg',
         },
       },
@@ -173,21 +216,21 @@ const SKILL_CATEGORIES: SkillCategory[] = [
       {
         name: 'Docker',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
         },
       },
       {
         name: 'GitHub Actions',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg',
         },
       },
       {
         name: 'Homebrew',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/homebrew/homebrew-original.svg',
         },
       },
@@ -200,25 +243,50 @@ const SKILL_CATEGORIES: SkillCategory[] = [
       {
         name: 'Shell',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg',
         },
       },
       {
         name: 'Linux',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg',
         },
       },
       {
         name: 'Debian',
         icon: {
-          type: 'svg',
+          type: 'image',
           src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/debian/debian-original.svg',
         },
       },
       { name: 'Make', icon: { type: 'lucide', icon: Wrench } },
+    ],
+  },
+  {
+    title: 'AI & integrations',
+    icon: Cable,
+    skills: [
+      { name: 'MCP', icon: { type: 'lucide', icon: Cable } },
+      { name: 'OAuth', icon: { type: 'lucide', icon: KeyRound } },
+      { name: 'AI agents', icon: { type: 'lucide', icon: Bot } },
+      {
+        name: 'E2B',
+        icon: {
+          type: 'image',
+          // Original asset from https://e2b.dev/icon2.png
+          src: '/icons/e2b.png',
+        },
+      },
+      {
+        name: 'Computer use',
+        icon: {
+          type: 'lucide',
+          icon: MousePointer2,
+          className: 'text-blue-600',
+        },
+      },
     ],
   },
 ];
@@ -226,16 +294,19 @@ const SKILL_CATEGORIES: SkillCategory[] = [
 function SkillPill({ skill }: { skill: Skill }) {
   return (
     <span className="inline-flex items-center gap-1.5 rounded-md border border-line/80 bg-card px-2.5 py-1 font-mono text-[11px] font-medium uppercase tracking-wide text-foreground/85 transition-colors hover:border-foreground/30 hover:bg-canvas-muted">
-      {skill.icon.type === 'svg' ? (
+      {skill.icon.type === 'image' ? (
         <Image
           src={skill.icon.src}
           alt=""
           width={14}
           height={14}
-          className={`h-3.5 w-3.5 ${skill.name === 'Next.js' ? 'invert' : ''}`}
+          className="h-3.5 w-3.5"
         />
       ) : (
-        <skill.icon.icon className="h-3.5 w-3.5" strokeWidth={1.5} />
+        <skill.icon.icon
+          className={`h-3.5 w-3.5 ${skill.icon.className ?? ''}`}
+          strokeWidth={1.5}
+        />
       )}
       {skill.name}
     </span>
